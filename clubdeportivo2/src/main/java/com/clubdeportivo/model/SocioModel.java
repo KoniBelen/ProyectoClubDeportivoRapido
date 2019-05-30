@@ -71,8 +71,6 @@ public class SocioModel {
 	@JoinColumn(name="id_sociocategoria")
 	private List<SocioCategoriaModel> socioCategoria;
 	
-
-
 	@ManyToOne
 	@JoinColumn(name="id_tutor")
 	private TutorModel idTutor;
