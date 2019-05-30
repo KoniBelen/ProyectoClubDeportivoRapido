@@ -41,7 +41,10 @@ public class CategoriaModel {
 	@Column(name = "genero_categoria")
 	private String generoCategoria;	
 	
-	
+	@NotNull
+	@Column(name = "estado_categoria")
+	private boolean estado_categoria;
+
 	@ManyToOne
 	@JoinColumn(name = "id_deporte")
 	private DeporteModel idDeporte;
@@ -56,6 +59,7 @@ public class CategoriaModel {
 	public int getIdCategoria() {
 		return idCategoria;
 	}
+
 
 	public void setIdCategoria(int idCategoria) {
 		this.idCategoria = idCategoria;
@@ -93,7 +97,14 @@ public class CategoriaModel {
 		this.generoCategoria = generoCategoria;
 	}
 
+	public boolean isEstado_categoria() {
+		return estado_categoria;
+	}
 
+
+	public void setEstado_categoria(boolean estado_categoria) {
+		this.estado_categoria = estado_categoria;
+	}
 
 	public DeporteModel getIdDeporte() {
 		return idDeporte;
