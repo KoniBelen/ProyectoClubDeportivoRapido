@@ -1,19 +1,15 @@
 package com.clubdeportivo.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import java.sql.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 @Entity
@@ -31,16 +27,12 @@ public class CuotasModel {
 	private Date fechaDePago;
 	
 	@NotNull
-	@Column(name="mes")
-	private int mes;
+	@Column(name="monto_cuota")
+	private int cuota;
 	
-	@NotNull
-	@Column(name="anio")
-	private int anio;
-	
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "socio", fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="id_socio")
-	private List<SocioModel> socio;
+	private SocioModel socio;
 
 	public int getIdCategoria() {
 		return idCategoria;
@@ -58,37 +50,26 @@ public class CuotasModel {
 		this.fechaDePago = fechaDePago;
 	}
 
-	public int getMes() {
-		return mes;
+	public int getCuota() {
+		return cuota;
 	}
 
-	public void setMes(int mes) {
-		this.mes = mes;
+	public void setCuota(int cuota) {
+		this.cuota = cuota;
 	}
 
-	public int getAnio() {
-		return anio;
-	}
-
-	public void setAnio(int anio) {
-		this.anio = anio;
-	}
-
-	public List<SocioModel> getSocio() {
+	public SocioModel getSocio() {
 		return socio;
 	}
 
-	public void setSocio(List<SocioModel> socio) {
-		this.socio = socio;
+	public void setSocio(SocioModel Socio) {
+		this.socio = Socio;
 	}
 
 	@Override
 	public String toString() {
-		return "CuotasModel [idCategoria=" + idCategoria + ", fechaDePago=" + fechaDePago + ", mes=" + mes + ", anio="
-				+ anio + ", socio=" + socio + "]";
+		return "CuotasModel [idCategoria=" + idCategoria + ", fechaDePago=" + fechaDePago + ", cuota=" + cuota
+				+ ", Socio=" + socio + "]";
 	}
-	
-	
-	
 	
 }
