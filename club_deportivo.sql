@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2019 a las 16:17:32
+-- Tiempo de generación: 30-05-2019 a las 16:46:38
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.1.28
 
@@ -34,6 +34,7 @@ CREATE TABLE `categoria` (
   `descripcion_categoria` varchar(60) NOT NULL,
   `edad_max` int(11) NOT NULL,
   `genero_categoria` varchar(15) NOT NULL,
+  `estado_categoria` tinyint(1) NOT NULL,
   `id_deporte` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -47,8 +48,6 @@ CREATE TABLE `cuotas` (
   `id_cuotas` int(11) NOT NULL,
   `f_de_pago` date DEFAULT NULL,
   `monto_cuota` int(11) DEFAULT NULL,
-  `mes` int(11) DEFAULT NULL,
-  `anio` int(11) DEFAULT NULL,
   `id_socio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -121,7 +120,7 @@ CREATE TABLE `socio` (
   `email_socio` varchar(60) NOT NULL,
   `genero_socio` varchar(15) NOT NULL,
   `estado_socio` tinyint(1) NOT NULL,
-  `id_tutor` int(11) NOT NULL
+  `id_tutor` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -277,6 +276,48 @@ ALTER TABLE `sociocategoria`
 --
 ALTER TABLE `tutor`
   MODIFY `id_tutor` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`id_deporte`) REFERENCES `deporte` (`id_deporte`);
+
+--
+-- Filtros para la tabla `cuotas`
+--
+ALTER TABLE `cuotas`
+  ADD CONSTRAINT `cuotas_ibfk_1` FOREIGN KEY (`id_socio`) REFERENCES `socio` (`id_socio`);
+
+--
+-- Filtros para la tabla `equipo`
+--
+ALTER TABLE `equipo`
+  ADD CONSTRAINT `equipo_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`);
+
+--
+-- Filtros para la tabla `equipo_recurso`
+--
+ALTER TABLE `equipo_recurso`
+  ADD CONSTRAINT `equipo_recurso_ibfk_1` FOREIGN KEY (`id_equipo`) REFERENCES `equipo` (`id_equipo`),
+  ADD CONSTRAINT `equipo_recurso_ibfk_2` FOREIGN KEY (`id_recurso`) REFERENCES `recurso` (`id_recurso`);
+
+--
+-- Filtros para la tabla `socio`
+--
+ALTER TABLE `socio`
+  ADD CONSTRAINT `socio_ibfk_1` FOREIGN KEY (`id_tutor`) REFERENCES `tutor` (`id_tutor`);
+
+--
+-- Filtros para la tabla `sociocategoria`
+--
+ALTER TABLE `sociocategoria`
+  ADD CONSTRAINT `sociocategoria_ibfk_1` FOREIGN KEY (`id_socio`) REFERENCES `socio` (`id_socio`),
+  ADD CONSTRAINT `sociocategoria_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
