@@ -77,9 +77,9 @@ public class SocioModel {
 	@JoinColumn(name="id_tutor")
 	private TutorModel idTutor;
 	
-	@ManyToOne
+	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "cuotas", fetch = FetchType.EAGER)
 	@JoinColumn(name="id_cuotas")
-	private CuotasModel idCuotas;
+	private List<CuotasModel> idCuotas;
 
 	public int getIdSocio() {
 		return idSocio;
@@ -180,15 +180,17 @@ public class SocioModel {
 		this.idTutor = idTutor;
 	}
 
-	public CuotasModel getIdCuotas() {
+	
+
+	
+	public List<CuotasModel> getIdCuotas() {
 		return idCuotas;
 	}
 
-	public void setIdCuotas(CuotasModel idCuotas) {
+	public void setIdCuotas(List<CuotasModel> idCuotas) {
 		this.idCuotas = idCuotas;
 	}
 
-	
 	public boolean isEstadoSocio() {
 		return estadoSocio;
 	}
@@ -206,6 +208,8 @@ public class SocioModel {
 				+ ", estadoSocio=" + estadoSocio + ", socioCategoria=" + socioCategoria + ", idTutor=" + idTutor
 				+ ", idCuotas=" + idCuotas + "]";
 	}
+
+
 
 	
 	
