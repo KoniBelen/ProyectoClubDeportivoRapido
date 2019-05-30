@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2019 a las 20:55:16
+-- Tiempo de generación: 30-05-2019 a las 16:17:32
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.1.28
 
@@ -48,7 +48,8 @@ CREATE TABLE `cuotas` (
   `f_de_pago` date DEFAULT NULL,
   `monto_cuota` int(11) DEFAULT NULL,
   `mes` int(11) DEFAULT NULL,
-  `anio` int(11) DEFAULT NULL
+  `anio` int(11) DEFAULT NULL,
+  `id_socio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -120,7 +121,6 @@ CREATE TABLE `socio` (
   `email_socio` varchar(60) NOT NULL,
   `genero_socio` varchar(15) NOT NULL,
   `estado_socio` tinyint(1) NOT NULL,
-  `id_cuotas` int(11) NOT NULL,
   `id_tutor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -169,7 +169,8 @@ ALTER TABLE `categoria`
 -- Indices de la tabla `cuotas`
 --
 ALTER TABLE `cuotas`
-  ADD PRIMARY KEY (`id_cuotas`);
+  ADD PRIMARY KEY (`id_cuotas`),
+  ADD KEY `id_socio` (`id_socio`);
 
 --
 -- Indices de la tabla `deporte`
@@ -203,7 +204,6 @@ ALTER TABLE `recurso`
 --
 ALTER TABLE `socio`
   ADD PRIMARY KEY (`id_socio`),
-  ADD KEY `id_cuotas` (`id_cuotas`),
   ADD KEY `id_tutor` (`id_tutor`);
 
 --
