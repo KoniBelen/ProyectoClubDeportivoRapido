@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Socios</title>
+
+<!-- Bootstrap -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}" />
+</head>
+<body>
+	<div class="container">
+		<form action="#" th:action="@{/save}" class="form-group"
+			th:object=${socio} method="post">
+
+			<div class="form-group has-feedback"
+				style="height: 70px; width: 350px;">
+				<label for="rutSocio" style="font-size: 20px;">Rut</label> <input
+					class="form-control" type="text"
+					style="width: 300px; height: 30px;">
+			</div>
+			<div class="form-group has-feedback" style="width: 350px;">
+				<label for="apellidoPaterno" style="font-size: 20px;">Apellido
+					Paterno</label> <input class="form-control" type="text"
+					style="width: 300px; height: 30px;">
+			</div>
+			<div class="form-group has-feedback"
+				style="height: 70px; width: 320px;">
+				<label for="generoSocio" style="font-size: 20px;">Género</label> <select
+					class="custom-select custom-select-sm d-xl-flex"
+					style="width: 300px; height: 30px;">
+					<option value="11" selected>Seleccione un genero</option>
+					<option value="12">Femenino</option>
+					<option value="13">Masculino</option>
+					<option value="14">Otro</option>
+				</select>
+			</div>
+			<div class="form-group has-feedback">
+				<label for="telefonoSocio" style="font-size: 20px;">Teléfono
+					Celular</label> <input class="form-control" type="tel"
+					style="font-size: 21px; height: 30px; width: 300px;">
+			</div>
+
+
+			<div class="form-group has-feedback" style="width: 350px;">
+				<label for="nombreSocio" style="font-size: 20px;">Nombres</label> <input
+					class="form-control" type="text"
+					style="width: 300px; height: 30px;">
+			</div>
+			<div class="form-group has-feedback">
+				<label for="apellidoMaterno" style="font-size: 20px;">Apellido
+					Materno</label> <input class="form-control" type="text"
+					style="width: 300px; height: 30px;">
+			</div>
+			<div class="form-group has-feedback" style="width: 350px;">
+				<label for="fechaNacimientoSocio" style="font-size: 20px;">Fecha
+					Nacimiento</label> <input class="form-control" type="date"
+					style="height: 30px; width: 300px; padding-top: 0px;">
+			</div>
+			<div class="form-group has-feedback">
+				<label for="emailSocio" style="font-size: 20px;">Email</label> <input
+					class="form-control" type="tel"
+					style="font-size: 21px; height: 30px; width: 300px;">
+			</div>
+			<button type="submit" class="btn btn-succes">Guardar</button>
+		</form>
+	</div>
+
+</body>
+</html>
