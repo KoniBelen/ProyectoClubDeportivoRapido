@@ -14,5 +14,11 @@ import com.clubdeportivo2.clubdeportivo.service.DeporteService;
 
 public class DeporteController {
 
+@Autowired DeporteService deporteService;
 	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id, Model model) {
+		deporteService.delete(id);
+		return "redirect:/";
+	}
 }
