@@ -33,7 +33,7 @@ public class SocioController {
 		return "save";
 	}
 	
-	@PostMapping("/save/")
+	@PostMapping("/save")
 	public String save(SocioModel socio, Model model) {
 		socioService.save(socio);
 		return "redirect:/";

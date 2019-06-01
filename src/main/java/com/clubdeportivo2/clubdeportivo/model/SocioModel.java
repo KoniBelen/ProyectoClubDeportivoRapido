@@ -24,7 +24,7 @@ public class SocioModel {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_socio")
-	private Integer idSocio;
+	private Integer idSocio; 	
 	
 	@NotNull
 	@Column(name="rut_socio")
@@ -58,7 +58,6 @@ public class SocioModel {
 	@Column(name="email_socio")
 	private String emailSocio;
 	
-
 	@NotNull
 	@Column(name="genero_socio")
 	private String generoSocio;
