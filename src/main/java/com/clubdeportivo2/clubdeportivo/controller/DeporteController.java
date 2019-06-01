@@ -13,9 +13,26 @@ import com.clubdeportivo2.clubdeportivo.model.DeporteModel;
 import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.DeporteService;
 
+@Controller
+@RequestMapping(value="/deporte")
 public class DeporteController {
 
-@Autowired DeporteService deporteService;
+@Autowired 
+private DeporteService deporteService;
+
+	@PostMapping("/create/")
+	public String save(DeporteModel deporte, Model model) {
+		deporteService.save(deporte);
+		return "redirect:/";
+	}
+	
+	@GetMapping("/update/{id}")
+	public String save(Integer id, Model model) {
+		if(id!=null) {
+			model.addAttribute("deporte", deporteService.get(id));
+		}
+		return "save";
+	}
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
