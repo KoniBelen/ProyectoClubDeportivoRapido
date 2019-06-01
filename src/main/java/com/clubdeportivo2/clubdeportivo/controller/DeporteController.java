@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.clubdeportivo2.clubdeportivo.model.DeporteModel;
+import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.DeporteService;
 
 public class DeporteController {
@@ -21,4 +22,17 @@ public class DeporteController {
 		deporteService.delete(id);
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/search/{id}")
+	public String search(@PathVariable Integer id, Model model) {
+		model.addAttribute("elDeporte",deporteService.get(id)); 
+		return "index";
+	}
+	
+	@RequestMapping("/")
+	public String index(Model model) {
+		model.addAttribute("list",deporteService.getAll()); 
+		return "index";
+	}
+	
 }
