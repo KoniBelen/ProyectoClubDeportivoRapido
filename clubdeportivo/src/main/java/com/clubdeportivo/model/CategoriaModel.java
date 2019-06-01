@@ -41,6 +41,9 @@ public class CategoriaModel {
 	@Column(name = "genero_categoria")
 	private String generoCategoria;	
 	
+	@NotNull
+	@Column(name = "estado_categoria")
+	private String estadoCategoria;	
 	
 	@ManyToOne
 	@JoinColumn(name = "id_deporte")
@@ -50,11 +53,31 @@ public class CategoriaModel {
 	
 
 	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "sociocategoria", fetch = FetchType.EAGER)
-	@JoinColumn(name="id_sociocategoria")
+	@JoinColumn(name="id_categoria")
 	private List<SocioCategoriaModel> socioCategoria;
+	
+	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "equipo", fetch = FetchType.EAGER)
+	@JoinColumn(name="id_categoria")
+	private List<EquipoModel> equipo;
 
 	public int getIdCategoria() {
 		return idCategoria;
+	}
+
+	public String getEstadoCategoria() {
+		return estadoCategoria;
+	}
+
+	public void setEstadoCategoria(String estadoCategoria) {
+		this.estadoCategoria = estadoCategoria;
+	}
+
+	public List<EquipoModel> getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(List<EquipoModel> equipo) {
+		this.equipo = equipo;
 	}
 
 	public void setIdCategoria(int idCategoria) {
@@ -115,8 +138,11 @@ public class CategoriaModel {
 	public String toString() {
 		return "CategoriaModel [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
 				+ ", descripcionCategoria=" + descripcionCategoria + ", edadMax=" + edadMax + ", generoCategoria="
-				+ generoCategoria + ", idDeporte=" + idDeporte + ", socioCategoria=" + socioCategoria + "]";
+				+ generoCategoria + ", estadoCategoria=" + estadoCategoria + ", idDeporte=" + idDeporte
+				+ ", socioCategoria=" + socioCategoria + ", equipo=" + equipo + "]";
 	}
+
+	
 
 
 	
