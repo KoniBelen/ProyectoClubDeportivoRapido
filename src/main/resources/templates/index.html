@@ -16,7 +16,7 @@
 	<div class="container">
 		<br>
 		<div>
-			<a href="/save" class="btn btn-primary">Agregar</a>
+			<a href="/save/0" class="btn btn-primary">Agregar</a>
 		</div>
 		<div>
 
@@ -40,9 +40,9 @@
 							<td th:text="${socio.apellidoMaterno}"></td>
 							<td th:text="${socio.apellidoPaterno}"></td>
 							<td th:text="${socio.direccionSocio}"></td>
-							<td><a th:href="@{/save/{id}(id=${socio.idSocio})}">Editar</a>
+							<td><a class= "btn btn-info" th:href="@{/save/{id}(id=${socio.idSocio})}">Editar</a>
 							</td>
-							<td><a th:href="@{/delete/{id}(id=${socio.idSocio})}">Eliminar</a>
+							<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${socio.idSocio})}">Eliminar</a>
 							</td>
 
 

@@ -13,49 +13,49 @@
 </head>
 <body>
 	<div class="container">
-		<form action="#" th:action="@{/save}" class="form-group"
-			th:object=${socio} method="post">
+	<h2>Agregar Socio</h2>
+		<form action="#" th:action="@{/save}" class="form-group" th:object=${socio} method="post">
+		
+			<input type="hidden" th:field="*{idSocio}">
 
+			
 			<div class="form-group">
 				<label for="rutSocio" > Rut</label> 
-				<input	class="form-control" type="text">
+				<input	class="form-control" type="text" th:field= "*{rutSocio}">
 			</div>
 			<div class="form-group">
 				<label for="apellidoPaterno">Apellido Paterno</label> 
-				<input class="form-control" type="text">
+				<input class="form-control" type="text" th:field= "*{apellidoPaterno}">
 			</div>
-			<div class="form-group ">
-				<label for="generoSocio">Género</label> 
-				<select class="form-control">
-					<option value="" selected>Seleccione una opción</option>
-					<option value="Femenino">Femenino</option>
-					<option value="Masculino">Masculino</option>
-					<option value="Otro">Otro</option>
-				</select>
-			</div>
+			
+		
 			<div class="form-group">
-				<label for="telefonoSocio">Teléfono Celular</label> 
-				<input class="form-control" type="tel">
+				<label for="telefonoSocio">Teléfono</label> 
+				<input class="form-control" type="number" th:field= "*{telefonoSocio}">
 			</div>
 
 			<div class="form-group">
 				<label for="nombreSocio">Nombres</label> 
-				<input class="form-control" type="text">
+				<input class="form-control" type="text" th:field= "*{nombreSocio}">
 			</div>
 			
 			<div class="form-group">
 				<label for="apellidoMaterno">Apellido Materno</label> 
-				<input class="form-control">
+				<input class="form-control" type="text" th:field= "*{apellidoMaterno}">
 			</div>
 			<div class="form-group" >
 				<label for="fechaNacimientoSocio">Fecha Nacimiento</label> 
-				<input class="form-control">
+				<input class="form-control" type="date" th:field= "*{fechaNacimientoSocio}">
 			</div>
 			<div class="form-group">
 				<label for="emailSocio">Email</label> 
-				<input class="form-control" type="tel">
+				<input class="form-control" type="email" th:field= "*{emailSocio}">
 			</div>
-			<button type="submit" class="btn btn-succes">Guardar</button>
+			<div class="form-group">
+				<label for="emailSocio">Dirección</label> 
+				<input class="form-control" type="text" th:field= "*{direccionSocio}">
+			</div>
+			<button type="submit" class="btn btn-success">Guardar</button>
 		</form>
 	</div>
 
