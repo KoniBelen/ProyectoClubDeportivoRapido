@@ -16,12 +16,12 @@
 	<div class="container">
 		<br>
 		<div>
-			<a href="/save/null" class="btn btn-primary">Agregar</a>
+			<a href="/save/0" class="btn btn-primary">Agregar</a>
 		</div>
-		<div th:switch="${list}">
+		<div>
 
-			<h2 th:case="null">No hay personas</h2>
-			<div th:case="*">
+			<h2 th:if="${list.isEmpty()}">No hay personas</h2>
+			<div th:if="${!list.isEmpty()}">
 				<h2>Socio</h2>
 				<table class="table">
 					<thead>
@@ -35,14 +35,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="persona : ${list}">
-							<td th:text="${persona.nombreSocio}"></td>
-							<td th:text="${persona.apellidoMaterno}"></td>
-							<td th:text="${persona.apellidoPaterno}"></td>
-							<td th:text="${persona.direccionSocio}"></td>
-							<td><a th:href="@{/save/{id}(id=${persona.id})}">Editar</a>
+						<tr th:each="socio : ${list}">
+							<td th:text="${socio.nombreSocio}"></td>
+							<td th:text="${socio.apellidoMaterno}"></td>
+							<td th:text="${socio.apellidoPaterno}"></td>
+							<td th:text="${socio.direccionSocio}"></td>
+							<td><a class= "btn btn-info" th:href="@{/save/{id}(id=${socio.idSocio})}">Editar</a>
 							</td>
-							<td><a th:href="@{/delete/{id}(id=${persona.id})}">Eliminar</a>
+							<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${socio.idSocio})}">Eliminar</a>
 							</td>
 
 

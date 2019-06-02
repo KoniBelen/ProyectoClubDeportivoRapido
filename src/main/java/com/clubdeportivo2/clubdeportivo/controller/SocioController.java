@@ -1,7 +1,7 @@
 package com.clubdeportivo2.clubdeportivo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,15 +26,17 @@ public class SocioController {
 	}
 	
 	@GetMapping("/save/{id}")
-	public String save(Integer id, Model model) {
-		if(id!=null) {
+	
+	public String showSave(@PathVariable ("id") Integer id , Model model) {
+		if(id!=null && id!=0) {
 			model.addAttribute("socio", socioService.get(id));
+		}else {
+			model.addAttribute("socio",new SocioModel());
 		}
 		return "save";
 	}
-	
-	@PostMapping("/save/")
-	public String save(SocioModel socio, Model model) {
+	@PostMapping("/save")
+	public String save(SocioModel socio , Model model) {
 		socioService.save(socio);
 		return "redirect:/";
 	}

@@ -25,7 +25,8 @@ public abstract class GenericServiceImp<T,ID extends Serializable> implements Ge
 	/**
 	 * Obtiene un objeto por la id
 	 * @param id
-	 * @return retorna null si el objeto no existe, sino retorna el objeto*/
+	 * @return retorna null si el objeto no existe, sino retorna el objeto
+	 * */
 	@Override
 	public T get(ID id) {
 		Optional<T> obj = getDao().findById(id);
@@ -42,11 +43,6 @@ public abstract class GenericServiceImp<T,ID extends Serializable> implements Ge
 		return lista;
 	}
 
-	@Override
-	public T update(ID id, T entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 
 	public abstract CrudRepository<T, ID> getDao();

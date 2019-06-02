@@ -24,7 +24,7 @@ public class SocioModel {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_socio")
-	private Integer idSocio;
+	private Integer idSocio; 	
 	
 	@NotNull
 	@Column(name="rut_socio")
@@ -44,7 +44,7 @@ public class SocioModel {
 	
 	@NotNull
 	@Column(name="telefono_socio")
-	private int telefonoSocio;
+	private long telefonoSocio;
 	
 	@NotNull
 	@Column(name="direccion_socio")
@@ -58,21 +58,16 @@ public class SocioModel {
 	@Column(name="email_socio")
 	private String emailSocio;
 	
-
-	@NotNull
+	//@NotNull
 	@Column(name="genero_socio")
 	private String generoSocio;
 	
-	@NotNull
+	//@NotNull
 	@Column(name="estado_socio")
 	private boolean estadoSocio;
 	
-/*
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "sociocategoria", fetch = FetchType.EAGER)
-	//@JoinColumn(name="id_sociocategoria")
-	private List<SocioCategoriaModel> socioCategoria;
+	/*---relaciones---------------------------------------------------------*/
 	
-*/
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE,
 			mappedBy = "socioCategoria")
 	private List<CategoriaModel> categorias;
@@ -88,117 +83,151 @@ public class SocioModel {
 	//@JoinColumn(name="id_cuotas")
 	private List<CuotasModel> idCuotas;
 
+	
+	//-----------------------getters y setters----------------------------------
+
 	public Integer getIdSocio() {
 		return idSocio;
 	}
 
-	public void setIdSocio(int idSocio) {
+
+	public void setIdSocio(Integer idSocio) {
 		this.idSocio = idSocio;
 	}
+
 
 	public String getRutSocio() {
 		return rutSocio;
 	}
 
+
 	public void setRutSocio(String rutSocio) {
 		this.rutSocio = rutSocio;
 	}
+
 
 	public String getNombreSocio() {
 		return nombreSocio;
 	}
 
+
 	public void setNombreSocio(String nombreSocio) {
 		this.nombreSocio = nombreSocio;
 	}
+
 
 	public String getApellidoMaterno() {
 		return apellidoMaterno;
 	}
 
+
 	public void setApellidoMaterno(String apellidoMaterno) {
 		this.apellidoMaterno = apellidoMaterno;
 	}
+
 
 	public String getApellidoPaterno() {
 		return apellidoPaterno;
 	}
 
+
 	public void setApellidoPaterno(String apellidoPaterno) {
 		this.apellidoPaterno = apellidoPaterno;
 	}
 
-	public int getTelefonoSocio() {
+
+	public long getTelefonoSocio() {
 		return telefonoSocio;
 	}
 
-	public void setTelefonoSocio(int telefonoSocio) {
+
+	public void setTelefonoSocio(long telefonoSocio) {
 		this.telefonoSocio = telefonoSocio;
 	}
+
 
 	public String getDireccionSocio() {
 		return direccionSocio;
 	}
 
+
 	public void setDireccionSocio(String direccionSocio) {
 		this.direccionSocio = direccionSocio;
 	}
+
 
 	public Date getFechaNacimientoSocio() {
 		return fechaNacimientoSocio;
 	}
 
+
 	public void setFechaNacimientoSocio(Date fechaNacimientoSocio) {
 		this.fechaNacimientoSocio = fechaNacimientoSocio;
 	}
+
 
 	public String getEmailSocio() {
 		return emailSocio;
 	}
 
+
 	public void setEmailSocio(String emailSocio) {
 		this.emailSocio = emailSocio;
 	}
+
 
 	public String getGeneroSocio() {
 		return generoSocio;
 	}
 
+
 	public void setGeneroSocio(String generoSocio) {
 		this.generoSocio = generoSocio;
 	}
+
 
 	public boolean isEstadoSocio() {
 		return estadoSocio;
 	}
 
+
 	public void setEstadoSocio(boolean estadoSocio) {
 		this.estadoSocio = estadoSocio;
 	}
 
-	public TutorModel getIdTutor() {
-		return idTutor;
-	}
-
-	public void setIdTutor(TutorModel idTutor) {
-		this.idTutor = idTutor;
-	}
-
-	public List<CuotasModel> getIdCuotas() {
-		return idCuotas;
-	}
-
-	public void setIdCuotas(List<CuotasModel> idCuotas) {
-		this.idCuotas = idCuotas;
-	}
 
 	public List<CategoriaModel> getCategorias() {
 		return categorias;
 	}
 
+
 	public void setCategorias(List<CategoriaModel> categorias) {
 		this.categorias = categorias;
 	}
+
+
+	public TutorModel getIdTutor() {
+		return idTutor;
+	}
+
+
+	public void setIdTutor(TutorModel idTutor) {
+		this.idTutor = idTutor;
+	}
+
+
+	public List<CuotasModel> getIdCuotas() {
+		return idCuotas;
+	}
+
+
+	public void setIdCuotas(List<CuotasModel> idCuotas) {
+		this.idCuotas = idCuotas;
+	}
+
+	
+	//---------------------------toString-----------------------------------
+	
 
 	@Override
 	public String toString() {
@@ -206,9 +235,11 @@ public class SocioModel {
 				+ ", apellidoMaterno=" + apellidoMaterno + ", apellidoPaterno=" + apellidoPaterno + ", telefonoSocio="
 				+ telefonoSocio + ", direccionSocio=" + direccionSocio + ", fechaNacimientoSocio="
 				+ fechaNacimientoSocio + ", emailSocio=" + emailSocio + ", generoSocio=" + generoSocio
-				+ ", estadoSocio=" + estadoSocio + ", idTutor=" + idTutor + ", idCuotas=" + idCuotas + "]";
+				+ ", estadoSocio=" + estadoSocio + ", categorias=" + categorias + ", idTutor=" + idTutor + ", idCuotas="
+				+ idCuotas + "]";
 	}
-
-
+	
+	
+	
 	
 }
