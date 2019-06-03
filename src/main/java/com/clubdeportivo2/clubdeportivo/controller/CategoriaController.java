@@ -16,7 +16,9 @@ import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
 
 
 @Controller
+@RequestMapping(value="/categoria")
 public class CategoriaController {
+	
 	
 	@Autowired
 	private SocioService socioService;
@@ -35,9 +37,9 @@ public class CategoriaController {
 		
 	}
 	
-	@RequestMapping("/serach/{id}")
-	public String search(@PathVariable Integer id, Model model) {
-		model.addAttribute("laCategoria", categoriaService.get(id));
+	@RequestMapping("/search/{nombre}")
+	public String search(@PathVariable String nombre, Model model) {
+		model.addAttribute("laCategoria", categoriaService.search(nombre));
 		return "index";
 	}
 		
