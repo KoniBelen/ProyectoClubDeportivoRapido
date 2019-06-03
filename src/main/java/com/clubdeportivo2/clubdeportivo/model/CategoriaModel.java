@@ -60,7 +60,7 @@ public class CategoriaModel {
 	private List<SocioModel> socioCategoria;
 
 	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idEquipo")
-	@JoinColumn(name="id_equipo")
+	//@JoinColumn(name="id_equipo")
 	private List<EquipoModel> idEquipo;
 
 	public Integer getIdCategoria() {

@@ -14,6 +14,7 @@ import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
 
 
 @Controller
+@RequestMapping(value="/categoria")
 public class CategoriaController {
 	
 	@Autowired
