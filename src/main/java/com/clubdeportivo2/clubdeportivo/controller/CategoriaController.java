@@ -25,7 +25,16 @@ public class CategoriaController {
 		return "index";
 	}
 	
+	@GetMapping("/save/{id}")
 	
+	public String showSave(@PathVariable ("id") Integer id , Model model) {
+		if(id!=null && id!=0) {
+			model.addAttribute("categoria", categoriaService.get(id));
+		}else {
+			model.addAttribute("categoria",new CategoriaModel());
+		}
+		return "save";
+	}
 	@PostMapping("/save")
 	public String save(CategoriaModel categoria , Model model) {
 		categoriaService.save(categoria);
