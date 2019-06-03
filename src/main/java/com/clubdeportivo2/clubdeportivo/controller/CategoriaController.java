@@ -41,4 +41,10 @@ public class CategoriaController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id, Model model) {
+		categoriaService.delete(id);
+		return "redirect:/";
+		
+	}
 }
