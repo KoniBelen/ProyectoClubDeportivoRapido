@@ -37,9 +37,9 @@ public class CategoriaController {
 		
 	}
 	
-	@RequestMapping("/search/{nombre}")
-	public String search(@PathVariable String nombre, Model model) {
-		model.addAttribute("laCategoria", categoriaService.search(nombre));
+	@RequestMapping("/search/{id}")
+	public String search(@PathVariable  Integer id, Model model) {
+		model.addAttribute("laCategoria", categoriaService.get(id));
 		return "index";
 	}
 		
