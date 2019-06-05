@@ -1,13 +1,20 @@
 package com.clubdeportivo2.clubdeportivo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 //import org.springframework.context.annotation.Bean;
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+
+import com.clubdeportivo2.clubdeportivo.model.SocioModel;
+import com.clubdeportivo2.clubdeportivo.service.SocioService;
 
 import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
 import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
@@ -17,11 +24,16 @@ import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
 @RequestMapping(value="/categoria")
 public class CategoriaController {
 	
+
+	
 	@Autowired
+	private SocioService socioService;
+
 	private CategoriaService categoriaService;
 	
 	@RequestMapping("/")
 	public String index(Model model) {
+
 		model.addAttribute("list",categoriaService.getAll()); 
 		return "index";
 	}
@@ -48,4 +60,19 @@ public class CategoriaController {
 		return "redirect:/";
 		
 	}
+
+	
+	
+		
+	
+	
+	@RequestMapping("/search/{id}")
+	public String search(@PathVariable  Integer id, Model model) {
+		model.addAttribute("laCategoria", categoriaService.get(id));
+		return "index";
+	}
+		
+	
+
+
 }

@@ -22,3 +22,4 @@ public class CategoriaServiceImpl extends GenericServiceImp<CategoriaModel, Inte
 	}
  
 }
+
