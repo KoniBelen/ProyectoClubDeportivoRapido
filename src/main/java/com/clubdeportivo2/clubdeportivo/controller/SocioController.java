@@ -41,6 +41,12 @@ public class SocioController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/find/{valor}")
+	public String find(@PathVariable("valor") String valor,Model model) {
+		model.addAttribute("list",socioService.findByNombreSocio(valor));
+		return "index";
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
 		socioService.delete(id);
