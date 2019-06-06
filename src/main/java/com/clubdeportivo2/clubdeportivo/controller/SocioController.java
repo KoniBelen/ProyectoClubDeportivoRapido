@@ -14,6 +14,7 @@ import com.clubdeportivo2.clubdeportivo.service.SocioService;
 
 
 @Controller
+@RequestMapping(value="/socio")
 public class SocioController {
 	
 	@Autowired
@@ -38,7 +39,7 @@ public class SocioController {
 	@PostMapping("/save")
 	public String save(SocioModel socio , Model model) {
 		socioService.save(socio);
-		return "redirect:/";
+		return "redirect:/socio/";
 	}
 	
 	@GetMapping("/find/{valor}")
@@ -50,7 +51,7 @@ public class SocioController {
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
 		socioService.delete(id);
-		return "redirect:/";
+		return "redirect:/socio/";
 		
 	}
 
