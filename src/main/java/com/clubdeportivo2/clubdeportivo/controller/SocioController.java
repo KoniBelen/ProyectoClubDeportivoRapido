@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.SocioService;
@@ -31,6 +32,19 @@ public class SocioController {
 			model.addAttribute("socio", socioService.get(id));
 		}
 		return "save";
+	}
+	
+	
+	//search
+	@RequestMapping(value="/sociobuscar/{id}")
+	public String buscar(@PathVariable Integer id, Model model) {
+		if(id>=0) {
+			
+			model.addAttribute("busacrSocio", socioService.get(id));
+			
+		}
+		
+		return "buscar";
 	}
 	
 	@PostMapping("/save/")
