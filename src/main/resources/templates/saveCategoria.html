@@ -25,7 +25,7 @@
 
 
 	<div class="container">
-		<h2>Ficha ingreso nueva Categoria</h2>
+		<h2>Ficha ingreso nueva categoría</h2>
 		<form action="#" th:action="@{/categoria/save}" class="form-group"
 			th:object=${categoria} method="post">
 
@@ -49,8 +49,7 @@
 				<div class="form-group col-md-3">
 					<label for="generoCategoria">Género</label>  
 						<select class="custom-select" th:field="*{generoCategoria}">
-						<option value="deshabilitado" disabled>Porfavor elija una opción</option>
-						<option value="Feminino">Femenino</option>
+						<option value="Femenino">Femenino</option>
 						<option value="Masculino">Masculino</option>
 					
 						
