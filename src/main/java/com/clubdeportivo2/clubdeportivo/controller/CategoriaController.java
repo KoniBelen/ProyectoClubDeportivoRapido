@@ -22,13 +22,12 @@ import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
 public class CategoriaController {
 	
 	@Autowired
-	private SocioService socioService;
 	private CategoriaService categoriaService;
 	
 	@RequestMapping("/")
 	public String index(Model model) {
 		model.addAttribute("list",categoriaService.getAll()); 
-		return "index";
+		return "listarCategoria";
 	}
 	
 	@GetMapping("/save/{id}")
@@ -38,7 +37,7 @@ public class CategoriaController {
 		}else {
 			model.addAttribute("categoria",new CategoriaModel());
 		}
-		return "save";
+		return "saveCategoria";
 	}
 	
 	@PostMapping("/save")
@@ -50,14 +49,14 @@ public class CategoriaController {
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
 		categoriaService.delete(id);
-		return "redirect:/";
+		return "redirect:/categoria";
 		
 	}
 
 	@RequestMapping("/search/{nombre}")
 	public String search(@PathVariable ("nombre")  String nombre, Model model) {
 		model.addAttribute("list", categoriaService.findByNombreCategoria(nombre));
-		return "index";
+		return "listarCategoria";
 	}
 		
 	
