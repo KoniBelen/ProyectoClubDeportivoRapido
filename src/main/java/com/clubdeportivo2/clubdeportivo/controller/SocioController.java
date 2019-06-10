@@ -42,8 +42,8 @@ public class SocioController {
 		return "redirect:/socio/";
 	}
 	
-	@GetMapping("/find/{valor}")
-	public String find(@PathVariable("valor") String valor,Model model) {
+	@GetMapping("/search/{valor}")
+	public String search(@PathVariable("valor") String valor,Model model) {
 		model.addAttribute("list",socioService.findByNombreSocioLike("%"+valor+"%"));
 		return "redirect:/socio/";
 	}
