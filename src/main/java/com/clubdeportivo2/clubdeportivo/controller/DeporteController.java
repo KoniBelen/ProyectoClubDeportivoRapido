@@ -1,7 +1,6 @@
 package com.clubdeportivo2.clubdeportivo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,46 +9,47 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.clubdeportivo2.clubdeportivo.model.DeporteModel;
-import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.DeporteService;
 
 @Controller
-@RequestMapping(value="/deporte")
+@RequestMapping(value = "/deporte")
 public class DeporteController {
 
-@Autowired 
-private DeporteService deporteService;
+	@Autowired
+	private DeporteService deporteService;
 
-	@PostMapping("/create/")
+	@RequestMapping("/")
+	public String index(Model model) {
+		model.addAttribute("list", deporteService.getAll());
+		return "listarDeporte";
+	}
+
+	@PostMapping("/save")
 	public String save(DeporteModel deporte, Model model) {
 		deporteService.save(deporte);
-		return "redirect:/";
+		return "redirect:/deporte/";
 	}
-	
-	@GetMapping("/update/{id}")
-	public String save(Integer id, Model model) {
-		if(id!=null) {
+
+	@GetMapping("/save/{id}")
+	public String showSave(@PathVariable ("id") Integer id, Model model) {
+		if (id != null && id != 0) {
 			model.addAttribute("deporte", deporteService.get(id));
+		} else {
+			model.addAttribute("deporte", new DeporteModel());
 		}
-		return "save";
+		return "saveDeporte";
 	}
-	
+
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
 		deporteService.delete(id);
-		return "redirect:/";
+		return "redirect:/deporte/";
 	}
-	
+
 	@RequestMapping("/search/{id}")
 	public String search(@PathVariable Integer id, Model model) {
-		model.addAttribute("elDeporte",deporteService.get(id)); 
-		return "index";
+		model.addAttribute("elDeporte", deporteService.get(id));
+		return "listarDeporte";
 	}
-	
-	@RequestMapping("/")
-	public String index(Model model) {
-		model.addAttribute("list",deporteService.getAll()); 
-		return "index";
-	}
-	
+
 }
