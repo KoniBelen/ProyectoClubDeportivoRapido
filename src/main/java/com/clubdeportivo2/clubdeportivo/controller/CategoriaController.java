@@ -47,16 +47,26 @@ public class CategoriaController {
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id, Model model) {
+	public String delete(@PathVariable("id") Integer id, Model model) {
 		categoriaService.delete(id);
 		return "redirect:/categoria/";
 		
 	}
 
+	@GetMapping("/get/{id}")
+	public String get(@PathVariable("id") Integer id,Model model ) {
+		if(id!=null && id!=0) {
+			model.addAttribute("categoriaBuscada", categoriaService.get(id));
+		}else {
+			model.addAttribute("categoriaBuscada",new CategoriaModel());
+		}
+		return "verCategoria";
+	}
+	
 	@RequestMapping("/search/{nombre}")
 	public String search(@PathVariable ("nombre")  String nombre, Model model) {
-		model.addAttribute("list", categoriaService.findByNombreCategoria(nombre));
-		return "listarCategoria";
+		model.addAttribute("filteredList", categoriaService.findByNombreCategoriaLike("%"+nombre+"%"));
+		return "listarCategoriaFiltered";
 	}
 		
 	
