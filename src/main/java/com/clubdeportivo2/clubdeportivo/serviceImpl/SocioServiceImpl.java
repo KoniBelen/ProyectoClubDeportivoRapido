@@ -30,4 +30,10 @@ public class SocioServiceImpl extends GenericServiceImp<SocioModel, Integer> imp
 		return socioDao.findByNombreSocio(valor);
 	}
 
+
+	@Override
+	public List<SocioModel> findByNombreSocioLike(String valor) {
+		return socioDao.findByNombreSocioLike(valor);
+	}
+
 }
