@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.SocioService;
@@ -23,11 +24,10 @@ public class SocioController {
 	@RequestMapping("/")
 	public String index(Model model) {
 		model.addAttribute("list",socioService.getAll()); 
-		return "index";
+		return "listarSocio";
 	}
 	
 	@GetMapping("/save/{id}")
-	
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
 		if(id!=null && id!=0) {
 			model.addAttribute("socio", socioService.get(id));
@@ -44,8 +44,8 @@ public class SocioController {
 	
 	@GetMapping("/find/{valor}")
 	public String find(@PathVariable("valor") String valor,Model model) {
-		model.addAttribute("list",socioService.findByNombreSocio(valor));
-		return "index";
+		model.addAttribute("list",socioService.findByNombreSocioLike("%"+valor+"%"));
+		return "redirect:/socio/";
 	}
 	
 	@GetMapping("/delete/{id}")
