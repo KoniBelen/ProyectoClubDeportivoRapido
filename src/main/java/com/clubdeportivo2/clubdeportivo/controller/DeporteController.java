@@ -20,10 +20,10 @@ public class DeporteController {
 @Autowired 
 private DeporteService deporteService;
 
-	@PostMapping("/create/")
+	@PostMapping("/createDeporte/")
 	public String save(DeporteModel deporte, Model model) {
 		deporteService.save(deporte);
-		return "redirect:/";
+		return "saveDeporte";
 	}
 	
 	@GetMapping("/update/{id}")

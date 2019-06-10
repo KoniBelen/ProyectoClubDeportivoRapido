@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Deportes</title>
+
+<!-- Bootstrap -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}" />
 </head>
 <body>
+	<div class="container">
+	<h2>Agregar Deporte</h2>
+		<form action="#" th:action="@{/deporte/saveDeporte}" class="form-group" th:object=${deporte} method="post">
+		
+			<input type="hidden" th:field="*{idDeporte}">
+
+			
+			<div class="form-group">
+				<label for="nombreDeporte" > Nombre Deporte</label> 
+				<input	class="form-control" type="text" th:field= "*{nombreDeporte}">
+			</div>
+			<div class="form-group">
+				<label for="estadoDeporte">Estado Deporte</label> 
+				<input class="form-control" type="text" th:field= "*{estadoDeporte}">
+			</div>
+			
+			<button type="submit" class="btn btn-success">Guardar</button>
+			<button type="button" class="btn btn-dange">Cancelar</button>
+		</form>
+	</div>
 
 </body>
 </html>
