@@ -2,62 +2,99 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Socios</title>
 
 <!-- Bootstrap -->
-<link href="../static/css/bootstrap.css" rel="stylesheet"
-	th:href="@{/css/bootstrap.css}" />
+
+<link rel="stylesheet" type="text/css" href="/css/listar.css" />
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+<script type="text/javascript"
+	src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+
 </head>
 <body>
+
+
+	<div th:insert="navbar">...</div>
+
+
 	<div class="container">
-	<h2>Agregar Socio</h2>
-		<form action="#" th:action="@{/socio/save}" class="form-group" th:object=${socio} method="post">
-		
+		<h2>Ficha ingreso nuevo Socio</h2>
+		<form action="#" th:action="@{/socio/save}" class="form-group"
+			th:object=${socio} method="post">
+
 			<input type="hidden" th:field="*{idSocio}">
 
-			
-			<div class="form-group">
-				<label for="rutSocio" > Rut</label> 
-				<input	class="form-control" type="text" th:field= "*{rutSocio}">
-			</div>
-			<div class="form-group">
-				<label for="apellidoPaterno">Apellido Paterno</label> 
-				<input class="form-control" type="text" th:field= "*{apellidoPaterno}">
-			</div>
-			
-		
-			<div class="form-group">
-				<label for="telefonoSocio">Teléfono</label> 
-				<input class="form-control" type="number" th:field= "*{telefonoSocio}">
-			</div>
+			<div class="form-row">
+				<div class="form-group col-md-5">
+					<label for="rutSocio"> Rut</label> <input
+						class="form-control col-md-11" type="text" th:field="*{rutSocio}">
+				</div>
+				<div class="form-group col-md-7">
+					<label for="nombreSocio">Nombres</label> <input
+						class="form-control col-md-11" type="text"
+						th:field="*{nombreSocio}">
+				</div>
 
-			<div class="form-group">
-				<label for="nombreSocio">Nombres</label> 
-				<input class="form-control" type="text" th:field= "*{nombreSocio}">
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="apellidoPaterno">Apellido Paterno</label> <input
+						class="form-control col-md-11" type="text"
+						th:field="*{apellidoPaterno}">
+				</div>
+
+				<div class="form-group col-md-6">
+					<label for="apellidoMaterno">Apellido Materno</label> <input
+						class="form-control col-md-11" type="text"
+						th:field="*{apellidoMaterno}">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="generoSocio">Género</label>  
+						<select class="custom-select" th:field="*{generoSocio}">
+						<option value="deshabilitado" disabled>Porfavor elija una opción</option>
+						<option value="Feminino">Femenino</option>
+						<option value="Masculino">Masculino</option>
+						<option value="Otro">Otro</option>
+						
+					</select>
+				</div>
+
+
+				<div class="form-group col-md-3">
+					<label for="fechaNacimientoSocio">Fecha Nacimiento</label> <input
+						class="form-control" type="date"
+						th:field="*{fechaNacimientoSocio}">
+
+				</div>
+				<div class="form-group col-md-6">
+					<label for="telefonoSocio">Teléfono</label> <input
+						class="form-control" type="number" th:field="*{telefonoSocio}">
+				</div>
 			</div>
 			
 			<div class="form-group">
-				<label for="apellidoMaterno">Apellido Materno</label> 
-				<input class="form-control" type="text" th:field= "*{apellidoMaterno}">
-			</div>
-			<div class="form-group" >
-				<label for="fechaNacimientoSocio">Fecha Nacimiento</label> 
-				<input class="form-control" type="date" th:field= "*{fechaNacimientoSocio}">
+				<label for="emailSocio">Email</label> <input class="form-control"
+					type="email" th:field="*{emailSocio}">
 			</div>
 			<div class="form-group">
-				<label for="emailSocio">Email</label> 
-				<input class="form-control" type="email" th:field= "*{emailSocio}">
-			</div>
-			<div class="form-group">
-				<label for="emailSocio">Dirección</label> 
-				<input class="form-control" type="text" th:field= "*{direccionSocio}">
+				<label for="emailSocio">Dirección</label> <input
+					class="form-control" type="text" th:field="*{direccionSocio}">
 			</div>
 			<button type="submit" class="btn btn-success">Guardar</button>
 		</form>
 	</div>
+
+
+	<div th:insert="footer"></div>
 
 </body>
 </html>
