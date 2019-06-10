@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
 import com.clubdeportivo2.clubdeportivo.model.DeporteModel;
 import com.clubdeportivo2.clubdeportivo.service.DeporteService;
 
@@ -46,10 +47,20 @@ public class DeporteController {
 		return "redirect:/deporte/";
 	}
 
-	@RequestMapping("/search/{id}")
-	public String search(@PathVariable Integer id, Model model) {
-		model.addAttribute("elDeporte", deporteService.get(id));
-		return "listarDeporte";
+	@GetMapping("/search/{valor}")
+	public String search(@PathVariable("valor") String valor,Model model) {
+		model.addAttribute("filteredList",deporteService.findByNombreDeporteLike(valor));
+		
+		return "listarDeporteFiltered";
 	}
-
+	
+	@GetMapping("/get/{id}")
+	public String get(@PathVariable("id") Integer id,Model model ) {
+		if(id!=null && id!=0) {
+			model.addAttribute("deporteBuscado", deporteService.get(id));
+		}else {
+			model.addAttribute("deporteBuscado",new DeporteModel());
+		}
+		return "verDeporte";
+	}
 }
