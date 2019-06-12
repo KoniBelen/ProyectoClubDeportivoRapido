@@ -67,7 +67,8 @@
 							<td th:text="${categoria.edadMax}"></td>
 							<td th:text="${categoria.generoCategoria}"></td>
 							
-							<td><a type="button" class="btn btn-danger" th:href="@{/categoria/delete/{id}(id=${categoria.idCategoria})}">
+							<td> 
+							<a type="button" class="btn btn-danger" th:href="@{/categoria/delete/{id}(id=${categoria.idCategoria})}">
 									<i
 										class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i>
 								</a>
