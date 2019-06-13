@@ -28,7 +28,7 @@ public class CategoriaController {
 	@RequestMapping("/")
 	public String index(Model model) {
 		model.addAttribute("list",categoriaService.getAll()); 
-		return "indexCategoria";
+		return "index";
 	}
 	
 	@GetMapping("/save/{id}")
@@ -38,7 +38,7 @@ public class CategoriaController {
 		}else {
 			model.addAttribute("categoria",new CategoriaModel());
 		}
-		return "saveCategoria";
+		return "save";
 	}
 	
 	@PostMapping("/save")
