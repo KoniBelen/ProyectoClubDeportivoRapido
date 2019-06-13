@@ -9,4 +9,6 @@ import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 public interface SocioDao extends CrudRepository<SocioModel, Integer> {
 
 	List<SocioModel> findByNombreSocio (String nombreSocio);
+
+	List<SocioModel> findByNombreSocioLike(String valor);
 }

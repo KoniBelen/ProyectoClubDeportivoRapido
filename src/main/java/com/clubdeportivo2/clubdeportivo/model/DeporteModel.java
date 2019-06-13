@@ -14,7 +14,7 @@ public class DeporteModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_deporte")
-	private int idDeporte;
+	private Integer idDeporte;
 	
 	@NotNull
 	@Column(name= "nombre_deporte")
@@ -42,11 +42,11 @@ public class DeporteModel {
 		this.estadoDeporte=estadoDeporte;
 	}
 
-	public int getIdDeporte() {
+	public Integer getIdDeporte() {
 		return idDeporte;
 	}
 
-	public void setIdDeporte(int idDeporte) {
+	public void setIdDeporte(Integer idDeporte) {
 		this.idDeporte = idDeporte;
 	}
 
@@ -58,14 +58,13 @@ public class DeporteModel {
 		this.nombreDeporte = nombreDeporte;
 	}
 
-	public boolean getEstadoDeporte() {
+	public boolean isEstadoDeporte() {
 		return estadoDeporte;
 	}
 
 	public void setEstadoDeporte(boolean estadoDeporte) {
 		this.estadoDeporte = estadoDeporte;
 	}
-
 
 	public List<CategoriaModel> getCategoria() {
 		return categoria;
