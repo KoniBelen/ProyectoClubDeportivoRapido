@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
 import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.SocioService;
 
@@ -44,8 +45,8 @@ public class SocioController {
 	
 	@GetMapping("/search/{valor}")
 	public String search(@PathVariable("valor") String valor,Model model) {
-		model.addAttribute("list",socioService.findByNombreSocioLike("%"+valor+"%"));
-		return "redirect:/socio/";
+		model.addAttribute("filteredList",socioService.findByNombreSocioLike("%"+valor+"%"));
+		return "listarSocioFiltered";
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -53,6 +54,15 @@ public class SocioController {
 		socioService.delete(id);
 		return "redirect:/socio/";
 		
+	}
+	@GetMapping("/get/{id}")
+	public String get(@PathVariable("id") Integer id,Model model ) {
+		if(id!=null && id!=0) {
+			model.addAttribute("socioBuscado", socioService.get(id));
+		}else {
+			model.addAttribute("socioBuscado",new SocioModel());
+		}
+		return "verSocio";
 	}
 
 }

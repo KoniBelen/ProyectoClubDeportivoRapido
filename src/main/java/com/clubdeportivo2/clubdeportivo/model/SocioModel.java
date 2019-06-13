@@ -69,7 +69,7 @@ public class SocioModel {
 	/*---relaciones---------------------------------------------------------*/
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE,
-			mappedBy = "socioCategoria")
+			mappedBy = "sociosCategoria")
 	private List<CategoriaModel> categorias;
 
 	@ManyToOne

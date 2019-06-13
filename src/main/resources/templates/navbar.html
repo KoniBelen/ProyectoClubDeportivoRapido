@@ -49,7 +49,7 @@
 
 	<nav class="navbar navbar-light navbar-expand-md">
 		<div class="container">
-			<a class="navbar-brand" href="/"><img class="logo" th:src="@{/assets/img/pngLogo.png}"> CDRapido</a>
+			<a class="navbar-brand" href="/"><img class="logo" th:src="@{/assets/img/pngLogo.png}"> CDRápido</a>
 			<button data-toggle="collapse" class="navbar-toggler"
 				data-target="#navcol-1">
 				<span class="sr-only">Toggle navigation</span> <span
@@ -57,18 +57,18 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-between"
 				id="navcol-1">
-				<ul class="nav navbar-nav">
+				<ul class="navbar-nav">
 					<li class="nav-item" role="presentation">
-						<a class="nav-link" href="listarSocio.html" th:href="@{http://localhost:8080/socio/}">Socios</a></li>
+						<a class="nav-link" href="listarSocio.html" th:href="@{/socio/}">Socios</a></li>
 					<li class="nav-item" role="presentation">
-						<a class="nav-link" href="listarDeportes.html" th:href="@{http://localhost:8080/deporte/}" >Deportes</a>
+						<a class="nav-link" href="listarDeportes.html" th:href="@{/deporte/}" >Deportes</a>
 						</li>
 					<li class="nav-item" role="presentation">
-					<a class="nav-link" href="listarCategorias" th:href="@{http://localhost:8080/categoria/}" >Categorías</a></li>
+					<a class="nav-link" href="listarCategorias" th:href="@{/categoria/}" >Categorías</a></li>
 					
 				</ul>
 				
-					<a class="nav-link" href="login" th:href="@{http://localhost:8080/login/}" >Login</a>
+					<a class="nav-link" href="login"  th:href="@{/login/}" >Login</a>
 				
 			</div>
 		</div>

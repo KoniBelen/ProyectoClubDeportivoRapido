@@ -50,18 +50,21 @@ public class CategoriaModel {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_deporte")
-	private DeporteModel idDeporte;
+	private DeporteModel deporteCategoria;
 	
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinTable(name= "categoria", 
 	joinColumns = {@JoinColumn(name="id_categoria")},
 	inverseJoinColumns = {@JoinColumn(name="id_socio")}	)
-	private List<SocioModel> socioCategoria;
+	private List<SocioModel> sociosCategoria;
 
 	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idEquipo")
 	//@JoinColumn(name="id_equipo")
-	// private List<EquipoModel> idEquipo;
+
+
+	private List<EquipoModel> equiposCategoria;
+
 
 	public Integer getIdCategoria() {
 		return idCategoria;
@@ -112,46 +115,27 @@ public class CategoriaModel {
 	}
 
 	public DeporteModel getIdDeporte() {
-		return idDeporte;
+		return deporteCategoria;
 	}
 
 	public void setIdDeporte(DeporteModel idDeporte) {
-		this.idDeporte = idDeporte;
+		this.deporteCategoria = idDeporte;
 	}
 
 	public List<SocioModel> getSocioCategoria() {
-		return socioCategoria;
+		return sociosCategoria;
 	}
 
 	public void setSocioCategoria(List<SocioModel> socioCategoria) {
-		this.socioCategoria = socioCategoria;
+		this.sociosCategoria = socioCategoria;
 	}
-
-	/* public List<EquipoModel> getIdEquipo() {
-		return idEquipo;
-	}
-
-	public void setIdEquipo(List<EquipoModel> idEquipo) {
-		this.idEquipo = idEquipo;
-	}
-	*/
-	
 	
 
 	@Override
 	public String toString() {
 		return "CategoriaModel [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
 				+ ", descripcionCategoria=" + descripcionCategoria + ", edadMax=" + edadMax + ", generoCategoria="
-				+ generoCategoria + ", estadoCategoria=" + estadoCategoria + ", idDeporte=" + idDeporte
-				+ ", socioCategoria=" + socioCategoria + "]";
-	}
-	
-	/*
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "sociocategoria", fetch = FetchType.EAGER)
-	@JoinColumn(name="id_sociocategoria")
-	private List<SocioCategoriaModel> socioCategoria;
-	 */
-
-	
-	
+				+ generoCategoria + ", estadoCategoria=" + estadoCategoria + ", idDeporte=" + deporteCategoria
+				+ ", socioCategoria=" + sociosCategoria + ", idEquipo=" + equiposCategoria + "]";
+	}	
 }
