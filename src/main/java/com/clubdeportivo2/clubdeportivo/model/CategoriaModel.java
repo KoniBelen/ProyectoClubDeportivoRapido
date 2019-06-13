@@ -61,7 +61,7 @@ public class CategoriaModel {
 
 	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idEquipo")
 	//@JoinColumn(name="id_equipo")
-	private List<EquipoModel> idEquipo;
+	// private List<EquipoModel> idEquipo;
 
 	public Integer getIdCategoria() {
 		return idCategoria;
@@ -127,20 +127,23 @@ public class CategoriaModel {
 		this.socioCategoria = socioCategoria;
 	}
 
-	public List<EquipoModel> getIdEquipo() {
+	/* public List<EquipoModel> getIdEquipo() {
 		return idEquipo;
 	}
 
 	public void setIdEquipo(List<EquipoModel> idEquipo) {
 		this.idEquipo = idEquipo;
 	}
+	*/
+	
+	
 
 	@Override
 	public String toString() {
 		return "CategoriaModel [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
 				+ ", descripcionCategoria=" + descripcionCategoria + ", edadMax=" + edadMax + ", generoCategoria="
 				+ generoCategoria + ", estadoCategoria=" + estadoCategoria + ", idDeporte=" + idDeporte
-				+ ", socioCategoria=" + socioCategoria + ", idEquipo=" + idEquipo + "]";
+				+ ", socioCategoria=" + socioCategoria + "]";
 	}
 	
 	/*
