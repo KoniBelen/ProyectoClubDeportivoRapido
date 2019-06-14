@@ -14,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -44,28 +44,32 @@ public class CategoriaModel {
 	@Column(name = "genero_categoria")
 	private String generoCategoria;	
 	
+	@NotNull
+	@Column(name = "estado_categoria")
+	private boolean estadoCategoria;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_deporte")
-	private DeporteModel idDeporte;
+	private DeporteModel deporteCategoria;
 	
-	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-	@JoinTable(name= "categoria", 
-	joinColumns = {@JoinColumn(name="id_categoria")},
-	inverseJoinColumns = {@JoinColumn(name="id_socio")}	)
-	private List<SocioModel> socioCategoria;
-
 	/*
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "sociocategoria", fetch = FetchType.EAGER)
-	@JoinColumn(name="id_sociocategoria")
-	private List<SocioCategoriaModel> socioCategoria;
-	 */
+	@ManyToMany()
+	@JoinTable(name= "categoria", 
+	joinColumns = {@JoinColumn(name="id_socio")},
+	inverseJoinColumns = {@JoinColumn(name="id_categoria")}	)
+	private List<SocioModel> sociosCategoria;
+
+	*/
+	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idEquipo")
+	//@JoinColumn(name="id_equipo")
+	private List<EquipoModel> equiposCategoria;
+
+
 	public Integer getIdCategoria() {
 		return idCategoria;
 	}
 
-	public void setIdCategoria(	int idCategoria) {
+	public void setIdCategoria(Integer idCategoria) {
 		this.idCategoria = idCategoria;
 	}
 
@@ -101,26 +105,53 @@ public class CategoriaModel {
 		this.generoCategoria = generoCategoria;
 	}
 
-
-
-	public DeporteModel getIdDeporte() {
-		return idDeporte;
+	public boolean isEstadoCategoria() {
+		return estadoCategoria;
 	}
 
-	public void setIdDeporte(DeporteModel idDeporte) {
-		this.idDeporte = idDeporte;
+	public void setEstadoCategoria(boolean estadoCategoria) {
+		this.estadoCategoria = estadoCategoria;
+	}
+
+	public DeporteModel getDeporteCategoria() {
+		return deporteCategoria;
+	}
+
+	public void setDeporteCategoria(DeporteModel idDeporte) {
+		this.deporteCategoria = idDeporte;
+	}
+/*
+	public List<SocioModel> getSociosCategoria() {
+		return sociosCategoria;
+	}
+
+	public void setSociosCategoria(List<SocioModel> socioCategoria) {
+		this.sociosCategoria = socioCategoria;
+	}
+*/
+	public List<EquipoModel> getEquiposCategoria() {
+		return equiposCategoria;
+	}
+
+	public void setEquiposCategoria(List<EquipoModel> idEquipo) {
+		this.equiposCategoria = idEquipo;
 	}
 
 	@Override
 	public String toString() {
 		return "CategoriaModel [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
 				+ ", descripcionCategoria=" + descripcionCategoria + ", edadMax=" + edadMax + ", generoCategoria="
-				+ generoCategoria + ", idDeporte=" + idDeporte + "]";
+				+ generoCategoria + ", estadoCategoria=" + estadoCategoria + ", deporteCategoria=" + deporteCategoria
+				+ ", equiposCategoria=" + equiposCategoria + "]";
 	}
 
 
-
-
+	
+	/*
+	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "sociocategoria", fetch = FetchType.EAGER)
+	@JoinColumn(name="id_sociocategoria")
+	private List<SocioCategoriaModel> socioCategoria;
+	 */
 
 	
 	

@@ -16,7 +16,10 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
+	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		
 	</properties>
 
 	<dependencies>
@@ -49,6 +52,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- webjar bootstrap and jquery dependencies -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.3.1-1</version>
+        </dependency>
 
 	</dependencies>
 
@@ -62,3 +76,4 @@
 	</build>
 
 </project>
+

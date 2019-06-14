@@ -2,72 +2,99 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Socios</title>
 
 <!-- Bootstrap -->
-<link href="../static/css/bootstrap.css" rel="stylesheet"
-	th:href="@{/css/bootstrap.css}" />
+
+<link rel="stylesheet" type="text/css" href="/css/listar.css" />
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+<script type="text/javascript"
+	src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+
 </head>
 <body>
+
+
+	<div th:insert="navbar">...</div>
+
+
 	<div class="container">
-		<form action="#" th:action="@{/save}" class="form-group"
+		<h2>Ficha ingreso nuevo Socio</h2>
+		<form action="#" th:action="@{/socio/save}" class="form-group"
 			th:object=${socio} method="post">
 
-			<div class="form-group has-feedback"
-				style="height: 70px; width: 350px;">
-				<label for="rutSocio" style="font-size: 20px;">Rut</label> <input
-					class="form-control" type="text"
-					style="width: 300px; height: 30px;">
+			<input type="hidden" th:field="*{idSocio}">
+
+			<div class="form-row">
+				<div class="form-group col-md-5">
+					<label for="rutSocio"> Rut</label> <input
+						class="form-control col-md-11" type="text" th:field="*{rutSocio}">
+				</div>
+				<div class="form-group col-md-7">
+					<label for="nombreSocio">Nombres</label> <input
+						class="form-control col-md-11" type="text"
+						th:field="*{nombreSocio}">
+				</div>
+
 			</div>
-			<div class="form-group has-feedback" style="width: 350px;">
-				<label for="apellidoPaterno" style="font-size: 20px;">Apellido
-					Paterno</label> <input class="form-control" type="text"
-					style="width: 300px; height: 30px;">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="apellidoPaterno">Apellido Paterno</label> <input
+						class="form-control col-md-11" type="text"
+						th:field="*{apellidoPaterno}">
+				</div>
+
+				<div class="form-group col-md-6">
+					<label for="apellidoMaterno">Apellido Materno</label> <input
+						class="form-control col-md-11" type="text"
+						th:field="*{apellidoMaterno}">
+				</div>
 			</div>
-			<div class="form-group has-feedback"
-				style="height: 70px; width: 320px;">
-				<label for="generoSocio" style="font-size: 20px;">Género</label> <select
-					class="custom-select custom-select-sm d-xl-flex"
-					style="width: 300px; height: 30px;">
-					<option value="11" selected>Seleccione un genero</option>
-					<option value="12">Femenino</option>
-					<option value="13">Masculino</option>
-					<option value="14">Otro</option>
-				</select>
-			</div>
-			<div class="form-group has-feedback">
-				<label for="telefonoSocio" style="font-size: 20px;">Teléfono
-					Celular</label> <input class="form-control" type="tel"
-					style="font-size: 21px; height: 30px; width: 300px;">
-			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="generoSocio">Género</label>  
+						<select class="custom-select" th:field="*{generoSocio}">
+						<option value="deshabilitado" disabled>Porfavor elija una opción</option>
+						<option value="Femenino">Femenino</option>
+						<option value="Masculino">Masculino</option>
+						<option value="Otro">Otro</option>
+						
+					</select>
+				</div>
 
 
-			<div class="form-group has-feedback" style="width: 350px;">
-				<label for="nombreSocio" style="font-size: 20px;">Nombres</label> <input
-					class="form-control" type="text"
-					style="width: 300px; height: 30px;">
+				<div class="form-group col-md-3">
+					<label for="fechaNacimientoSocio">Fecha Nacimiento</label> <input
+						class="form-control" type="date"
+						th:field="*{fechaNacimientoSocio}">
+
+				</div>
+				<div class="form-group col-md-6">
+					<label for="telefonoSocio">Teléfono</label> <input
+						class="form-control" type="number" th:field="*{telefonoSocio}">
+				</div>
 			</div>
-			<div class="form-group has-feedback">
-				<label for="apellidoMaterno" style="font-size: 20px;">Apellido
-					Materno</label> <input class="form-control" type="text"
-					style="width: 300px; height: 30px;">
+			
+			<div class="form-group">
+				<label for="emailSocio">Email</label> <input class="form-control"
+					type="email" th:field="*{emailSocio}">
 			</div>
-			<div class="form-group has-feedback" style="width: 350px;">
-				<label for="fechaNacimientoSocio" style="font-size: 20px;">Fecha
-					Nacimiento</label> <input class="form-control" type="date"
-					style="height: 30px; width: 300px; padding-top: 0px;">
+			<div class="form-group">
+				<label for="emailSocio">Dirección</label> <input
+					class="form-control" type="text" th:field="*{direccionSocio}">
 			</div>
-			<div class="form-group has-feedback">
-				<label for="emailSocio" style="font-size: 20px;">Email</label> <input
-					class="form-control" type="tel"
-					style="font-size: 21px; height: 30px; width: 300px;">
-			</div>
-			<button type="submit" class="btn btn-succes">Guardar</button>
+			<button type="submit" class="btn btn-success">Guardar</button>
 		</form>
 	</div>
+
+
+	<div th:insert="footer"></div>
 
 </body>
 </html>

@@ -1,7 +1,11 @@
 package com.clubdeportivo2.clubdeportivo.serviceImpl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.CrudRepositoryExtensionsKt;
 import org.springframework.stereotype.Service;
 
 import com.clubdeportivo2.clubdeportivo.commons.GenericServiceImp;
@@ -20,5 +24,16 @@ public class SocioServiceImpl extends GenericServiceImp<SocioModel, Integer> imp
 		return socioDao;
 		
 	}
- 
+
+
+	public List<SocioModel> findByNombreSocio(String valor) {
+		return socioDao.findByNombreSocio(valor);
+	}
+
+
+	@Override
+	public List<SocioModel> findByNombreSocioLike(String valor) {
+		return socioDao.findByNombreSocioLike(valor);
+	}
+
 }
