@@ -1,8 +1,10 @@
 
 #button {
-	background-color: #f24d43;
+	background-color: #cfcfcf;
+	background-image:
 	border: none;
-	color: white;
+	color: black;
+	font-size:2em;
 	padding: 10%;
 	text-align: center;
 	text-decoration: none;
@@ -11,6 +13,7 @@
 	border-radius: 25px;
 	
 }
+
 
 .center {
   margin: auto;

@@ -9,6 +9,6 @@ import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 
 public interface CategoriaDao extends CrudRepository<CategoriaModel, Integer> {
 	
-	List<CategoriaModel> findByNombreCategoria (String nombreCategoria);
+	List<CategoriaModel> findByNombreCategoriaLike (String nombreCategoria);
 
 }

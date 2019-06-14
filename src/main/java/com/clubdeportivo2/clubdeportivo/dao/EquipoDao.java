@@ -7,9 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.clubdeportivo2.clubdeportivo.model.DeporteModel;
+import com.clubdeportivo2.clubdeportivo.model.EquipoModel;
 
-public interface DeporteDao extends CrudRepository<DeporteModel, Integer> {
-	@Query("SELECT a FROM DeporteModel a WHERE a.nombreDeporte=:nombre")
-	 List<DeporteModel> findByNombreDeporte(@Param("nombre") String nombre);
+public interface EquipoDao extends CrudRepository<EquipoModel, Integer> {
 
 }

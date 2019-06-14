@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name= "deporte")
@@ -25,18 +27,15 @@ public class DeporteModel {
 	private boolean estadoDeporte;
 	
 
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idCategoria", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "deporteCategoria")
 	//@JoinColumn(name="id_categoria")
-	private List<CategoriaModel> categoria;
-	
-	
+	private List<CategoriaModel> categorias;
 	
 	public DeporteModel() {
 		
 	}
 
 	public DeporteModel(int idDeporte, String nombreDeporte, boolean estadoDeporte) {
-		super();
 		this.idDeporte = idDeporte;
 		this.nombreDeporte = nombreDeporte;
 		this.estadoDeporte=estadoDeporte;
@@ -67,18 +66,19 @@ public class DeporteModel {
 	}
 
 	public List<CategoriaModel> getCategoria() {
-		return categoria;
+		return categorias;
 	}
 
 	public void setCategoria(List<CategoriaModel> categoria) {
-		this.categoria = categoria;
+		this.categorias = categoria;
 	}
 
 	@Override
 	public String toString() {
 		return "DeporteModel [idDeporte=" + idDeporte + ", nombreDeporte=" + nombreDeporte + ", estadoDeporte="
-				+ estadoDeporte + ", categoria=" + categoria + "]";
+				+ estadoDeporte + ", categorias=" + categorias + "]";
 	}
+
 
 		
 	
