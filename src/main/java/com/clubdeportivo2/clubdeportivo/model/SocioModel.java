@@ -15,7 +15,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "socio")
@@ -26,11 +29,13 @@ public class SocioModel {
 	@Column(name="id_socio")
 	private Integer idSocio; 	
 	
-	@NotNull
+	@NotNull//(message="Ingrese rut Socio, Campo obligatorio")
 	@Column(name="rut_socio")
 	private String rutSocio;
 	
-	@NotNull
+	@NotNull(message="Ingrese Nombre de Socio, Campo obligatorio")
+	@Size(min = 2, max = 150, message="Ingrese un nombre mas largo")
+	@Pattern(regexp = "[A-Za-z]")
 	@Column(name="nombre_socio")
 	private String nombreSocio;
 	
