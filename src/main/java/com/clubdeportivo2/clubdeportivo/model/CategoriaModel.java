@@ -52,16 +52,18 @@ public class CategoriaModel {
 	@JoinColumn(name = "id_deporte")
 	private DeporteModel deporteCategoria;
 	
-	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	/*
+	@ManyToMany()
 	@JoinTable(name= "categoria", 
-	joinColumns = {@JoinColumn(name="id_categoria")},
-	inverseJoinColumns = {@JoinColumn(name="id_socio")}	)
+	joinColumns = {@JoinColumn(name="id_socio")},
+	inverseJoinColumns = {@JoinColumn(name="id_categoria")}	)
 	private List<SocioModel> sociosCategoria;
 
+	*/
 	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idEquipo")
 	//@JoinColumn(name="id_equipo")
 	private List<EquipoModel> equiposCategoria;
+
 
 	public Integer getIdCategoria() {
 		return idCategoria;
@@ -111,27 +113,27 @@ public class CategoriaModel {
 		this.estadoCategoria = estadoCategoria;
 	}
 
-	public DeporteModel getIdDeporte() {
+	public DeporteModel getDeporteCategoria() {
 		return deporteCategoria;
 	}
 
-	public void setIdDeporte(DeporteModel idDeporte) {
+	public void setDeporteCategoria(DeporteModel idDeporte) {
 		this.deporteCategoria = idDeporte;
 	}
-
-	public List<SocioModel> getSocioCategoria() {
+/*
+	public List<SocioModel> getSociosCategoria() {
 		return sociosCategoria;
 	}
 
-	public void setSocioCategoria(List<SocioModel> socioCategoria) {
+	public void setSociosCategoria(List<SocioModel> socioCategoria) {
 		this.sociosCategoria = socioCategoria;
 	}
-
-	public List<EquipoModel> getIdEquipo() {
+*/
+	public List<EquipoModel> getEquiposCategoria() {
 		return equiposCategoria;
 	}
 
-	public void setIdEquipo(List<EquipoModel> idEquipo) {
+	public void setEquiposCategoria(List<EquipoModel> idEquipo) {
 		this.equiposCategoria = idEquipo;
 	}
 
@@ -139,9 +141,11 @@ public class CategoriaModel {
 	public String toString() {
 		return "CategoriaModel [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
 				+ ", descripcionCategoria=" + descripcionCategoria + ", edadMax=" + edadMax + ", generoCategoria="
-				+ generoCategoria + ", estadoCategoria=" + estadoCategoria + ", idDeporte=" + deporteCategoria
-				+ ", socioCategoria=" + sociosCategoria + ", idEquipo=" + equiposCategoria + "]";
+				+ generoCategoria + ", estadoCategoria=" + estadoCategoria + ", deporteCategoria=" + deporteCategoria
+				+ ", equiposCategoria=" + equiposCategoria + "]";
 	}
+
+
 	
 	/*
 	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "sociocategoria", fetch = FetchType.EAGER)

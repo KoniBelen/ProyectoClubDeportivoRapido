@@ -46,8 +46,8 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-			<h2 th:if="${list.isEmpty()}">No hay deportes, agregue alguno</h2>
-			<div th:if="${!list.isEmpty()}">
+			<h2 th:if="${listDeporte.isEmpty()}">No hay deportes, agregue alguno</h2>
+			<div th:if="${!listDeporte.isEmpty()}">
 				<h2>Listado de deportes</h2>
 				<table id="example" class="table table-bordered table-hover">
 					<thead>
@@ -58,7 +58,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="deporte : ${list}">
+						<tr th:each="deporte : ${listDeporte}">
 							<td th:text="${deporte.nombreDeporte}"></td>
 							
 							<td><a type="button" class="btn btn-danger" th:href="@{/deporte/delete/{id}(id=${deporte.idDeporte})}">

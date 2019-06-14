@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.SocioService;
 import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
 import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
+import com.clubdeportivo2.clubdeportivo.service.DeporteService;
 
 
 @Controller
@@ -23,6 +26,8 @@ public class CategoriaController {
 	
 	@Autowired
 	private CategoriaService categoriaService;
+	@Autowired
+	private DeporteService deporteService;
 	
 	@RequestMapping("/")
 	public String index(Model model) {
@@ -32,6 +37,7 @@ public class CategoriaController {
 	
 	@GetMapping("/save/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
+		model.addAttribute("listDeporte",deporteService.getAll());
 		if(id!=null && id!=0) {
 			model.addAttribute("categoria", categoriaService.get(id));
 		}else {
@@ -41,7 +47,8 @@ public class CategoriaController {
 	}
 	
 	@PostMapping("/save")
-	public String save(CategoriaModel categoria , Model model) {
+	public String save(CategoriaModel categoria, Model model) {
+		model.addAttribute("listDeporte",deporteService.getAll());
 		categoriaService.save(categoria);
 		return "redirect:/categoria/";
 	}
