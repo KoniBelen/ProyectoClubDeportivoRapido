@@ -1,6 +1,5 @@
 package com.clubdeportivo2.clubdeportivo.model;
 
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
