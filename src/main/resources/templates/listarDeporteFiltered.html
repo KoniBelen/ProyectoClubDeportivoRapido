@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>categorias</title>
+<title>Deportes</title>
 
 
 <link rel="stylesheet" type="text/css" href="/css/listar.css" />
@@ -34,54 +34,32 @@
 					<input
 					class="search-field"
 					type="search">
-					<a type="button" ><!--th:href="@{/categoria/find/{valor}(valor=${valor})}"  --> <i class="fas fa-search"></i></a>
+					<a type="button" ><!--th:href="@{/deporte/search/{valor}(valor=${valor})}"  --> <i class="fas fa-search"></i></a>
 					</form>
 			</div>
 			<div class="col-md-4 d-flex justify-content-center align-items-center">
 				<a 	class="btn d-flex align-items-center align-self-center btnAgregar"
 					id="btnAgregar"
 					role="button" href="save/0">Ingresar
-					categoría&nbsp; <i class="fas fa-user-plus"></i></a>
+					deporte&nbsp; <i class="fas fa-user-plus"></i></a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-			<h2 th:if="${list.isEmpty()}">No hay categorias, agregue alguna</h2>
-			<div th:if="${!list.isEmpty()}">
-				<h2>Listado de categorias</h2>
+			<h2 th:if="${ filteredList==null }">No hay resultados en su búsqueda</h2>
+			<div th:if="${ filteredList!=null }">
+				<h2>Resúltado búsqueda</h2>
 				<table id="example" class="table table-bordered table-hover">
 					<thead>
 						<tr>
 							
 							<th>Nombre</th>
-							<th>Descripción</th>
-							<th>Edad Máxima</th>
-							<th>Género</th>
-							<th>Deporte</th>
-							<th>Acción</th>
+
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="categoria : ${list}">
-							<td th:text="${categoria.nombreCategoria}"></td>
-							<td th:text="${categoria.descripcionCategoria}"></td>
-							<td th:text="${categoria.edadMax}"></td>
-							<td th:text="${categoria.generoCategoria}"></td>
-							<td th:text="${categoria.deporteCategoria.getNombreDeporte()}"></td>
-							<td> 
-							<a type="button" class="btn btn-danger" th:href="@{/categoria/delete/{id}(id=${categoria.idCategoria})}">
-									<i
-										class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i>
-								</a>
-								<a type="button" class="btn btn-warning" th:href="@{/categoria/save/{id}(id=${categoria.idCategoria})}">
-									<i
-										class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i>
-								</a>
-								<a type="button" class="btn btn-info"  th:href="@{/categoria/get/{id}(id=${categoria.idCategoria})}">
-									<i
-										class="fas fa-eye d-xl-flex justify-content-xl-center align-items-xl-center"></i>
-								</a>
-								</td>
+						<tr th:each="deporte : ${filteredList}">
+							<td th:text="${deporte.nombreDeporte}"></td>
 						</tr>
 						
 					</tbody>

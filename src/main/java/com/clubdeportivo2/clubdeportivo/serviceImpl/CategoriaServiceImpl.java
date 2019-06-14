@@ -23,9 +23,12 @@ public class CategoriaServiceImpl extends GenericServiceImp<CategoriaModel, Inte
 		return categoriaDao;
 		
 	}
-	
-	public List<CategoriaModel> findByNombreCategoria(String nombre) {
-		return categoriaDao.findByNombreCategoria(nombre);
+
+
+	@Override
+	public List<CategoriaModel> findByNombreCategoriaLike(String nombre) {
+		return categoriaDao.findByNombreCategoriaLike(nombre);
+
 	}
  
 }
