@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,6 +20,7 @@ public class DeporteModel {
 	private Integer idDeporte;
 	
 	@NotNull
+	@Size(min=3, max=150, message="Largo entre 3 y 150 caracteres")
 	@Column(name= "nombre_deporte")
 	private String nombreDeporte;
 	

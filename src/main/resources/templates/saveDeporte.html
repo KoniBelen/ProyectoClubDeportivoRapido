@@ -35,8 +35,9 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-5">
-					<label for="nombredeporte"> Nombre</label> <input
+					<label for="nombreDeporte"> Nombre</label> <input
 						class="form-control col-md-11" type="text" th:field="*{nombreDeporte}">
+						<p th:if="${#fields.hasErrors('nombreDeporte')}" th:errors="*{nombreDeporte}"></p>
 				</div>
 			</div>
 

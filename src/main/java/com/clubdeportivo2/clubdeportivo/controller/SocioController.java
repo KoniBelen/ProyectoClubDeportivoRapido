@@ -1,9 +1,12 @@
 package com.clubdeportivo2.clubdeportivo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,8 +40,17 @@ public class SocioController {
 		}
 		return "save";
 	}
-	@PostMapping("/save")
+	/*@PostMapping("/save")
 	public String save(SocioModel socio , Model model) {
+		socioService.save(socio);
+		return "redirect:/socio/";
+	}
+	*/
+	@PostMapping("/save")
+	public String save(@Valid SocioModel socio , BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			return "redirect:/save";
+		}
 		socioService.save(socio);
 		return "redirect:/socio/";
 	}
