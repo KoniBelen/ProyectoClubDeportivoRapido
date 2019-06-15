@@ -37,7 +37,7 @@ public class DeporteController {
 	@PostMapping("/save")
 	public String save(@Valid DeporteModel deporte, BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			return "redirect:/saveDeporte/";
+			return "redirect:/deporte/save/0";
 		}else {
 			deporteService.save(deporte);
 			return "redirect:/deporte/";

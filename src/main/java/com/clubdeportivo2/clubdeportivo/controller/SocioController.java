@@ -49,7 +49,7 @@ public class SocioController {
 	@PostMapping("/save")
 	public String save(@Valid SocioModel socio , BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			return "redirect:/save";
+			return "redirect:/socio/save/0";
 		}
 		socioService.save(socio);
 		return "redirect:/socio/";
