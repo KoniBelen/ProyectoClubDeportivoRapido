@@ -30,7 +30,7 @@ public class DeporteModelFormatter implements Formatter<DeporteModel> {
 	@Override
 	public DeporteModel parse(String text, Locale locale) throws ParseException {
 		Integer deporteId = Integer.valueOf(text);
-		return this.deporteService.findById(deporteId);
+		return this.deporteService.get(deporteId);
 	}
 
 }

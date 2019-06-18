@@ -76,7 +76,7 @@ public class DeporteModel {
 	@Override
 	public String toString() {
 		return "DeporteModel [idDeporte=" + idDeporte + ", nombreDeporte=" + nombreDeporte + ", estadoDeporte="
-				+ estadoDeporte + ", categorias=" + categorias + "]";
+				+ estadoDeporte + "]";
 	}
 
 

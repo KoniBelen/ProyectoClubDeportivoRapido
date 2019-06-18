@@ -139,7 +139,7 @@ public class CategoriaModel {
 
 	@Override
 	public String toString() {
-		return "CategoriaModel [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
+		return "CategoriaModel [ nombreCategoria=" + nombreCategoria
 				+ ", descripcionCategoria=" + descripcionCategoria + ", edadMax=" + edadMax + ", generoCategoria="
 				+ generoCategoria + ", estadoCategoria=" + estadoCategoria + ", deporteCategoria=" + deporteCategoria
 				+ ", equiposCategoria=" + equiposCategoria + "]";
