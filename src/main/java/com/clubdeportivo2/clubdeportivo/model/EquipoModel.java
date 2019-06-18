@@ -43,6 +43,56 @@ public class EquipoModel {
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")
 	private CategoriaModel categoria;
+
+
+	public Integer getIdEquipo() {
+		return idEquipo;
+	}
+
+
+	public void setIdEquipo(Integer idEquipo) {
+		this.idEquipo = idEquipo;
+	}
+
+
+	public String getNombreEquipo() {
+		return nombreEquipo;
+	}
+
+
+	public void setNombreEquipo(String nombreEquipo) {
+		this.nombreEquipo = nombreEquipo;
+	}
+
+
+	public String getNombreEntrenador() {
+		return nombreEntrenador;
+	}
+
+
+	public void setNombreEntrenador(String nombreEntrenador) {
+		this.nombreEntrenador = nombreEntrenador;
+	}
+
+
+	public String getNombreEncargado() {
+		return nombreEncargado;
+	}
+
+
+	public void setNombreEncargado(String nombreEncargado) {
+		this.nombreEncargado = nombreEncargado;
+	}
+
+
+	public CategoriaModel getCategoria() {
+		return categoria;
+	}
+
+
+	public void setCategoria(CategoriaModel categoria) {
+		this.categoria = categoria;
+	}
 	
 	/*
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
@@ -56,6 +106,8 @@ public class EquipoModel {
 	@JoinColumn(name="id_sociocategoria")
 	private List<SocioCategoriaModel> socioCategoria;
 	 */
+	
+	
 	
 }
 

@@ -31,7 +31,7 @@ public class EquipoModelFormatter implements Formatter<EquipoModel> {
 	@Override
 	public EquipoModel parse(String text, Locale locale) throws ParseException {
 		Integer deporteId = Integer.valueOf(text);
-		return this.equipoService.findById(deporteId);
+		return this.equipoService.get(deporteId);
 	}
 
 }
