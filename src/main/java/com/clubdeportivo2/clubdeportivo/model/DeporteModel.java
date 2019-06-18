@@ -4,6 +4,7 @@ package com.clubdeportivo2.clubdeportivo.model;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,8 +20,8 @@ public class DeporteModel {
 	@Column(name = "id_deporte")
 	private Integer idDeporte;
 	
-	@NotNull
-	@Size(min=3, max=150, message="Largo entre 3 y 150 caracteres")
+	@NotEmpty
+	@Size(min=3, max=150)
 	@Column(name= "nombre_deporte")
 	private String nombreDeporte;
 	

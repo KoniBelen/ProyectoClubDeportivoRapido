@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,9 +48,10 @@ public class SocioController {
 	}
 	*/
 	@PostMapping("/save")
-	public String save(@Valid SocioModel socio , BindingResult result, Model model) {
+	public String save(@Valid @ModelAttribute("socio") SocioModel socio , BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			return "redirect:/socio/save/0";
+			model.addAttribute("socio", new SocioModel());
+			return "save";
 		}
 		socioService.save(socio);
 		return "redirect:/socio/";
