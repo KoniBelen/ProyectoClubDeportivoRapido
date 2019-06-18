@@ -35,7 +35,7 @@ public class SocioController {
 		}else {
 			model.addAttribute("socio",new SocioModel());
 		}
-		return "save";
+		return "saveSocio";
 	}
 	@PostMapping("/save")
 	public String save(SocioModel socio , Model model) {

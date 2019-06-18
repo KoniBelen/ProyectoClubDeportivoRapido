@@ -31,6 +31,8 @@
 
 			<input type="hidden" th:field="*{idSocio}">
 
+			
+
 			<div class="form-row">
 				<div class="form-group col-md-5">
 					<label for="rutSocio"> Rut</label> <input
@@ -60,7 +62,7 @@
 				<div class="form-group col-md-3">
 					<label for="generoSocio">Género</label>  
 						<select class="custom-select" th:field="*{generoSocio}">
-						<option value="deshabilitado" disabled>Porfavor elija una opción</option>
+						<option value="null">Porfavor elija una opción</option>
 						<option value="Femenino">Femenino</option>
 						<option value="Masculino">Masculino</option>
 						<option value="Otro">Otro</option>
@@ -70,14 +72,20 @@
 
 
 				<div class="form-group col-md-3">
-					<label for="fechaNacimientoSocio">Fecha Nacimiento</label> <input
+					<label for="fechaNacimientoSocio">Fecha Nacimiento</label> 
+					<input
 						class="form-control" type="date"
 						th:field="*{fechaNacimientoSocio}">
 
 				</div>
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-3">
 					<label for="telefonoSocio">Teléfono</label> <input
 						class="form-control" type="number" th:field="*{telefonoSocio}">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="estadoSocio">Miembro Activo</label> 
+					<input
+						class="form-control checkbox" type="checkbox" th:field="*{estadoSocio}" checked>
 				</div>
 			</div>
 			
