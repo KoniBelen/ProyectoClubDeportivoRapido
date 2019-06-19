@@ -48,7 +48,6 @@ public class CategoriaController {
 	
 	@PostMapping("/save")
 	public String save(CategoriaModel categoria, Model model) {
-		model.addAttribute("listDeporte",deporteService.getAll());
 		categoriaService.save(categoria);
 		return "redirect:/categoria/";
 	}
