@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Ver categoría</title>
+
+<!-- Bootstrap -->
+
+<link rel="stylesheet" type="text/css" href="/css/listar.css" />
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+<script type="text/javascript"
+	src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+
+</head>
+<body>
+
+	<div th:insert="navbar">...</div>
+	
+	<div class="container">
+	
+		<div class="row">
+			<div class="col-md-12">
+				<h2
+					th:if="${categoriaBuscada == null || categoriaBuscada.idCategoria==0}">No
+					se pudieron obtener los datos de la categoria</h2>
+				<div
+					th:if="${categoriaBuscada!=null && categoriaBuscada.idCategoria !=0}"
+					class="container">
+					<h2>Ver categoría</h2>
+					<table id="example" class="table table-hover">
+						<thead>
+							<tr>
+								<th>Atributo</th>
+								<th>Valor</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Nombre</th>
+								<td th:text="${categoriaBuscada.nombreCategoria}"></td>
+							</tr>
+							<tr>
+								<th>Descripcion</th>
+								<td th:text="${categoriaBuscada.descripcionCategoria}"></td>
+							</tr>
+							<tr>
+								<th>Edad Máxima</th>
+								<td th:text="${categoriaBuscada.edadMax}"></td>
+							</tr>
+							<tr>
+								<th>Genero</th>
+								<td th:text="${categoriaBuscada.generoCategoria}"></td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:insert="footer"></div>
+</body>
+</html>
