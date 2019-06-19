@@ -21,7 +21,7 @@ import com.clubdeportivo2.clubdeportivo.service.CuotaService;
 
 
 @Controller
-@RequestMapping(value="/cuotas")
+@RequestMapping(value="/cuota")
 public class CuotaController {
 	
 	@Autowired
@@ -39,7 +39,7 @@ public class CuotaController {
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
 		model.addAttribute("listSocio",socioService.getAll());
 		if(id!=null && id!=0) {
-			model.addAttribute("cuotas", cuotaService.get(id));
+			model.addAttribute("cuota", cuotaService.get(id));
 		}else {
 			model.addAttribute("cuota",new CuotasModel());
 		}
@@ -47,16 +47,16 @@ public class CuotaController {
 	}
 	
 	@PostMapping("/save")
-	public String save(CuotasModel cuotas, Model model) {
-		model.addAttribute("listDeporte",cuotaService.getAll());
-		cuotaService.save(cuotas);
-		return "redirect:/cuotas/";
+	public String save(CuotasModel cuota, Model model) {
+		//model.addAttribute("listDeporte",cuotaService.getAll());
+		cuotaService.save(cuota);
+		return "redirect:/cuota/";
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Integer id, Model model) {
 		cuotaService.delete(id);
-		return "redirect:/cuotas/";
+		return "redirect:/cuota/";
 		
 	}
 

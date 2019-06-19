@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>cuotas</title>
+<title>Cuotas</title>
 
 
 <link rel="stylesheet" type="text/css" href="/css/listar.css" />
@@ -46,8 +46,8 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-			<h2 th:if="${list.isEmpty()}">No hay cuotas, agregue alguna</h2>
-			<div th:if="${!list.isEmpty()}">
+			<h2 th:if="${listCuotas.isEmpty()}">No hay cuotas, agregue alguna</h2>
+			<div th:if="${!listCuotas.isEmpty()}">
 				<h2>Listado de cuotas</h2>
 				<table id="example" class="table table-bordered table-hover">
 					<thead>
@@ -61,18 +61,18 @@
 					<tbody>
 						<tr th:each="cuotas : ${listCuotas}">
 							<td th:text="${cuotas.fechaDePago}"></td>
-							<td th:text="${cuotas.cuota}"></td>
-							<td th:text="${cuotas.socioCategoria.getNombreSocio()}"></td>
+							<td th:text="${cuotas.montoCuota}"></td>
+							<td th:text="${cuotas.socioCuota.getNombreSocio()}"></td>
 							<td> 
-							<a type="button" class="btn btn-danger" th:href="@{/cuotas/delete/{id}(id=${cuotas.idCuotas})}">
+							<a type="button" class="btn btn-danger" th:href="@{/cuota/delete/{id}(id=${cuotas.idCuota})}">
 									<i
 										class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i>
 								</a>
-								<a type="button" class="btn btn-warning" th:href="@{/cuotas/save/{id}(id=${cuotas.idCuotas})}">
+								<a type="button" class="btn btn-warning" th:href="@{/cuota/save/{id}(id=${cuotas.idCuota})}">
 									<i
 										class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i>
 								</a>
-								<a type="button" class="btn btn-info"  th:href="@{/cuotas/get/{id}(id=${cuotas.idCuotas})}">
+								<a type="button" class="btn btn-info"  th:href="@{/cuota/get/{id}(id=${cuotas.idCuota})}">
 									<i
 										class="fas fa-eye d-xl-flex justify-content-xl-center align-items-xl-center"></i>
 								</a>

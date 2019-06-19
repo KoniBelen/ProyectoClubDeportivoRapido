@@ -79,9 +79,9 @@ public class SocioModel {
 	
 	//los *to many no deben ir con fetch Type no se por que 
 	
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idSocio")
+	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "socioCuota")
 	//@JoinColumn(name="id_cuotas")
-	private List<CuotasModel> idCuotas;
+	private List<CuotasModel> cuotas;
 
 	
 	//-----------------------getters y setters----------------------------------
@@ -216,18 +216,15 @@ public class SocioModel {
 	}
 
 
-	public List<CuotasModel> getIdCuotas() {
-		return idCuotas;
+	public List<CuotasModel> getCuotas() {
+		return cuotas;
 	}
 
 
-	public void setIdCuotas(List<CuotasModel> idCuotas) {
-		this.idCuotas = idCuotas;
+	public void setCuotas(List<CuotasModel> cuotas) {
+		this.cuotas = cuotas;
 	}
 
-	
-	//---------------------------toString-----------------------------------
-	
 
 	@Override
 	public String toString() {
@@ -235,9 +232,17 @@ public class SocioModel {
 				+ ", apellidoMaterno=" + apellidoMaterno + ", apellidoPaterno=" + apellidoPaterno + ", telefonoSocio="
 				+ telefonoSocio + ", direccionSocio=" + direccionSocio + ", fechaNacimientoSocio="
 				+ fechaNacimientoSocio + ", emailSocio=" + emailSocio + ", generoSocio=" + generoSocio
-				+ ", estadoSocio=" + estadoSocio +  ", idTutor=" + idTutor + ", idCuotas="
-				+ idCuotas + "]";
+				+ ", estadoSocio=" + estadoSocio + ", idTutor=" + idTutor + ", cuotas=" + cuotas + "]";
 	}
+
+
+	
+
+	
+
+
+
+	
 	
 	
 	
