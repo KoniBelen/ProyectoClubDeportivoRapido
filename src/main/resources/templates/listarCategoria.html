@@ -57,7 +57,6 @@
 							<th>Descripción</th>
 							<th>Edad Máxima</th>
 							<th>Género</th>
-							<th>Deporte</th>
 							<th>Acción</th>
 						</tr>
 					</thead>
@@ -67,7 +66,7 @@
 							<td th:text="${categoria.descripcionCategoria}"></td>
 							<td th:text="${categoria.edadMax}"></td>
 							<td th:text="${categoria.generoCategoria}"></td>
-							<td th:text="${categoria.deporteCategoria.getNombreDeporte()}"></td>
+							
 							<td> 
 							<a type="button" class="btn btn-danger" th:href="@{/categoria/delete/{id}(id=${categoria.idCategoria})}">
 									<i

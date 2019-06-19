@@ -1,7 +1,6 @@
 package com.clubdeportivo2.clubdeportivo.serviceImpl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -25,17 +24,9 @@ public class DeporteServiceImpl extends GenericServiceImp<DeporteModel, Integer>
 
 	@Override
 	public List<DeporteModel> findByNombreDeporteLike(String nombre) {
-		
-		return deporteDao.findByNombreDeporte(nombre);
+		deporteDao.findByNombreDeporte(nombre);
+		return null;
 	}
-
-	@Override
-	public DeporteModel findById(Integer deporteId) {
-		// TODO Auto-generated method stub
-		return deporteDao.findById(deporteId);
-	}
-
-	
 	
 
 }

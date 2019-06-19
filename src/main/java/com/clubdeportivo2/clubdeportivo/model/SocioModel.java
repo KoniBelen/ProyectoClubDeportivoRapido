@@ -67,11 +67,11 @@ public class SocioModel {
 	private boolean estadoSocio;
 	
 	/*---relaciones---------------------------------------------------------*/
-	/*
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE,
 			mappedBy = "sociosCategoria")
 	private List<CategoriaModel> categorias;
-*/
+
 	@ManyToOne
 	//@JoinColumn(name="id_tutor")
 	@JoinColumn
@@ -195,7 +195,7 @@ public class SocioModel {
 		this.estadoSocio = estadoSocio;
 	}
 
-/*
+
 	public List<CategoriaModel> getCategorias() {
 		return categorias;
 	}
@@ -205,7 +205,7 @@ public class SocioModel {
 		this.categorias = categorias;
 	}
 
-*/
+
 	public TutorModel getIdTutor() {
 		return idTutor;
 	}
@@ -235,7 +235,7 @@ public class SocioModel {
 				+ ", apellidoMaterno=" + apellidoMaterno + ", apellidoPaterno=" + apellidoPaterno + ", telefonoSocio="
 				+ telefonoSocio + ", direccionSocio=" + direccionSocio + ", fechaNacimientoSocio="
 				+ fechaNacimientoSocio + ", emailSocio=" + emailSocio + ", generoSocio=" + generoSocio
-				+ ", estadoSocio=" + estadoSocio +  ", idTutor=" + idTutor + ", idCuotas="
+				+ ", estadoSocio=" + estadoSocio + ", categorias=" + categorias + ", idTutor=" + idTutor + ", idCuotas="
 				+ idCuotas + "]";
 	}
 	

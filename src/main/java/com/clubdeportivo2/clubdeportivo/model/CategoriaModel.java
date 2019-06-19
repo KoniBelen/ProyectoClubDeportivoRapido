@@ -52,14 +52,13 @@ public class CategoriaModel {
 	@JoinColumn(name = "id_deporte")
 	private DeporteModel deporteCategoria;
 	
-	/*
-	@ManyToMany()
+	
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinTable(name= "categoria", 
-	joinColumns = {@JoinColumn(name="id_socio")},
-	inverseJoinColumns = {@JoinColumn(name="id_categoria")}	)
+	joinColumns = {@JoinColumn(name="id_categoria")},
+	inverseJoinColumns = {@JoinColumn(name="id_socio")}	)
 	private List<SocioModel> sociosCategoria;
 
-	*/
 	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idEquipo")
 	//@JoinColumn(name="id_equipo")
 
@@ -115,41 +114,28 @@ public class CategoriaModel {
 		this.estadoCategoria = estadoCategoria;
 	}
 
-	public DeporteModel getDeporteCategoria() {
+	public DeporteModel getIdDeporte() {
 		return deporteCategoria;
 	}
 
-	public void setDeporteCategoria(DeporteModel idDeporte) {
+	public void setIdDeporte(DeporteModel idDeporte) {
 		this.deporteCategoria = idDeporte;
 	}
-/*
-	public List<SocioModel> getSociosCategoria() {
+
+	public List<SocioModel> getSocioCategoria() {
 		return sociosCategoria;
 	}
 
-	public void setSociosCategoria(List<SocioModel> socioCategoria) {
+	public void setSocioCategoria(List<SocioModel> socioCategoria) {
 		this.sociosCategoria = socioCategoria;
 	}
-*/
-
+	
 
 	@Override
 	public String toString() {
 		return "CategoriaModel [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
 				+ ", descripcionCategoria=" + descripcionCategoria + ", edadMax=" + edadMax + ", generoCategoria="
-				+ generoCategoria + ", estadoCategoria=" + estadoCategoria + ", deporteCategoria=" + deporteCategoria
-				+ ", equiposCategoria=" + equiposCategoria + "]";
-	}
-
-
-	
-	/*
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "sociocategoria", fetch = FetchType.EAGER)
-	@JoinColumn(name="id_sociocategoria")
-	private List<SocioCategoriaModel> socioCategoria;
-	 */
-
-	
-	
-
+				+ generoCategoria + ", estadoCategoria=" + estadoCategoria + ", idDeporte=" + deporteCategoria
+				+ ", socioCategoria=" + sociosCategoria + ", idEquipo=" + equiposCategoria + "]";
+	}	
 }
