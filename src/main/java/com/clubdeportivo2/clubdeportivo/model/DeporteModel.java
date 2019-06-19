@@ -28,7 +28,6 @@ public class DeporteModel {
 	
 
 	@OneToMany(mappedBy = "deporteCategoria")
-	//@JoinColumn(name="id_categoria")
 	private List<CategoriaModel> categorias;
 	
 	public DeporteModel() {
