@@ -15,7 +15,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "socio")
@@ -26,27 +31,38 @@ public class SocioModel {
 	@Column(name="id_socio")
 	private Integer idSocio; 	
 	
-	@NotNull
+	//@NotNull
+	@NotEmpty
+	//@Size(min=9, max=13, message="ingrese un rut valido")
 	@Column(name="rut_socio")
 	private String rutSocio;
 	
-	@NotNull
+	//@NotNull
+	@NotEmpty
+	@Size(min=3,max=150)
 	@Column(name="nombre_socio")
 	private String nombreSocio;
 	
-	@NotNull
+	//@NotNull
+	@NotEmpty
+	//@Size(min=3,max=150)
 	@Column(name="apellido_materno")
 	private String apellidoMaterno;
 	
-	@NotNull
+	//@NotNull
+	@NotEmpty
+	//@Size(min=3,max=150, message="Ingrese un apellido entre 3 y 150 caracteres")
 	@Column(name="apellido_paterno")
 	private String apellidoPaterno;
 	
 	@NotNull
+	//@Size(max=9,message="Ingrese un numero de teléfono de 9 digitos")
 	@Column(name="telefono_socio")
 	private long telefonoSocio;
 	
-	@NotNull
+	//@NotNull
+	@NotEmpty
+	//@Size(min=3,max=150, message="ingrese direccion entre 3 y 150 caracteres")
 	@Column(name="direccion_socio")
 	private String direccionSocio;
 	
@@ -54,7 +70,9 @@ public class SocioModel {
 	@Column(name= "f_nacimiento")
 	private Date fechaNacimientoSocio;
 	
-	@NotNull
+	//@NotNull
+	@NotEmpty
+	@Email
 	@Column(name="email_socio")
 	private String emailSocio;
 	

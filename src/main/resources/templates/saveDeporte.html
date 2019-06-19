@@ -2,6 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="utf-8">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -34,8 +35,12 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-5">
-					<label for="nombredeporte"> Nombre</label> <input
-						class="form-control col-md-11" type="text" th:field="*{nombreDeporte}">
+					<label for="nombreDeporte"> Nombre</label> 
+					<input class="form-control col-md-11" type="text" 
+							th:field="*{nombreDeporte}" th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('nombreDeporte')}"
+							th:errors="*{nombreDeporte}"></small>
 				</div>
 			</div>
 
