@@ -30,12 +30,11 @@
 			th:object=${categoria} method="post">
 
 			<input type="hidden" th:field="*{idCategoria}">
-			<!-- 
+			
 			<input type="hidden" th:field="*{sociosCategoria}" th:value="${null}">
 			 
 			<input type="hidden" th:field="*{equiposCategoria}" th:value="${null}">
-			 -->
-			 
+			
 			<div class="form-row">
 				<div class="form-group col-md-5">
 					<label for="nombreCategoria"> Nombre</label> <input
@@ -70,7 +69,6 @@
 					<label for="deporteCategoria">Deporte al que pertenece</label> 
 					<select class="custom-select" th:field="*{deporteCategoria}">
 					<option th:each="deporte : ${listDeporte}" th:value="${deporte.idDeporte}" th:text="${deporte.nombreDeporte}"></option>
-					
 					</select>
 				</div>
 			</div>

@@ -25,7 +25,8 @@
 
 
 	<div class="container">
-		<h2>Ficha ingreso nuevo Socio</h2>
+		<h2 th:if="${socio.getIdSocio()==null}">Ficha ingreso nuevo socio</h2>
+		<h2 th:if="${socio.getIdSocio()!=null}">Ficha modificación socio</h2>
 		<form action="#" th:action="@{/socio/save}" class="form-group"
 			th:object=${socio} method="post">
 
@@ -34,25 +35,34 @@
 			
 
 			<div class="form-row">
-				<div class="form-group col-md-5">
+				<div class="form-group col-md-6">
 					<label for="rutSocio"> Rut</label> <input
 						class="form-control col-md-11" type="text" th:field="*{rutSocio}">
 				</div>
-				<div class="form-group col-md-7">
+				
+				<div class="form-group col-md-6">
+					<label for="socioCategoria">Agregar a Categoría</label> 
+					<select class="custom-select" multiple="multiple" size="3" th:field="*{categorias}">
+					<option th:value="${null}" th:text="|Sin categoría|" th:selected>
+					<option th:each="categoria : ${listCategorias}" th:value="${categoria.idCategoria}" th:text="|${categoria.nombreCategoria} - ${categoria.deporteCategoria.nombreDeporte}|	"></option>
+					</select>
+				</div>
+
+			</div>
+			
+			<div class="form-row">
+				<div class="form-group col-md-4">
 					<label for="nombreSocio">Nombres</label> <input
 						class="form-control col-md-11" type="text"
 						th:field="*{nombreSocio}">
 				</div>
-
-			</div>
-			<div class="form-row">
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-4">
 					<label for="apellidoPaterno">Apellido Paterno</label> <input
 						class="form-control col-md-11" type="text"
 						th:field="*{apellidoPaterno}">
 				</div>
 
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-4">
 					<label for="apellidoMaterno">Apellido Materno</label> <input
 						class="form-control col-md-11" type="text"
 						th:field="*{apellidoMaterno}">
@@ -60,20 +70,19 @@
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-3">
-					<label for="generoSocio">Género</label>  
-						<select class="custom-select" th:field="*{generoSocio}">
+					<label for="generoSocio">Género</label> <select
+						class="custom-select" th:field="*{generoSocio}">
 						<option value="null">Porfavor elija una opción</option>
 						<option value="Femenino">Femenino</option>
 						<option value="Masculino">Masculino</option>
 						<option value="Otro">Otro</option>
-						
+
 					</select>
 				</div>
 
 
 				<div class="form-group col-md-3">
-					<label for="fechaNacimientoSocio">Fecha Nacimiento</label> 
-					<input
+					<label for="fechaNacimientoSocio">Fecha Nacimiento</label> <input
 						class="form-control" type="date"
 						th:field="*{fechaNacimientoSocio}">
 
@@ -83,19 +92,20 @@
 						class="form-control" type="number" th:field="*{telefonoSocio}">
 				</div>
 				<div class="form-group col-md-3">
-					<label for="estadoSocio">Miembro Activo</label> 
-					<input
-						class="form-control checkbox" type="checkbox" th:field="*{estadoSocio}" checked>
+					<label for="estadoSocio">Miembro Activo</label> <input
+						class="form-control checkbox" type="checkbox"
+						th:field="*{estadoSocio}" checked>
 				</div>
 			</div>
-			
-			<div class="form-group">
-				<label for="emailSocio">Email</label> <input class="form-control"
-					type="email" th:field="*{emailSocio}">
-			</div>
-			<div class="form-group">
-				<label for="emailSocio">Dirección</label> <input
-					class="form-control" type="text" th:field="*{direccionSocio}">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="emailSocio">Email</label> <input class="form-control"
+						type="email" th:field="*{emailSocio}">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="emailSocio">Dirección</label> <input
+						class="form-control" type="text" th:field="*{direccionSocio}">
+				</div>
 			</div>
 			<button type="submit" class="btn btn-success">Guardar</button>
 		</form>
