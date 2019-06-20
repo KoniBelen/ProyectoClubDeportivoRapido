@@ -67,7 +67,7 @@ public class SocioModel {
 	@Column(name="estado_socio")
 	private boolean estadoSocio;
 	
-	/*---relaciones---------------------------------------------------------*/
+	
 	
 	@ManyToMany
 	@JoinTable(name= "socioCategoria", 
@@ -81,15 +81,11 @@ public class SocioModel {
 	
 	//los *to many no deben ir con fetch Type no se por que 
 	
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idSocio")
+	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "socioCuota")
 	//@JoinColumn(name="id_cuotas")
 	private List<CuotasModel> cuotas;
 
 	
-	//-----------------------getters y setters----------------------------------
-
-
-
 	
 
 	public Integer getIdSocio() {
@@ -232,16 +228,27 @@ public class SocioModel {
 	}
 
 	//---------------------------toString-----------------------------------
-	
+
+
+
 	@Override
 	public String toString() {
 		return "SocioModel [idSocio=" + idSocio + ", rutSocio=" + rutSocio + ", nombreSocio=" + nombreSocio
 				+ ", apellidoMaterno=" + apellidoMaterno + ", apellidoPaterno=" + apellidoPaterno + ", telefonoSocio="
 				+ telefonoSocio + ", direccionSocio=" + direccionSocio + ", fechaNacimientoSocio="
 				+ fechaNacimientoSocio + ", emailSocio=" + emailSocio + ", generoSocio=" + generoSocio
-				+ ", estadoSocio=" + estadoSocio + ", categorias=" + categorias + ", tutor=" + tutor + ", cuotas="
-				+ cuotas + "]";
+				+ ", estadoSocio=" + estadoSocio + ", idTutor=" + tutor + ", cuotas=" + cuotas + "]";
+
 	}
+
+
+	
+
+	
+
+
+
+	
 	
 	
 	
