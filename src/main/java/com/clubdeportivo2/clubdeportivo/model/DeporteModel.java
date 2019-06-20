@@ -21,7 +21,7 @@ public class DeporteModel {
 	private Integer idDeporte;
 	
 	@NotEmpty
-	@Size(min=3, max=150)
+	@Size(min=3, max=150, message="El nombre del deporte debe tener entre 3 a 150 caracteres")
 	@Column(name= "nombre_deporte")
 	private String nombreDeporte;
 	

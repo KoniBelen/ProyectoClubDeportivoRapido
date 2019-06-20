@@ -22,6 +22,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Range;
+
 @Entity
 @Table(name = "socio")
 public class SocioModel {
@@ -31,38 +33,34 @@ public class SocioModel {
 	@Column(name="id_socio")
 	private Integer idSocio; 	
 	
-	//@NotNull
 	@NotEmpty
-	//@Size(min=9, max=13, message="ingrese un rut valido")
+	@Size(min=9, max=13, message="Ingrese un rut valido")
 	@Column(name="rut_socio")
 	private String rutSocio;
 	
-	//@NotNull
 	@NotEmpty
-	@Size(min=3,max=150)
+	@Size(min=3,max=150, message="Ingrese un nombre entre 3 y 150 caracteres")
 	@Column(name="nombre_socio")
 	private String nombreSocio;
 	
-	//@NotNull
 	@NotEmpty
-	//@Size(min=3,max=150)
-	@Column(name="apellido_materno")
-	private String apellidoMaterno;
-	
-	//@NotNull
-	@NotEmpty
-	//@Size(min=3,max=150, message="Ingrese un apellido entre 3 y 150 caracteres")
+	@Size(min=3,max=150, message="Ingrese un apellido entre 3 y 150 caracteres")
 	@Column(name="apellido_paterno")
 	private String apellidoPaterno;
 	
+	@NotEmpty
+	@Size(min=3,max=150, message="Ingrese un apellido entre 3 y 150 caracteres")
+	@Column(name="apellido_materno")
+	private String apellidoMaterno;
+	
 	@NotNull
-	//@Size(max=9,message="Ingrese un numero de teléfono de 9 digitos")
+	@Range(min=9, message="Ingrese un numero de teléfono de 9 digitos")
 	@Column(name="telefono_socio")
 	private long telefonoSocio;
 	
 	//@NotNull
 	@NotEmpty
-	//@Size(min=3,max=150, message="ingrese direccion entre 3 y 150 caracteres")
+	@Size(min=3,max=150, message="Ingrese una dirección entre 3 y 150 caracteres")
 	@Column(name="direccion_socio")
 	private String direccionSocio;
 	

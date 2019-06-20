@@ -28,23 +28,15 @@ public class DeporteController {
 		return "listarDeporte";
 	}
 
-	/*@PostMapping("/save")
-	public String save(DeporteModel deporte, Model model) {
-		deporteService.save(deporte);
-		return "redirect:/deporte/";
-
-	}*/
 	
 	@PostMapping("/save")
 	public String save(@Valid @ModelAttribute("deporte") DeporteModel deporte, BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			model.addAttribute("deporte", new DeporteModel());
+			model.addAttribute("deporte", deporte);
 			return "savedeporte";
-		}else {
+		}
 			deporteService.save(deporte);
 			return "redirect:/deporte/";
-		}
-
 	}
 
 	@GetMapping("/save/{id}")

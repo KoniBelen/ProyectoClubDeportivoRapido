@@ -1,5 +1,7 @@
 package com.clubdeportivo2.clubdeportivo.controller;
 
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
@@ -32,7 +35,10 @@ public class SocioController {
 		return "listarSocio";
 	}
 	
-	@GetMapping("/save/{id}")
+//----------------------------------------------------------------------
+//		Crear
+//----------------------------------------------------------------------
+@RequestMapping("/save/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
 		if(id!=null && id!=0) {
 			model.addAttribute("socio", socioService.get(id));
@@ -41,21 +47,21 @@ public class SocioController {
 		}
 		return "save";
 	}
-	/*@PostMapping("/save")
-	public String save(SocioModel socio , Model model) {
-		socioService.save(socio);
-		return "redirect:/socio/";
-	}
-	*/
+	
+//----------------------------------------------------------------------
+// 		Guardar
+//----------------------------------------------------------------------	
+
 	@PostMapping("/save")
 	public String save(@Valid @ModelAttribute("socio") SocioModel socio , BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			model.addAttribute("socio", new SocioModel());
+			model.addAttribute("socio", socio);
 			return "save";
 		}
 		socioService.save(socio);
 		return "redirect:/socio/";
-	}
+	} 
+//----------------------------------------------------------------------	
 	
 	@GetMapping("/search/{valor}")
 	public String search(@PathVariable("valor") String valor,Model model) {
