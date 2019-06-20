@@ -20,6 +20,8 @@ public class CuotasModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_cuotas")
 
+	private Integer idCuota;
+
 
 	
 	@NotNull
@@ -39,7 +41,9 @@ public class CuotasModel {
 		return idCuota;
 	}
 
-		this.idCuotas = idCuotas;
+	public void setIdCuota(Integer idCuota) {
+		this.idCuota = idCuota;
+
 	}
 
 	public Date getFechaDePago() {
@@ -54,20 +58,14 @@ public class CuotasModel {
 		return montoCuota;
 	}
 
-	public void setCuota(int cuota) {
-		this.cuota = cuota;
 	public void setMontoCuota(int montoCuota) {
 		this.montoCuota = montoCuota;
 	}
 
-
-	public SocioModel getIdSocio() {
 	public SocioModel getSocioCuota() {
 		return socioCuota;
 	}
 
-	public void setIdSocio(SocioModel idSocio) {
-		this.idSocio = idSocio;
 	public void setSocioCuota(SocioModel socioCuota) {
 		this.socioCuota = socioCuota;
 	}
@@ -83,8 +81,10 @@ public class CuotasModel {
 	
 	
 
+
 	
 
+	
 	
 	
 	
