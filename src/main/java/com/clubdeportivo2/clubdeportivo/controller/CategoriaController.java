@@ -41,7 +41,9 @@ public class CategoriaController {
 	}
 	
 	@PostMapping("/save")
-	public String save(CategoriaModel categoria , Model model) {
+	
+	public String save(CategoriaModel categoria, Model model) {
+
 		categoriaService.save(categoria);
 		return "redirect:/categoria/";
 	}

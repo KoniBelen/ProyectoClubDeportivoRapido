@@ -27,6 +27,5 @@ public class DeporteServiceImpl extends GenericServiceImp<DeporteModel, Integer>
 		deporteDao.findByNombreDeporte(nombre);
 		return null;
 	}
-	
 
 }

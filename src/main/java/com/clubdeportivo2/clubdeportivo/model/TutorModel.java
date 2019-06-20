@@ -56,8 +56,7 @@ public class TutorModel {
 	@Column(name="email_tutor")
 	private String emailTutor;
 	
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idTutor", fetch = FetchType.EAGER)
-	//@JoinColumn(name="id_socio")
+	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "tutor", fetch = FetchType.EAGER)
 	private List<SocioModel> socio;
 
 	public Integer getIdTutor() {

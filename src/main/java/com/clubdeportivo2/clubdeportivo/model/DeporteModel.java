@@ -25,11 +25,9 @@ public class DeporteModel {
 	private boolean estadoDeporte;
 	
 
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idCategoria", fetch = FetchType.EAGER)
-	//@JoinColumn(name="id_categoria")
-	private List<CategoriaModel> categoria;
-	
-	
+
+	@OneToMany(mappedBy = "deporteCategoria")
+	private List<CategoriaModel> categorias;
 	
 	public DeporteModel() {
 		
@@ -77,7 +75,7 @@ public class DeporteModel {
 	@Override
 	public String toString() {
 		return "DeporteModel [idDeporte=" + idDeporte + ", nombreDeporte=" + nombreDeporte + ", estadoDeporte="
-				+ estadoDeporte + ", categoria=" + categoria + "]";
+				+ estadoDeporte + "]";
 	}
 
 		

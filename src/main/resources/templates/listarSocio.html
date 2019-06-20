@@ -71,7 +71,8 @@
 								<td th:text="${socio.telefonoSocio}"></td>
 
 
-								<td><input type="checkbox" checked /></td>
+								<td th:if="${socio.isEstadoSocio()}" th:text="Activo"></td>
+								<td th:if="${!socio.isEstadoSocio()}" th:text="Inactivo"></td>
 
 								<td><a type="button" class="btn btn-danger"
 									th:href="@{/socio/delete/{id}(id=${socio.idSocio})}"> <i
