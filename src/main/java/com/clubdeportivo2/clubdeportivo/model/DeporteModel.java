@@ -65,11 +65,11 @@ public class DeporteModel {
 	}
 
 	public List<CategoriaModel> getCategoria() {
-		return categoria;
+		return categorias;
 	}
 
 	public void setCategoria(List<CategoriaModel> categoria) {
-		this.categoria = categoria;
+		this.categorias = categoria;
 	}
 
 	@Override
