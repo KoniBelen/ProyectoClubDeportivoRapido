@@ -19,7 +19,7 @@ public class CuotasModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_cuotas")
-	private int idCuotas;
+
 
 	
 	@NotNull
@@ -28,17 +28,17 @@ public class CuotasModel {
 	
 	@NotNull
 	@Column(name="monto_cuota")
-	private int cuota;
+	private int montoCuota;
 	
 	@ManyToOne
 	@JoinColumn(name="id_socio")
-	private SocioModel idSocio;
+	private SocioModel socioCuota;
 
-	public int getIdCategoria() {
-		return idCuotas;
+
+	public Integer getIdCuota() {
+		return idCuota;
 	}
 
-	public void setIdCategoria(int idCuotas) {
 		this.idCuotas = idCuotas;
 	}
 
@@ -50,30 +50,41 @@ public class CuotasModel {
 		this.fechaDePago = fechaDePago;
 	}
 
-	public int getCuota() {
-		return cuota;
+	public int getMontoCuota() {
+		return montoCuota;
 	}
 
 	public void setCuota(int cuota) {
 		this.cuota = cuota;
+	public void setMontoCuota(int montoCuota) {
+		this.montoCuota = montoCuota;
 	}
 
 
 	public SocioModel getIdSocio() {
-		return idSocio;
+	public SocioModel getSocioCuota() {
+		return socioCuota;
 	}
 
 	public void setIdSocio(SocioModel idSocio) {
 		this.idSocio = idSocio;
+	public void setSocioCuota(SocioModel socioCuota) {
+		this.socioCuota = socioCuota;
 	}
 
 	@Override
 	public String toString() {
-		return "CuotasModel [idCategoria=" + idCuotas + ", fechaDePago=" + fechaDePago + ", cuota=" + cuota
-				+ ", idSocio=" + idSocio + "]";
+
+		return "CuotasModel [idCuota=" + idCuota + ", fechaDePago=" + fechaDePago + ", montoCuota=" + montoCuota
+				+ ", socioCuota=" + socioCuota + "]";
+
 	}
 
 	
+	
+
+	
+
 	
 	
 	
