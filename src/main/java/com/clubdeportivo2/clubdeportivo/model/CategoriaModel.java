@@ -52,90 +52,124 @@ public class CategoriaModel {
 	@JoinColumn(name = "id_deporte")
 	private DeporteModel deporteCategoria;
 	
-	/*
-	@ManyToMany()
-	@JoinTable(name= "categoria", 
-	joinColumns = {@JoinColumn(name="id_socio")},
-	inverseJoinColumns = {@JoinColumn(name="id_categoria")}	)
+	
+	@ManyToMany(mappedBy = "categorias")
 	private List<SocioModel> sociosCategoria;
 
-	*/
+	
+	
 	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idEquipo")
-	//@JoinColumn(name="id_equipo")
 	private List<EquipoModel> equiposCategoria;
+
 
 
 	public Integer getIdCategoria() {
 		return idCategoria;
 	}
 
+
+
 	public void setIdCategoria(Integer idCategoria) {
 		this.idCategoria = idCategoria;
 	}
+
+
 
 	public String getNombreCategoria() {
 		return nombreCategoria;
 	}
 
+
+
 	public void setNombreCategoria(String nombreCategoria) {
 		this.nombreCategoria = nombreCategoria;
 	}
+
+
 
 	public String getDescripcionCategoria() {
 		return descripcionCategoria;
 	}
 
+
+
 	public void setDescripcionCategoria(String descripcionCategoria) {
 		this.descripcionCategoria = descripcionCategoria;
 	}
+
+
 
 	public int getEdadMax() {
 		return edadMax;
 	}
 
+
+
 	public void setEdadMax(int edadMax) {
 		this.edadMax = edadMax;
 	}
+
+
 
 	public String getGeneroCategoria() {
 		return generoCategoria;
 	}
 
+
+
 	public void setGeneroCategoria(String generoCategoria) {
 		this.generoCategoria = generoCategoria;
 	}
+
+
 
 	public boolean isEstadoCategoria() {
 		return estadoCategoria;
 	}
 
+
+
 	public void setEstadoCategoria(boolean estadoCategoria) {
 		this.estadoCategoria = estadoCategoria;
 	}
+
+
 
 	public DeporteModel getDeporteCategoria() {
 		return deporteCategoria;
 	}
 
-	public void setDeporteCategoria(DeporteModel idDeporte) {
-		this.deporteCategoria = idDeporte;
+
+
+	public void setDeporteCategoria(DeporteModel deporteCategoria) {
+		this.deporteCategoria = deporteCategoria;
 	}
-/*
+
+
+
 	public List<SocioModel> getSociosCategoria() {
 		return sociosCategoria;
 	}
 
-	public void setSociosCategoria(List<SocioModel> socioCategoria) {
-		this.sociosCategoria = socioCategoria;
+
+
+	public void setSociosCategoria(List<SocioModel> sociosCategoria) {
+		this.sociosCategoria = sociosCategoria;
 	}
-*/
+
+
+
 	public List<EquipoModel> getEquiposCategoria() {
 		return equiposCategoria;
 	}
 
-	public void setEquiposCategoria(List<EquipoModel> idEquipo) {
-		this.equiposCategoria = idEquipo;
+
+
+	public void setEquiposCategoria(List<EquipoModel> equiposCategoria) {
+		this.equiposCategoria = equiposCategoria;
 	}
+
+
 
 	@Override
 	public String toString() {
@@ -145,14 +179,5 @@ public class CategoriaModel {
 				+ ", equiposCategoria=" + equiposCategoria + "]";
 	}
 
-
-	
-	/*
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "sociocategoria", fetch = FetchType.EAGER)
-	@JoinColumn(name="id_sociocategoria")
-	private List<SocioCategoriaModel> socioCategoria;
-	 */
-
-	
 	
 }

@@ -19,7 +19,7 @@ public class CuotasModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_cuotas")
-	private int idCategoria;
+	private int idCuotas;
 
 	
 	@NotNull
@@ -35,11 +35,11 @@ public class CuotasModel {
 	private SocioModel idSocio;
 
 	public int getIdCategoria() {
-		return idCategoria;
+		return idCuotas;
 	}
 
-	public void setIdCategoria(int idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setIdCategoria(int idCuotas) {
+		this.idCuotas = idCuotas;
 	}
 
 	public Date getFechaDePago() {
@@ -69,7 +69,7 @@ public class CuotasModel {
 
 	@Override
 	public String toString() {
-		return "CuotasModel [idCategoria=" + idCategoria + ", fechaDePago=" + fechaDePago + ", cuota=" + cuota
+		return "CuotasModel [idCategoria=" + idCuotas + ", fechaDePago=" + fechaDePago + ", cuota=" + cuota
 				+ ", idSocio=" + idSocio + "]";
 	}
 

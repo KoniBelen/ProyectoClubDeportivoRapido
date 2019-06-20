@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
 import com.clubdeportivo2.clubdeportivo.model.SocioModel;
+import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
 import com.clubdeportivo2.clubdeportivo.service.SocioService;
 
 
@@ -21,6 +22,8 @@ public class SocioController {
 	
 	@Autowired
 	private SocioService socioService;
+	@Autowired
+	private CategoriaService categoriaService;
 	
 	@RequestMapping("/")
 	public String index(Model model) {
@@ -30,12 +33,13 @@ public class SocioController {
 	
 	@GetMapping("/save/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
+		model.addAttribute("listCategorias",categoriaService.getAll());
 		if(id!=null && id!=0) {
 			model.addAttribute("socio", socioService.get(id));
 		}else {
 			model.addAttribute("socio",new SocioModel());
 		}
-		return "save";
+		return "saveSocio";
 	}
 	@PostMapping("/save")
 	public String save(SocioModel socio , Model model) {

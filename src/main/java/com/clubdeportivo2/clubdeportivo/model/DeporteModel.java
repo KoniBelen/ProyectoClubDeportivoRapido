@@ -28,7 +28,6 @@ public class DeporteModel {
 	
 
 	@OneToMany(mappedBy = "deporteCategoria")
-	//@JoinColumn(name="id_categoria")
 	private List<CategoriaModel> categorias;
 	
 	public DeporteModel() {
@@ -76,7 +75,7 @@ public class DeporteModel {
 	@Override
 	public String toString() {
 		return "DeporteModel [idDeporte=" + idDeporte + ", nombreDeporte=" + nombreDeporte + ", estadoDeporte="
-				+ estadoDeporte + ", categorias=" + categorias + "]";
+				+ estadoDeporte + "]";
 	}
 
 

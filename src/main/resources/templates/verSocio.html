@@ -47,16 +47,8 @@
 								<td th:text="${socioBuscado.rutSocio}"></td>
 							</tr>
 							<tr>
-								<th>Nombre(s)</th>
-								<td th:text="${socioBuscado.nombreSocio}"></td>
-							</tr>
-							<tr>
-								<th>Apellido Paterno</th>
-								<td th:text="${socioBuscado.apellidoPaterno}"></td>
-							</tr>
-							<tr>
-								<th>Apellido Materno</th>
-								<td th:text="${socioBuscado.apellidoMaterno}"></td>
+								<th>Nombre</th>
+								<td th:text="|${socioBuscado.nombreSocio} ${socioBuscado.apellidoPaterno} ${socioBuscado.apellidoMaterno}"></td>
 							</tr>
 							<tr>
 								<th>Teléfono</th>
@@ -78,6 +70,15 @@
 								<th>Género</th>
 								<td th:text="${socioBuscado.generoSocio}"></td>
 							</tr>
+							<tr>
+								<th>Categorías</th>
+								<td>
+								<span th:each="categoria,i : ${socioBuscado.categorias}" 
+									th:utext="|${i.count}. ${categoria.nombreCategoria}-${categoria.deporteCategoria.nombreDeporte} |">
+									</span>
+								</td>
+							</tr>
+							
 						</tbody>
 					</table>
 				</div>
