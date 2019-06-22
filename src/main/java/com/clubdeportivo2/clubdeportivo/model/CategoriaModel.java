@@ -48,6 +48,7 @@ public class CategoriaModel {
 	@Column(name = "estado_categoria")
 	private boolean estadoCategoria;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "id_deporte")
 	private DeporteModel deporteCategoria;
