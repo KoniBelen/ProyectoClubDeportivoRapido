@@ -1,6 +1,7 @@
 package com.clubdeportivo2.clubdeportivo.model;
 
-import java.sql.Date;
+import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,13 +17,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "socio")
@@ -33,44 +40,45 @@ public class SocioModel {
 	@Column(name="id_socio")
 	private Integer idSocio; 	
 	
-	@NotEmpty
+	@NotEmpty(message="Campo obligatorio")
 	@Size(min=9, max=13, message="Ingrese un rut valido")
 	@Column(name="rut_socio")
 	private String rutSocio;
 	
-	@NotEmpty
+	@NotEmpty(message="Campo obligatorio")
 	@Size(min=3,max=150, message="Ingrese un nombre entre 3 y 150 caracteres")
 	@Column(name="nombre_socio")
 	private String nombreSocio;
 	
-	@NotEmpty
+	@NotEmpty(message="Campo obligatorio")
 	@Size(min=3,max=150, message="Ingrese un apellido entre 3 y 150 caracteres")
 	@Column(name="apellido_paterno")
 	private String apellidoPaterno;
 	
-	@NotEmpty
+	@NotEmpty(message="Campo obligatorio")
 	@Size(min=3,max=150, message="Ingrese un apellido entre 3 y 150 caracteres")
 	@Column(name="apellido_materno")
 	private String apellidoMaterno;
 	
-	@NotNull
-	@Range(min=9, message="Ingrese un numero de teléfono de 9 digitos")
+	@NotNull(message="Campo obligatorio")
+	@Range(min=100000000, max=999999999 , message="Ingrese un número de teléfono de 9 digitos")
 	@Column(name="telefono_socio")
 	private long telefonoSocio;
 	
-	//@NotNull
-	@NotEmpty
+	@NotEmpty(message="Campo obligatorio")
 	@Size(min=3,max=150, message="Ingrese una dirección entre 3 y 150 caracteres")
 	@Column(name="direccion_socio")
 	private String direccionSocio;
 	
-	@NotNull
+	@NotNull(message="Campo obligatorio")
+	@Past(message="La fecha de nacimiento debe ser anterior a la fecha de hoy")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name= "f_nacimiento")
 	private Date fechaNacimientoSocio;
 	
-	//@NotNull
-	@NotEmpty
-	@Email
+	@NotEmpty(message="Campo obligatorio")
+	@Email(message="Formato email incorrecto xxxx@xxx.xxx")
+	//@Pattern(regexp="^([a-zA-Z0-9\\-\\.\\_]+)'+'(\\@)([a-zA-Z0-9\\-\\.]+)'+'(\\.)([a-zA-Z]{2,4})$", message="Formato email xxxx@xxx.xxx")
 	@Column(name="email_socio")
 	private String emailSocio;
 	
