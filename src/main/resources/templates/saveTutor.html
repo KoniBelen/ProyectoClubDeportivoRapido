@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Tutor</title>
+
+<!-- Bootstrap -->
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/listar.css}" />
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}" />
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+
+</head>
+<body>
+
+
+	<div th:insert="navbar">...</div>
+
+
+	<div class="container">
+		<h2 th:if="${tutor.getIdTutor()==null}">Ficha ingreso nuevo tutor</h2>
+		<h2 th:if="${tutor.getIdTutor()!=null}">Ficha modificación tutor</h2>
+		<form action="#" th:action="@{/tutor/save}" class="form-group"
+			th:object=${tutor} method="post">
+
+			<input type="hidden" th:field="*{idTutor}">
+
+
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="nombreTutor">Nombres</label> <input
+						class="form-control" type="text" th:field="*{nombreTutor}">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="apellidoPaternoTutor">Apellido Paterno</label> <input
+						class="form-control" type="text" th:field="*{apellidoPaternoTutor}">
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="apellidoMaternoTutor">Apellido Materno</label> <input
+						class="form-control" type="text" th:field="*{apellidoMaternoTutor}">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="rutTutor"> Rut</label> <input class="form-control"
+						type="text" th:field="*{rutTutor}">
+				</div>
+
+
+				<div class="form-group col-md-3">
+					<label for="telefonoTutor">Teléfono</label> <input
+						class="form-control" type="number" th:field="*{telefonoTutor}">
+				</div>
+
+				<div class="form-group col-md-3">
+					<label for="fechaNacimientoTutor">Fecha Nacimiento</label> <input
+						class="form-control" type="date"
+						th:field="*{fechaNacimientoTutor}">
+				</div>
+			</div>
+
+
+			<div class="form-row">
+
+				<div class="form-group col-md-5">
+					<label for="emailTutor">Dirección</label> <input
+						class="form-control" type="text" th:field="*{direccionTutor}">
+				</div>
+
+				<div class="form-group col-md-5">
+					<label for="emailTutor">Email</label> <input class="form-control"
+						type="email" th:field="*{emailTutor}">
+				</div>
+				
+
+
+
+				<!--div class="form-group col-md-3">
+					<label for="estadoSocio">Miembro Activo</label> <input
+						class="form-control checkbox" type="checkbox"
+						th:field="*{estadoSocio}" checked>
+				</div-->
+			</div>
+
+			<button type="submit" class="btn btn-success">Guardar</button>
+		</form>
+	</div>
+
+
+	<div th:insert="footer"></div>
+
+</body>
+</html>
