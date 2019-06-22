@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.clubdeportivo2.clubdeportivo.commons.GenericService;
 import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
 import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
 import com.clubdeportivo2.clubdeportivo.service.SocioService;
+import com.clubdeportivo2.clubdeportivo.service.TutorService;
 
 
 @Controller
@@ -24,6 +26,8 @@ public class SocioController {
 	private SocioService socioService;
 	@Autowired
 	private CategoriaService categoriaService;
+	@Autowired
+	private TutorService tutorService;
 	
 	@RequestMapping("/")
 	public String index(Model model) {
@@ -34,6 +38,7 @@ public class SocioController {
 	@GetMapping("/save/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
 		model.addAttribute("listCategorias",categoriaService.getAll());
+		model.addAttribute("listTutor", tutorService.getAll());
 		if(id!=null && id!=0) {
 			model.addAttribute("socio", socioService.get(id));
 		}else {

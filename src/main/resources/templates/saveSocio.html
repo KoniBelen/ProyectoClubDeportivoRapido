@@ -9,13 +9,13 @@
 
 <!-- Bootstrap -->
 
-<link rel="stylesheet" type="text/css" href="/css/listar.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/listar.css}" />
 <link rel="stylesheet"
-	href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+	th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}" />
 <script type="text/javascript"
-	src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
 <script type="text/javascript"
-	src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+	th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
 
 </head>
 <body>
@@ -32,47 +32,31 @@
 
 			<input type="hidden" th:field="*{idSocio}">
 
-			
-
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="rutSocio"> Rut</label> <input
-						class="form-control col-md-11" type="text" th:field="*{rutSocio}">
-				</div>
-				
-				<div class="form-group col-md-6">
-					<label for="socioCategoria">Agregar a Categoría</label> 
-					<select class="custom-select" multiple="multiple" size="3" th:field="*{categorias}">
-					<option th:value="${null}" th:text="|Sin categoría|" th:selected>
-					<option th:each="categoria : ${listCategorias}" th:value="${categoria.idCategoria}" th:text="|${categoria.nombreCategoria} - ${categoria.deporteCategoria.nombreDeporte}|	"></option>
-					</select>
-				</div>
-
-			</div>
-			
 			<div class="form-row">
 				<div class="form-group col-md-4">
 					<label for="nombreSocio">Nombres</label> <input
-						class="form-control col-md-11" type="text"
-						th:field="*{nombreSocio}">
+						class="form-control" type="text" th:field="*{nombreSocio}">
 				</div>
 				<div class="form-group col-md-4">
 					<label for="apellidoPaterno">Apellido Paterno</label> <input
-						class="form-control col-md-11" type="text"
-						th:field="*{apellidoPaterno}">
+						class="form-control" type="text" th:field="*{apellidoPaterno}">
 				</div>
 
 				<div class="form-group col-md-4">
 					<label for="apellidoMaterno">Apellido Materno</label> <input
-						class="form-control col-md-11" type="text"
-						th:field="*{apellidoMaterno}">
+						class="form-control" type="text" th:field="*{apellidoMaterno}">
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-3">
+					<label for="rutSocio"> Rut</label> <input class="form-control"
+						type="text" th:field="*{rutSocio}">
+				</div>
+
+				<div class="form-group col-md-3">
 					<label for="generoSocio">Género</label> <select
-						class="custom-select" th:field="*{generoSocio}">
-						<option value="null">Porfavor elija una opción</option>
+						class="custom-select form-control" th:field="*{generoSocio}">
+						<option value="null">Elija una opción</option>
 						<option value="Femenino">Femenino</option>
 						<option value="Masculino">Masculino</option>
 						<option value="Otro">Otro</option>
@@ -80,31 +64,72 @@
 					</select>
 				</div>
 
+				<div class="form-group col-md-3">
+					<label for="telefonoSocio">Teléfono</label> <input
+						class="form-control" type="number" th:field="*{telefonoSocio}">
+				</div>
 
 				<div class="form-group col-md-3">
 					<label for="fechaNacimientoSocio">Fecha Nacimiento</label> <input
 						class="form-control" type="date"
 						th:field="*{fechaNacimientoSocio}">
-
-				</div>
-				<div class="form-group col-md-3">
-					<label for="telefonoSocio">Teléfono</label> <input
-						class="form-control" type="number" th:field="*{telefonoSocio}">
-				</div>
-				<div class="form-group col-md-3">
-					<label for="estadoSocio">Miembro Activo</label> <input
-						class="form-control checkbox" type="checkbox"
-						th:field="*{estadoSocio}" checked>
 				</div>
 			</div>
+
+
 			<div class="form-row">
-				<div class="form-group col-md-6">
+
+				<div class="form-group col-md-4">
+					<label for="emailSocio">Dirección</label> <input
+						class="form-control" type="text" th:field="*{direccionSocio}">
+				</div>
+
+				<div class="form-group col-md-3">
 					<label for="emailSocio">Email</label> <input class="form-control"
 						type="email" th:field="*{emailSocio}">
 				</div>
-				<div class="form-group col-md-6">
-					<label for="emailSocio">Dirección</label> <input
-						class="form-control" type="text" th:field="*{direccionSocio}">
+				
+				<div class="form-group col-md-1">
+						<label for="estadoSocio">Miembro Activo</label> <input
+							class="form-control checkbox" type="checkbox"  th:checked=${true}
+							th:field="*{estadoSocio}">
+					</div>
+				
+				<!-- FALTA AGREGAR LA CONDICION PARA QUE EL BOTÓN APAREZCA CUANDO SEA MENOR DE EDAD por ahora aparece cuando edita-->
+				<div th:if="${socio.getIdSocio()!=null}" class="col-md-4  d-flex justify-content-center align-items-right">
+					
+					<div class="form-group col-md-9">
+						<label>Agregar tutor</label> <select class="custom-select" th:field="*{tutor}">
+							<option th:value="${null}" th:text="|Sin Tutor|" th:selected>
+							<option th:each="tutor : ${listTutor}"
+								th:value="${tutor.idTutor}"
+								th:text="|${tutor.nombreTutor} ${tutor.apellidoPaternoTutor} - ${tutor.rutTutor}|"></option>
+						</select>
+					</div>
+					
+					<div class="col-md-3  d-flex justify-content-center align-items-right">
+						<a class="btn btnAgregar align-self-center" id="btnAgregar"
+							role="button" th:href="@{/tutor/save/0}">&nbsp;
+							<i class="fas fa-user-plus"></i>
+						</a>
+					</div>
+				</div>
+
+
+
+
+
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="socioCategoria">Agregar a Categoría</label> <select
+						class="custom-select" multiple="multiple" size="3"
+						th:field="*{categorias}">
+						<option th:value="${null}" th:text="|Sin categoría|" th:selected>
+						<option th:each="categoria : ${listCategorias}"
+							th:value="${categoria.idCategoria}"
+							th:text="|${categoria.nombreCategoria} - ${categoria.deporteCategoria.nombreDeporte}|	"></option>
+					</select>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-success">Guardar</button>
