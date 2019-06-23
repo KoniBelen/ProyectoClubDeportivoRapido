@@ -1,5 +1,6 @@
 package com.clubdeportivo2.clubdeportivo.model;
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -92,6 +93,13 @@ public class EquipoModel {
 
 	public void setCategoria(CategoriaModel categoria) {
 		this.categoria = categoria;
+	}
+
+
+	@Override
+	public String toString() {
+		return "EquipoModel [idEquipo=" + idEquipo + ", nombreEquipo=" + nombreEquipo + ", nombreEntrenador="
+				+ nombreEntrenador + ", nombreEncargado=" + nombreEncargado + ", categoria=" + categoria + "]";
 	}
 	
 	/*

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -51,11 +51,11 @@
 			</div>
 
 			<div class="form-row">
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-3">
 					<label for="generoCategoria">Género</label>  
 						<select class="custom-select" th:field="*{generoCategoria}">
-						<option th:value="Femenino" th:text="Femenino"></option>
-						<option th:value="Masculino" th:text="Masculino"></option>
+						<option value="Femenino">Femenino</option>
+						<option value="Masculino">Masculino</option>
 					
 						
 					</select>
@@ -66,6 +66,7 @@
 						class="form-control" type="number" th:field="*{edadMax}">
 				</div>
 			</div>
+
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="deporteCategoria">Deporte al que pertenece</label> 
