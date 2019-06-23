@@ -33,7 +33,7 @@ public class TutorController {
 	@PostMapping("/save")
 	public String save(TutorModel tutor, Model model) {
 		tutorService.save(tutor);
-		return "redirect:/socio/";
+		return "redirect:/socio/save/"+socioService.get(tutor.getIdTutor()).getIdSocio();
 	}
 
 	
