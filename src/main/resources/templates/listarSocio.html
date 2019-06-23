@@ -59,7 +59,7 @@
 								<th>Email</th>
 								<th>Teléfono</th>
 								<th>Activo</th>
-								<th colspan="3">Acción</th>
+								<th>Acción</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -73,16 +73,15 @@
 
 								<td th:if="${socio.isEstadoSocio()}" th:text="Activo"></td>
 								<td th:if="${!socio.isEstadoSocio()}" th:text="Inactivo"></td>
-
-								<td><a type="button" class="btn btn-danger"
+								<td>
+								<a type="button" class="btn btn-danger"
 									th:href="@{/socio/delete/{id}(id=${socio.idSocio})}"> <i
 										class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
-								</td>
-								<td><a type="button" class="btn btn-warning"
+								<a type="button" class="btn btn-warning"
 									th:href="@{/socio/save/{id}(id=${socio.idSocio})}"> <i
 										class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i>
-								</a></td>
-								<td><a type="button" class="btn btn-info"
+								</a>
+								<a type="button" class="btn btn-info"
 									th:href="@{/socio/get/{id}(id=${socio.idSocio})}"> <i
 										class="fas fa-eye d-xl-flex justify-content-xl-center align-items-xl-center"></i>
 								</a></td>

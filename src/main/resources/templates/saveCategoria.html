@@ -24,12 +24,14 @@
 	<div th:insert="navbar">...</div>
 
 	<div class="container">
-		<h2 th:if="${categoria.getIdCategoria()==null}">Ficha ingreso nueva categoría</h2>
-		<h2 th:if="${categoria.getIdCategoria()!=null}">Ficha modificación categoría</h2>
+		<h2 th:if="${categoria==null || categoria.getIdCategoria()==null}">Ficha ingreso nueva categoría</h2>
+		<h2 th:if="${categoria!=null && categoria.getIdCategoria()!=null}">Ficha modificación categoría</h2>
 		<form action="#" th:action="@{/categoria/save}" class="form-group"
 			th:object=${categoria} method="post">
 
 			<input type="hidden" th:field="*{idCategoria}">
+			
+			<input type="hidden" th:field="*{estadoCategoria}" th:value="${true}"}>
 			
 			<input type="hidden" th:field="*{sociosCategoria}" th:value="${null}">
 			 
@@ -68,6 +70,7 @@
 				<div class="form-group col-md-6">
 					<label for="deporteCategoria">Deporte al que pertenece</label> 
 					<select class="custom-select" th:field="*{deporteCategoria}">
+					<option th:if="${listDeporte.isEmpty()}" th:value=${null} th:text="|Agregue un deporte|" ></option>
 					<option th:each="deporte : ${listDeporte}" th:value="${deporte.idDeporte}" th:text="${deporte.nombreDeporte}"></option>
 					</select>
 				</div>
