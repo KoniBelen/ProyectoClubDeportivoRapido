@@ -63,11 +63,11 @@ public class SocioController {
 	} 
 //----------------------------------------------------------------------	
 	
-	@GetMapping("/search/{valor}")
+	/*@GetMapping("/search/{valor}")
 	public String search(@PathVariable("valor") String valor,Model model) {
 		model.addAttribute("filteredList",socioService.findByNombreSocioLike("%"+valor+"%"));
 		return "listarSocioFiltered";
-	}
+	}*/
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
@@ -85,4 +85,9 @@ public class SocioController {
 		return "verSocio";
 	}
 
+	@GetMapping("/search/{valor}")
+	public String search(@PathVariable("valor") String valor,Model model) {
+		model.addAttribute("filteredList",socioService.findByNombreSocio(valor));
+		return "listarSocioFiltered";
+	}
 }
