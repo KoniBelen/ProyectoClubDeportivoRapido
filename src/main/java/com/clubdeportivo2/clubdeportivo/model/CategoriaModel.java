@@ -53,14 +53,13 @@ public class CategoriaModel {
 	@JoinColumn(name = "id_deporte")
 	private DeporteModel deporteCategoria;
 	
-
+	
 	@ManyToMany(mappedBy = "categorias")
 	private List<SocioModel> sociosCategoria;
 
 	
 	
 	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idEquipo")
-
 	private List<EquipoModel> equiposCategoria;
 
 
@@ -137,7 +136,6 @@ public class CategoriaModel {
 
 
 
-
 	public DeporteModel getDeporteCategoria() {
 		return deporteCategoria;
 	}
@@ -174,7 +172,6 @@ public class CategoriaModel {
 
 
 
-
 	@Override
 	public String toString() {
 		return "CategoriaModel [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria
@@ -185,4 +182,3 @@ public class CategoriaModel {
 
 	
 }
-

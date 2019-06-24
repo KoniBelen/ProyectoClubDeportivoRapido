@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.SocioService;
 import com.clubdeportivo2.clubdeportivo.model.CuotasModel;
-import com.clubdeportivo2.clubdeportivo.model.DeporteModel;
 import com.clubdeportivo2.clubdeportivo.service.CuotaService;
 
 
@@ -47,10 +46,9 @@ public class CuotaController {
 		return "saveCuotas";
 	}
 	
-	
-	
 	@PostMapping("/save")
 	public String save(CuotasModel cuota, Model model) {
+		//model.addAttribute("listDeporte",cuotaService.getAll());
 		cuotaService.save(cuota);
 		return "redirect:/cuota/";
 	}
@@ -60,15 +58,6 @@ public class CuotaController {
 		cuotaService.delete(id);
 		return "redirect:/cuota/";
 		
-	}
-	@GetMapping("/get/{id}")
-	public String get(@PathVariable("id") Integer id,Model model ) {
-		if(id!=null && id!=0) {
-			model.addAttribute("cuotaBuscado", cuotaService.get(id));
-		}else {
-			model.addAttribute("cuotaBuscado",new CuotasModel());
-		}
-		return "verCuotas";
 	}
 
 
