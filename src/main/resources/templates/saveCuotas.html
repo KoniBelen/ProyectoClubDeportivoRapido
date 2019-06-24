@@ -30,7 +30,14 @@
 			th:object=${cuota} method="post">
 
 			<input type="hidden" th:field="*{idCuota}">
+			<!-- 
+			<input type="hidden" th:field="*{sociosCuota}" th:value="${null}">
+			 
+			<input type="hidden" th:field="*{equiposCategoria}" th:value="${null}">
+			 -->
+			 
 			
+
 			<div class="form-row">
 				<div class="form-group col-md-5">
 					<label for="fechaDeCuota"> Fecha de pago</label> <input
@@ -38,11 +45,13 @@
 				</div>
 				<div class="form-group col-md-7">
 					<label for="montoCuota"> Monto</label> <input
-						class="form-control col-md-11" type="number"
+						class="form-control col-md-11" type="text"
 						th:field="*{montoCuota}">
 				</div>
 
 			</div>
+
+			
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="socioCuota">Socio al que pertenece</label> 
