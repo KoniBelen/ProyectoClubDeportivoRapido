@@ -21,7 +21,7 @@ public class DeporteController {
 
 	@RequestMapping("/")
 	public String index(Model model) {
-		model.addAttribute("listDeporte", deporteService.getAll());
+		model.addAttribute("list", deporteService.getAll());
 		return "listarDeporte";
 	}
 

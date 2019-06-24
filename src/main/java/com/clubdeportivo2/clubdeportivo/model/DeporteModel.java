@@ -6,8 +6,6 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 @Entity
 @Table(name= "deporte")
@@ -27,6 +25,7 @@ public class DeporteModel {
 	private boolean estadoDeporte;
 	
 
+
 	@OneToMany(mappedBy = "deporteCategoria")
 	private List<CategoriaModel> categorias;
 	
@@ -35,6 +34,7 @@ public class DeporteModel {
 	}
 
 	public DeporteModel(int idDeporte, String nombreDeporte, boolean estadoDeporte) {
+		super();
 		this.idDeporte = idDeporte;
 		this.nombreDeporte = nombreDeporte;
 		this.estadoDeporte=estadoDeporte;
@@ -77,7 +77,6 @@ public class DeporteModel {
 		return "DeporteModel [idDeporte=" + idDeporte + ", nombreDeporte=" + nombreDeporte + ", estadoDeporte="
 				+ estadoDeporte + "]";
 	}
-
 
 		
 	

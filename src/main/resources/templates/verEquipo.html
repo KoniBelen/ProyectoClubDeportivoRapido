@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Ver Cuotas</title>
+<title>Ver equipo</title>
 
 <!-- Bootstrap -->
 
@@ -27,12 +27,12 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2
-					th:if="${cuotaBuscado == null || cuotaBuscado.idCuota==0}">No
-					se pudieron obtener los datos de las cuotas </h2>
+					th:if="${equipoBuscado == null || equipoBuscado.idEquipo==0}">No
+					se pudieron obtener los datos del equipo</h2>
 				<div
-					th:if="${cuotaBuscado!=null && cuotaBuscado.idCuota !=0}"
+					th:if="${equipoBuscado!=null && equipoBuscado.idEquipo !=0}"
 					class="container">
-					<h2>Ver Cuotas</h2>
+					<h2>Ver equipo</h2>
 					<table id="example" class="table table-hover">
 						<thead>
 							<tr>
@@ -41,24 +41,26 @@
 							</tr>
 						</thead>
 						<tbody>
-							
 							<tr>
-								<th>Fecha de Pago</th>
-								<td th:text="${cuotaBuscado.fechaDePago}"></td>
+								<th>Nombre Equipo</th>
+								<td th:text="${equipoBuscado.nombreEquipo}"></td>
 							</tr>
 							<tr>
-								<th>Monto</th>
-								<td th:text="${cuotaBuscado.montoCuota}"></td>
+								<th>Nombre Entrenador</th>
+								<td th:text="${equipoBuscado.nombreEntrenador}"></td>
 							</tr>
 							<tr>
-								<th>Nombre socio</th>
-								<td th:text="${cuotaBuscado.socioCuota.getNombreSocio()}"></td>
+								<th>Nombre Encargado</th>
+								<td th:text="${equipoBuscado.nombreEncargado}"></td>
 							</tr>
+							<tr>
 							
+							<!-- Se me debe arreglar esta parte cuando se enlazen las categorias con equipo -->
 							
-							
-							
-							
+								<th>Categoría</th>
+								<td th:text="${equipoBuscado.categoria}"></td>
+							</tr>
+
 						</tbody>
 					</table>
 				</div>
