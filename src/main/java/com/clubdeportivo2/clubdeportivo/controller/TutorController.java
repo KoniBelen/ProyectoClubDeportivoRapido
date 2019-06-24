@@ -23,26 +23,34 @@ public class TutorController {
 	@Autowired
 	private SocioService socioService;
 	
+	SocioModel socio;
+	
 	//esto no debería ocuparse
 	@RequestMapping("/")
 	public String index(Model model) {
 		model.addAttribute("listTutor", tutorService.getAll());
 		return "listarTutor";
 	}
+	
+	/**
+	 * Guarda el tutor y redirige al formulario anterior*/
 
 	@PostMapping("/save")
 	public String save(TutorModel tutor, Model model) {
 		tutorService.save(tutor);
-		return "redirect:/socio/save/"+socioService.get(tutor.getIdTutor()).getIdSocio();
+		socio.setTutor(tutor);
+		socioService.save(socio);
+		return "redirect:/socio/save/"+socio.getIdSocio();
 	}
 
-	
+	/**
+	 * Muestra el formulario para crear un tutor
+	 * @param idSocio correspondiente al SOCIO para posteriormente poder asignar este tutor 
+	 * y además poder redireccionar al formulario en el que se encontraba previamente*/
 	@GetMapping("/save/{id}")
-	public String showSave(@PathVariable ("id") Integer id, Model model) {
-		if(id!=null && id!=0)
-			model.addAttribute("tutor", tutorService.get(id));
-		else 
-			model.addAttribute("tutor", new TutorModel());
+	public String showSave(@PathVariable ("id") Integer idSocio, Model model) {
+		socio = socioService.get(idSocio);
+		model.addAttribute("tutor", new TutorModel());
 		return "saveTutor";
 	}
 
