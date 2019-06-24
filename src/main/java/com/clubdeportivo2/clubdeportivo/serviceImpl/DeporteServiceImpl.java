@@ -30,8 +30,4 @@ public class DeporteServiceImpl extends GenericServiceImp<DeporteModel, Integer>
 	}
 
 
-
-	
-	
-
 }

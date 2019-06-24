@@ -1,13 +1,20 @@
 package com.clubdeportivo2.clubdeportivo.controller;
 
+import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clubdeportivo2.clubdeportivo.commons.GenericService;
@@ -35,7 +42,10 @@ public class SocioController {
 		return "listarSocio";
 	}
 	
-	@GetMapping("/save/{id}")
+//----------------------------------------------------------------------
+//		Crear
+//----------------------------------------------------------------------
+@RequestMapping("/save/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
 		model.addAttribute("listCategorias",categoriaService.getAll());
 		model.addAttribute("listTutor", tutorService.getAll());
@@ -46,17 +56,27 @@ public class SocioController {
 		}
 		return "saveSocio";
 	}
+	
+//----------------------------------------------------------------------
+// 		Guardar
+//----------------------------------------------------------------------	
+
 	@PostMapping("/save")
-	public String save(SocioModel socio , Model model) {
+	public String save(@Valid @ModelAttribute("socio") SocioModel socio , BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			model.addAttribute("socio", socio);
+			return "save";
+		}
 		socioService.save(socio);
 		return "redirect:/socio/";
-	}
+	} 
+//----------------------------------------------------------------------	
 	
-	@GetMapping("/search/{valor}")
+	/*@GetMapping("/search/{valor}")
 	public String search(@PathVariable("valor") String valor,Model model) {
 		model.addAttribute("filteredList",socioService.findByNombreSocioLike("%"+valor+"%"));
 		return "listarSocioFiltered";
-	}
+	}*/
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
@@ -74,4 +94,9 @@ public class SocioController {
 		return "verSocio";
 	}
 
+	@GetMapping("/search/{valor}")
+	public String search(@PathVariable("valor") String valor,Model model) {
+		model.addAttribute("filteredList",socioService.findByNombreSocio(valor));
+		return "listarSocioFiltered";
+	}
 }
