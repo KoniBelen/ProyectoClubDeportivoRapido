@@ -13,71 +13,68 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.clubdeportivo2.clubdeportivo.model.SocioModel;
-import com.clubdeportivo2.clubdeportivo.service.SocioService;
-import com.clubdeportivo2.clubdeportivo.model.CuotasModel;
-import com.clubdeportivo2.clubdeportivo.service.CuotaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.clubdeportivo2.clubdeportivo.model.EquipoModel;
+import com.clubdeportivo2.clubdeportivo.service.EquipoService;
+import com.clubdeportivo2.clubdeportivo.model.RecursoModel;
+import com.clubdeportivo2.clubdeportivo.service.RecursoService;
 
 
 
 @Controller
-@RequestMapping(value="/cuota")
-public class CuotaController {
+@RequestMapping(value="/recurso")
+public class RecursoController {
 	
 	@Autowired
-	private CuotaService cuotaService;
+	private RecursoService recursoService;
 	@Autowired
-	private SocioService socioService;
+	private EquipoService equipoService;
 	
 	//Funcionalidad listar
 	@RequestMapping("/")
 	public String index(Model model) {
-		model.addAttribute("listCuotas",cuotaService.getAll()); 
-		return "listarCuotas";
+		model.addAttribute("listRecursos",recursoService.getAll()); 
+		return "listarRecursos";
 	}
 	
 	/*Funcionalidad Modificar*/
 	@GetMapping("/save/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
-		model.addAttribute("listSocio",socioService.getAll());
+		model.addAttribute("listEquipo",equipoService.getAll());
 		if(id!=null && id!=0) {
-			model.addAttribute("cuota", cuotaService.get(id));
+			model.addAttribute("recurso", recursoService.get(id));
 		}else {
-			model.addAttribute("cuota",new CuotasModel());
+			model.addAttribute("recurso",new RecursoModel());
 		}
-		return "saveCuotas";
+		return "saveRecursos";
 	}
 	
-
 	
 	//Funcionalidad ingresar
 	@PostMapping("/save")
-	public String save(CuotasModel cuota, Model model) {
-		//model.addAttribute("listDeporte",cuotaService.getAll());
-		cuotaService.save(cuota);
-		return "redirect:/cuota/";
+	public String save(RecursoModel recurso, Model model) {
+		recursoService.save(recurso);
+		return "redirect:/recurso/";
 	}
 	
 	//Funcionalidad eliminar
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Integer id, Model model) {
-		cuotaService.delete(id);
-		return "redirect:/cuota/";
+		recursoService.delete(id);
+		return "redirect:/recurso/";
 		
 	}
-
 	
 	//Funcionalidad Ver
 	@GetMapping("/get/{id}")
 	public String get(@PathVariable("id") Integer id,Model model ) {
 		if(id!=null && id!=0) {
-			model.addAttribute("cuotaBuscado", cuotaService.get(id));
+			model.addAttribute("recursoBuscado", recursoService.get(id));
 		}else {
-			model.addAttribute("cuotaBuscado",new CuotasModel());
+			model.addAttribute("recusoBuscado",new RecursoModel());
 		}
-		return "verCuotas";
+		return "verRecurso";
 	}
-
 
 
 
