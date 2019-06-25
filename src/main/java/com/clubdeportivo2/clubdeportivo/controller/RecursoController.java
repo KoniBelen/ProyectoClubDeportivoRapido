@@ -20,7 +20,7 @@ import com.clubdeportivo2.clubdeportivo.model.RecursoModel;
 import com.clubdeportivo2.clubdeportivo.service.RecursoService;
 
 
-/*
+
 @Controller
 @RequestMapping(value="/recurso")
 public class RecursoController {
@@ -38,7 +38,6 @@ public class RecursoController {
 	}
 	
 	/*Funcionalidad Modificar*/
-/*AQUI
 	@GetMapping("/save/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
 		model.addAttribute("listEquipo",equipoService.getAll());
@@ -81,4 +80,3 @@ public class RecursoController {
 
 
 }
-*/
