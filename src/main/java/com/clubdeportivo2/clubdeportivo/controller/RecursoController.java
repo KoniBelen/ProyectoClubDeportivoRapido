@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.clubdeportivo2.clubdeportivo.model.EquipoModel;
 import com.clubdeportivo2.clubdeportivo.service.EquipoService;
 import com.clubdeportivo2.clubdeportivo.model.RecursoModel;
 import com.clubdeportivo2.clubdeportivo.service.RecursoService;
 
 
-
+/*
 @Controller
 @RequestMapping(value="/recurso")
 public class RecursoController {
@@ -37,6 +38,7 @@ public class RecursoController {
 	}
 	
 	/*Funcionalidad Modificar*/
+/*AQUI
 	@GetMapping("/save/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
 		model.addAttribute("listEquipo",equipoService.getAll());
@@ -79,3 +81,4 @@ public class RecursoController {
 
 
 }
+*/

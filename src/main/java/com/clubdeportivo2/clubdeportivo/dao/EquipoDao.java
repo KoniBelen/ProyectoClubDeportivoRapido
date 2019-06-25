@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 
 import com.clubdeportivo2.clubdeportivo.model.DeporteModel;
 import com.clubdeportivo2.clubdeportivo.model.EquipoModel;
+import com.clubdeportivo2.clubdeportivo.model.RecursoModel;
+
 
 public interface EquipoDao extends CrudRepository<EquipoModel, Integer> {
 
