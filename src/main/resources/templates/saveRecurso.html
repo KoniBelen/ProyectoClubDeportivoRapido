@@ -28,7 +28,7 @@
 		<h2 th:if="${recurso.getIdRecurso()==null}">Ingrese Recurso</h2>
 		<h2 th:if="${recurso.getIdRecurso()!=null}">Modificar Recurso</h2>
 		<form action="#" th:action="@{/recurso/save}" class="form-group"
-			th:object=${recuro} method="post">
+			th:object=${recurso} method="post">
 
 			<input type="hidden" th:field="*{idRecurso}">
 
@@ -44,7 +44,7 @@
 
 				<div class="form-group col-md-4">
 					<label for="descripcionRecurso">Descripcion del Recurso</label> <input
-						class="form-control" type="text" th:field="*{apellidoMaterno}">
+						class="form-control" type="text" th:field="*{descripcionRecurso}">
 				</div>
 			</div>
 	
