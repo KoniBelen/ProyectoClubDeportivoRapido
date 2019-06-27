@@ -42,7 +42,83 @@ public class EquipoModel {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")
-	private DeporteModel idCategoria;
+	private CategoriaModel categoria;
+	
+	@ManyToMany
+	@JoinTable(name= "equipoRecurso", 
+	joinColumns = {@JoinColumn(name="idEquipo")},
+	inverseJoinColumns = {@JoinColumn(name="idRecurso")}	)
+	private List<RecursoModel> recursos;
+	
+
+	public Integer getIdEquipo() {
+		return idEquipo;
+	}
+
+
+	public void setIdEquipo(Integer idEquipo) {
+		this.idEquipo = idEquipo;
+	}
+
+
+	public String getNombreEquipo() {
+		return nombreEquipo;
+	}
+
+
+	public void setNombreEquipo(String nombreEquipo) {
+		this.nombreEquipo = nombreEquipo;
+	}
+
+
+	public String getNombreEntrenador() {
+		return nombreEntrenador;
+	}
+
+
+	public void setNombreEntrenador(String nombreEntrenador) {
+		this.nombreEntrenador = nombreEntrenador;
+	}
+
+
+	public String getNombreEncargado() {
+		return nombreEncargado;
+	}
+
+
+	public void setNombreEncargado(String nombreEncargado) {
+		this.nombreEncargado = nombreEncargado;
+	}
+
+
+	public CategoriaModel getCategoria() {
+		return categoria;
+	}
+
+
+	public void setCategoria(CategoriaModel categoria) {
+		this.categoria = categoria;
+	}
+
+
+	public List<RecursoModel> getRecursos() {
+		return recursos;
+	}
+
+
+	public void setRecursos(List<RecursoModel> recursos) {
+		this.recursos = recursos;
+	}
+
+
+	@Override
+	public String toString() {
+		return "EquipoModel [idEquipo=" + idEquipo + ", nombreEquipo=" + nombreEquipo + ", nombreEntrenador="
+				+ nombreEntrenador + ", nombreEncargado=" + nombreEncargado + ", categoria=" + categoria + ", recursos="
+				+ recursos + "]";
+	}
+	
+	
 	
 	/*
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
@@ -57,51 +133,7 @@ public class EquipoModel {
 	private List<SocioCategoriaModel> socioCategoria;
 	 */
 	
-	public Integer getIdEquipo() {
-		return idEquipo;
-	}
-
-	public void setIdEquipo(Integer idEquipo) {
-		this.idEquipo = idEquipo;
-	}
-
-	public String getNombreEquipo() {
-		return nombreEquipo;
-	}
-
-	public void setNombreEquipo(String nombreEquipo) {
-		this.nombreEquipo = nombreEquipo;
-	}
-
-	public String getNombreEntrenador() {
-		return nombreEntrenador;
-	}
-
-	public void setNombreEntrenador(String nombreEntrenador) {
-		this.nombreEntrenador = nombreEntrenador;
-	}
-
-	public String getNombreEncargado() {
-		return nombreEncargado;
-	}
-
-	public void setNombreEncargado(String nombreEncargado) {
-		this.nombreEncargado = nombreEncargado;
-	}
-
-	public DeporteModel getIdCategoria() {
-		return idCategoria;
-	}
-
-	public void setIdCategoria(DeporteModel idCategoria) {
-		this.idCategoria = idCategoria;
-	}
-
-	@Override
-	public String toString() {
-		return "EquipoModel [idEquipo=" + idEquipo + ", nombreEquipo=" + nombreEquipo + ", nombreEntrenador="
-				+ nombreEntrenador + ", nombreEncargado=" + nombreEncargado + ", idCategoria=" + idCategoria + "]";
-	}
-		
+	
+	
 }
 

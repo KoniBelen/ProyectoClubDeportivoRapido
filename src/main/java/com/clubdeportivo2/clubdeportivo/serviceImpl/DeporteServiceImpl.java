@@ -29,11 +29,7 @@ public class DeporteServiceImpl extends GenericServiceImp<DeporteModel, Integer>
 		return deporteDao.findByNombreDeporte(nombre);
 	}
 
-	@Override
-	public DeporteModel findById(Integer deporteId) {
-		// TODO Auto-generated method stub
-		return deporteDao.findById(deporteId);
-	}
+
 
 	
 	

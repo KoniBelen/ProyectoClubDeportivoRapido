@@ -42,7 +42,7 @@ public class TutorModel {
 	
 	@NotNull
 	@Column(name="telefono_tutor")
-	private int telefonoTutor;
+	private Long telefonoTutor;
 	
 	@NotNull
 	@Column(name="direccion_tutor")
@@ -56,15 +56,14 @@ public class TutorModel {
 	@Column(name="email_tutor")
 	private String emailTutor;
 	
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idTutor", fetch = FetchType.EAGER)
-	//@JoinColumn(name="id_socio")
+	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "tutor", fetch = FetchType.EAGER)
 	private List<SocioModel> socio;
 
 	public Integer getIdTutor() {
 		return idTutor;
 	}
 
-	public void setIdTutor(int idTutor) {
+	public void setIdTutor(Integer idTutor) {
 		this.idTutor = idTutor;
 	}
 
@@ -100,11 +99,11 @@ public class TutorModel {
 		this.apellidoPaternoTutor = apellidoPaternoTutor;
 	}
 
-	public int getTelefonoTutor() {
+	public Long getTelefonoTutor() {
 		return telefonoTutor;
 	}
 
-	public void setTelefonoTutor(int telefonoTutor) {
+	public void setTelefonoTutor(Long telefonoTutor) {
 		this.telefonoTutor = telefonoTutor;
 	}
 
@@ -145,7 +144,7 @@ public class TutorModel {
 		return "TutorModel [idTutor=" + idTutor + ", rutTutor=" + rutTutor + ", nombreTutor=" + nombreTutor
 				+ ", apellidoMaternoTutor=" + apellidoMaternoTutor + ", apellidoPaternoTutor=" + apellidoPaternoTutor
 				+ ", telefonoTutor=" + telefonoTutor + ", direccionTutor=" + direccionTutor + ", fechaNacimientoTutor="
-				+ fechaNacimientoTutor + ", emailTutor=" + emailTutor + ", socio=" + socio + "]";
+				+ fechaNacimientoTutor + ", emailTutor=" + emailTutor+"]";
 	}
 	
 

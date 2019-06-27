@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -66,25 +67,26 @@ public class SocioModel {
 	@Column(name="estado_socio")
 	private boolean estadoSocio;
 	
-	/*---relaciones---------------------------------------------------------*/
-	/*
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE,
-			mappedBy = "sociosCategoria")
+	
+	
+	@ManyToMany
+	@JoinTable(name= "socioCategoria", 
+	joinColumns = {@JoinColumn(name="idSocio")},
+	inverseJoinColumns = {@JoinColumn(name="idCategoria")}	)
 	private List<CategoriaModel> categorias;
-*/
+
 	@ManyToOne
-	//@JoinColumn(name="id_tutor")
-	@JoinColumn
-	private TutorModel idTutor;
+	@JoinColumn(name="id_tutor")
+	private TutorModel tutor;
 	
 	//los *to many no deben ir con fetch Type no se por que 
 	
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idSocio")
+	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "socioCuota")
 	//@JoinColumn(name="id_cuotas")
-	private List<CuotasModel> idCuotas;
+	private List<CuotasModel> cuotas;
 
 	
-	//-----------------------getters y setters----------------------------------
+	
 
 	public Integer getIdSocio() {
 		return idSocio;
@@ -195,7 +197,7 @@ public class SocioModel {
 		this.estadoSocio = estadoSocio;
 	}
 
-/*
+
 	public List<CategoriaModel> getCategorias() {
 		return categorias;
 	}
@@ -205,29 +207,29 @@ public class SocioModel {
 		this.categorias = categorias;
 	}
 
-*/
-	public TutorModel getIdTutor() {
-		return idTutor;
+
+	public TutorModel getTutor() {
+		return tutor;
 	}
 
 
-	public void setIdTutor(TutorModel idTutor) {
-		this.idTutor = idTutor;
+	public void setTutor(TutorModel tutor) {
+		this.tutor = tutor;
 	}
 
 
-	public List<CuotasModel> getIdCuotas() {
-		return idCuotas;
+	public List<CuotasModel> getCuotas() {
+		return cuotas;
 	}
 
 
-	public void setIdCuotas(List<CuotasModel> idCuotas) {
-		this.idCuotas = idCuotas;
+	public void setCuotas(List<CuotasModel> cuotas) {
+		this.cuotas = cuotas;
 	}
 
-	
 	//---------------------------toString-----------------------------------
-	
+
+
 
 	@Override
 	public String toString() {
@@ -235,11 +237,22 @@ public class SocioModel {
 				+ ", apellidoMaterno=" + apellidoMaterno + ", apellidoPaterno=" + apellidoPaterno + ", telefonoSocio="
 				+ telefonoSocio + ", direccionSocio=" + direccionSocio + ", fechaNacimientoSocio="
 				+ fechaNacimientoSocio + ", emailSocio=" + emailSocio + ", generoSocio=" + generoSocio
-				+ ", estadoSocio=" + estadoSocio +  ", idTutor=" + idTutor + ", idCuotas="
-				+ idCuotas + "]";
+				+ ", estadoSocio=" + estadoSocio + ", idTutor=" + tutor+ "]";
+
 	}
+
+
+	
+
+	
+
+
+
 	
 	
 	
+	
+
+
 	
 }

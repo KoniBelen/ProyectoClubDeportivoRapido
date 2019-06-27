@@ -9,31 +9,31 @@
 
 <!-- Bootstrap -->
 
-<link rel="stylesheet" type="text/css" href="/css/listar.css" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/listar.css}" />
 <link rel="stylesheet"
-	href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+	th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}" />
 <script type="text/javascript"
-	src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
 <script type="text/javascript"
-	src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+	th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+
 
 </head>
 <body>
 
 	<div th:insert="navbar">...</div>
-	
+
 	<div class="container">
-	
+
 		<div class="row">
 			<div class="col-md-12">
-				<h2
-					th:if="${socioBuscado == null || socioBuscado.idSocio==0}">No
+				<h2 th:if="${socioBuscado == null || socioBuscado.idSocio==0}">No
 					se pudieron obtener los datos del socio</h2>
-				<div
-					th:if="${socioBuscado!=null && socioBuscado.idSocio !=0}"
+				<div th:if="${socioBuscado!=null && socioBuscado.idSocio !=0}"
 					class="container">
 					<h2>Ver Socio</h2>
-					<table id="example" class="table table-hover">
+					<table class="table table-hover table-sm">
 						<thead>
 							<tr>
 								<th>Atributo</th>
@@ -41,22 +41,15 @@
 							</tr>
 						</thead>
 						<tbody>
-							
+
 							<tr>
 								<th>Rut</th>
 								<td th:text="${socioBuscado.rutSocio}"></td>
 							</tr>
 							<tr>
-								<th>Nombre(s)</th>
-								<td th:text="${socioBuscado.nombreSocio}"></td>
-							</tr>
-							<tr>
-								<th>Apellido Paterno</th>
-								<td th:text="${socioBuscado.apellidoPaterno}"></td>
-							</tr>
-							<tr>
-								<th>Apellido Materno</th>
-								<td th:text="${socioBuscado.apellidoMaterno}"></td>
+								<th>Nombre</th>
+								<td
+									th:text="|${socioBuscado.nombreSocio} ${socioBuscado.apellidoPaterno} ${socioBuscado.apellidoMaterno}"></td>
 							</tr>
 							<tr>
 								<th>Teléfono</th>
@@ -78,8 +71,56 @@
 								<th>Género</th>
 								<td th:text="${socioBuscado.generoSocio}"></td>
 							</tr>
+							<tr>
+								<th>Categorías</th>
+								<td><span
+									th:each="categoria,i : ${socioBuscado.categorias}"
+									th:utext="|${i.count}. ${categoria.nombreCategoria}-${categoria.deporteCategoria.nombreDeporte} |">
+								</span></td>
+							</tr>
+
 						</tbody>
 					</table>
+
+					<div th:if="${socioBuscado.tutor!=null}">
+						<h3 th:text="|Datos del tutor|"></h3>
+						<table class="table table-hover table-sm">
+							<thead>
+								<tr>
+									<th>Atributo</th>
+									<th>Valor</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr>
+									<th>Rut</th>
+									<td th:text="${socioBuscado.tutor.rutTutor}"></td>
+								</tr>
+								<tr>
+									<th>Nombre</th>
+									<td
+										th:text="|${socioBuscado.tutor.nombreTutor} ${socioBuscado.tutor.apellidoPaternoTutor} ${socioBuscado.tutor.apellidoMaternoTutor}"></td>
+								</tr>
+								<tr>
+									<th>Teléfono</th>
+									<td th:text="${socioBuscado.tutor.telefonoTutor}"></td>
+								</tr>
+								<tr>
+									<th>Dirección</th>
+									<td th:text="${socioBuscado.tutor.direccionTutor}"></td>
+								</tr>
+								<tr>
+									<th>Email</th>
+									<td th:text="${socioBuscado.tutor.emailTutor}"></td>
+								</tr>
+								<tr>
+									<th>Fecha Nacimiento</th>
+									<td th:text="${socioBuscado.tutor.fechaNacimientoTutor}"></td>
+								</tr>
+						</table>
+
+					</div>
 				</div>
 			</div>
 		</div>

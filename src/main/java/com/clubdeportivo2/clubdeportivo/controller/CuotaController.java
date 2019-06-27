@@ -15,67 +15,71 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.SocioService;
-import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
-import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
-import com.clubdeportivo2.clubdeportivo.service.DeporteService;
+import com.clubdeportivo2.clubdeportivo.model.CuotasModel;
+import com.clubdeportivo2.clubdeportivo.service.CuotaService;
+
 
 
 @Controller
-@RequestMapping(value="/categoria")
-public class CategoriaController {
+@RequestMapping(value="/cuota")
+public class CuotaController {
 	
 	@Autowired
-	private CategoriaService categoriaService;
+	private CuotaService cuotaService;
 	@Autowired
-	private DeporteService deporteService;
+	private SocioService socioService;
 	
+	//Funcionalidad listar
 	@RequestMapping("/")
 	public String index(Model model) {
-		model.addAttribute("list",categoriaService.getAll()); 
-		return "listarCategoria";
+		model.addAttribute("listCuotas",cuotaService.getAll()); 
+		return "listarCuotas";
 	}
 	
+	/*Funcionalidad Modificar*/
 	@GetMapping("/save/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
-		model.addAttribute("listDeporte",deporteService.getAll());
+		model.addAttribute("listSocio",socioService.getAll());
 		if(id!=null && id!=0) {
-			model.addAttribute("categoria", categoriaService.get(id));
+			model.addAttribute("cuota", cuotaService.get(id));
 		}else {
-			model.addAttribute("categoria",new CategoriaModel());
+			model.addAttribute("cuota",new CuotasModel());
 		}
-		return "saveCategoria";
+		return "saveCuotas";
 	}
 	
+
+	
+	//Funcionalidad ingresar
 	@PostMapping("/save")
-	public String save(CategoriaModel categoria, Model model) {
-		categoriaService.save(categoria);
-		return "redirect:/categoria/";
+	public String save(CuotasModel cuota, Model model) {
+		//model.addAttribute("listDeporte",cuotaService.getAll());
+		cuotaService.save(cuota);
+		return "redirect:/cuota/";
 	}
 	
+	//Funcionalidad eliminar
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Integer id, Model model) {
-		categoriaService.delete(id);
-		return "redirect:/categoria/";
+		cuotaService.delete(id);
+		return "redirect:/cuota/";
 		
 	}
 
+	
+	//Funcionalidad Ver
 	@GetMapping("/get/{id}")
 	public String get(@PathVariable("id") Integer id,Model model ) {
 		if(id!=null && id!=0) {
-			model.addAttribute("categoriaBuscada", categoriaService.get(id));
+			model.addAttribute("cuotaBuscado", cuotaService.get(id));
 		}else {
-			model.addAttribute("categoriaBuscada",new CategoriaModel());
+			model.addAttribute("cuotaBuscado",new CuotasModel());
 		}
-		return "verCategoria";
+		return "verCuotas";
 	}
-	
-	@RequestMapping("/search/{nombre}")
-	public String search(@PathVariable ("nombre")  String nombre, Model model) {
-		model.addAttribute("filteredList", categoriaService.findByNombreCategoriaLike("%"+nombre+"%"));
-		return "listarCategoriaFiltered";
-	}
-		
-	
+
+
+
 
 
 }
