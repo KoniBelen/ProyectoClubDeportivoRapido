@@ -70,9 +70,9 @@ public class SocioModel {
 	
 	
 	@ManyToMany
-	@JoinTable(name= "socioCategoria", 
-	joinColumns = {@JoinColumn(name="idSocio")},
-	inverseJoinColumns = {@JoinColumn(name="idCategoria")}	)
+	@JoinTable(name= "equipoRecurso", 
+	joinColumns = {@JoinColumn(name="idRecurso")},
+	inverseJoinColumns = {@JoinColumn(name="idEquipo")}	)
 	private List<CategoriaModel> categorias;
 
 	@ManyToOne

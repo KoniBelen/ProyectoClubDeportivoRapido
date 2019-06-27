@@ -39,20 +39,20 @@ public class RecursoController {
 	
 	/*Funcionalidad Modificar*/
 	@GetMapping("/save/{id}")
-	public String showSave(@PathVariable ("id") Integer id , Model model) {
+	public String recursoGuardado(@PathVariable ("id") Integer id , Model model) {
 		model.addAttribute("listEquipo",equipoService.getAll());
 		if(id!=null && id!=0) {
 			model.addAttribute("recurso", recursoService.get(id));
 		}else {
 			model.addAttribute("recurso",new RecursoModel());
 		}
-		return "saveRecursos";
+		return "saveRecurso";
 	}
 	
 	
 	//Funcionalidad ingresar
 	@PostMapping("/save")
-	public String save(RecursoModel recurso, Model model) {
+	public String saveRecurso(RecursoModel recurso, Model model) {
 		recursoService.save(recurso);
 		return "redirect:/recurso/";
 	}

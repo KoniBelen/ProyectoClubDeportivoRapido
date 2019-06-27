@@ -23,7 +23,6 @@ public class RecursoModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_recurso")
-
 	private Integer idRecurso;
 
 	@NotNull
@@ -38,7 +37,10 @@ public class RecursoModel {
 	@Column(name="descripcion_recurso")
 	private String descripcionRecurso;
 	
-	@ManyToMany(mappedBy = "recursos")
+	@ManyToMany
+	@JoinTable(name= "equipoRecurso", 
+	joinColumns = {@JoinColumn(name="idRecurso")},
+	inverseJoinColumns = {@JoinColumn(name="idDeporte")}	)
 	private List<EquipoModel> equipoRecurso;
 
 
