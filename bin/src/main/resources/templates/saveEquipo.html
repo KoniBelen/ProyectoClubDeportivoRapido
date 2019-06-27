@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Equipos</title>
+
+<!-- Bootstrap -->
+
+<link rel="stylesheet" type="text/css" href="/css/listar.css" />
+<link rel="stylesheet"
+	href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+<script type="text/javascript"
+	src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+
+</head>
+<body>
+
+
+	<div th:insert="navbar">...</div>
+
+
+	<div class="container">
+		<h2 th:if="${equipo.getIdEquipo()==null}">Ficha ingreso nuevo equipo</h2>
+		<h2 th:if="${equipo.getIdEquipo()!=null}">Ficha modificación equipo</h2>
+		<form action="#" th:action="@{/equipo/save}" class="form-group"
+			th:object=${equipo} method="post">
+
+			<input type="hidden" th:field="*{idEquipo}">
+
+			
+
+			
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="nombreEquipo">Nombre Equipo</label> <input
+						class="form-control col-md-11" type="text"
+						th:field="*{nombreEquipo}">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="NombreEntrenador">Nombre Entrenador</label> <input
+						class="form-control col-md-11" type="text"
+						th:field="*{nombreEntrenador}">
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="nombreEncargado">Nombre Encargado</label> <input
+						class="form-control col-md-11" type="text"
+						th:field="*{nombreEncargado}">
+				</div>
+			</div>
+			
+			<!-- 
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="equipoCategoria">Agregar a Categoría</label> 
+					<select class="custom-select" multiple="multiple" size="3" th:field="*{categorias}">
+					<option th:value="${null}" th:text="|Sin categoría|" th:selected>
+					<option th:each="categoria : ${listCategorias}" th:value="${categoria.idCategoria}" th:text="|${categoria.nombreCategoria} - ${categoria.deporteCategoria.nombreDeporte}|	"></option>
+					</select>
+				</div>
+			</div>
+			
+			 -->
+			<button type="submit" class="btn btn-success">Guardar</button>
+		</form>
+	</div>
+
+
+	<div th:insert="footer"></div>
+
+</body>
+</html>

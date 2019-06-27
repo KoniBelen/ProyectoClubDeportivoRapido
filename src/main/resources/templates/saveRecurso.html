@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Socios</title>
+
+<!-- Bootstrap -->
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/listar.css}" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}" />
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+
+</head>
+<body>
+
+
+	<div th:insert="navbar">...</div>
+
+
+	<div class="container">
+		<h2 th:if="${recurso.getIdRecurso()==null}">Ingrese Recurso</h2>
+		<h2 th:if="${recurso.getIdRecurso()!=null}">Modificar Recurso</h2>
+		<form action="#" th:action="@{/recurso/save}" class="form-group"
+			th:object=${recurso} method="post">
+
+			<input type="hidden" th:field="*{idRecurso}">
+
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="nombreRecurso">Nombre Recurso</label> <input
+						class="form-control" type="text" th:field="*{nombreRecurso}">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="cantidadRecurso">Cantidad del Recurso </label> <input
+						class="form-control" type="number" th:field="*{cantidadRecurso}">
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="descripcionRecurso">Descripcion del Recurso</label> <input
+						class="form-control" type="text" th:field="*{descripcionRecurso}">
+				</div>
+			</div>
+	
+	
+			<button type="submit" class="btn btn-success">Guardar</button>
+		</form>
+	</div>
+
+
+	<div th:insert="footer"></div>
+
+</body>
+</html>

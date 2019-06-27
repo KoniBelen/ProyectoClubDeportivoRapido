@@ -56,6 +56,7 @@ public class SocioController {
 		}
 		return "saveSocio";
 	}
+
 	
 //----------------------------------------------------------------------
 // 		Guardar
@@ -67,6 +68,7 @@ public class SocioController {
 			model.addAttribute("socio", socio);
 			return "save";
 		}
+
 		socioService.save(socio);
 		return "redirect:/socio/";
 	} 

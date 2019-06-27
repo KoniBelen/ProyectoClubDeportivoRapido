@@ -9,6 +9,7 @@
 
 <!-- Bootstrap -->
 
+
 <link rel="stylesheet" type="text/css" href="/css/listar.css" />
 <link rel="stylesheet"
 	href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
@@ -17,10 +18,12 @@
 <script type="text/javascript"
 	src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
 
+
 </head>
 <body>
 
 	<div th:insert="navbar">...</div>
+
 	
 	<div class="container">
 	
@@ -34,6 +37,7 @@
 					class="container">
 					<h2>Ver Socio</h2>
 					<table id="example" class="table table-hover">
+
 						<thead>
 							<tr>
 								<th>Atributo</th>
@@ -41,12 +45,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							
+
 							<tr>
 								<th>Rut</th>
 								<td th:text="${socioBuscado.rutSocio}"></td>
 							</tr>
 							<tr>
+
 								<th>Nombre(s)</th>
 								<td th:text="${socioBuscado.nombreSocio}"></td>
 							</tr>
@@ -57,6 +62,7 @@
 							<tr>
 								<th>Apellido Materno</th>
 								<td th:text="${socioBuscado.apellidoMaterno}"></td>
+
 							</tr>
 							<tr>
 								<th>Teléfono</th>
@@ -78,8 +84,10 @@
 								<th>Género</th>
 								<td th:text="${socioBuscado.generoSocio}"></td>
 							</tr>
+
 						</tbody>
 					</table>
+
 				</div>
 			</div>
 		</div>

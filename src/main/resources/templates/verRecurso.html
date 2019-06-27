@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Ver categoría</title>
+
+<!-- Bootstrap -->
+
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/listar.css}" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}" />
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+
+
+</head>
+<body>
+
+	<div th:insert="navbar">...</div>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12">
+				<h2 th:if="${recursoBuscado == null || recursoBuscado.idRecurso==0}">No
+					se pudieron obtener los datos de los recursos</h2>
+				<div th:if="${recursoBuscado!=null && recursoBuscado.idRecurso !=0}"
+					class="container">
+					<h2>Ver Recurso</h2>
+					<table class="table table-hover table-sm">
+						<thead>
+							<tr>
+								<th>Atributo</th>
+								<th>Valor</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr>
+								<th>Nombre Recurso</th>
+								<td th:text="${recursoBuscado.nombreRecurso}"></td>
+							</tr>
+							<tr>
+								<th>Cantidad Recurso</th>
+								<td
+									th:text="${recursoBuscado.cantidadRecurso}"></td>
+							</tr>
+							<tr>
+								<th>Descripcion Recurso</th>
+								<td th:text="${recursoBuscado.descripcionRecurso}"></td>
+							</tr>
+							<tr>
+							<th>Equipo</th>
+								<td><span
+									th:each="equipo,i : ${recursoBuscado.equipoRecurso}"
+									th:utext="|${i.count}. ${equipo.nombreEquipo}-${equipo.nombreEntrenador}-${equipo.nombreEncargado} |">
+								</span></td>
+							</tr>
+
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:insert="footer"></div>
+</body>
+</html>
