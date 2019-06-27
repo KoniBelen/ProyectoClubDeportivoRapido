@@ -6,11 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.clubdeportivo2.clubdeportivo.model.DeporteModel;
-import com.clubdeportivo2.clubdeportivo.model.EquipoModel;
 import com.clubdeportivo2.clubdeportivo.model.RecursoModel;
+import com.clubdeportivo2.clubdeportivo.model.EquipoModel;
 
-
-public interface EquipoDao extends CrudRepository<EquipoModel, Integer> {
+public interface RecursoDao extends CrudRepository<RecursoModel, Integer> {
 
 }

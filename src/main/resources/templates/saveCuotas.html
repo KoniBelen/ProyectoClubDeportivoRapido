@@ -53,13 +53,16 @@
 
 			
 			<div class="form-row">
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-5">
 					<label for="socioCuota">Socio al que pertenece</label> 
 					<select class="custom-select" th:field="*{socioCuota}">
-					<option th:each="socio : ${listSocio}" th:value="${socio.idSocio}" th:text="${socio.nombreSocio}"></option>
+					<option th:value="${null}" th:text="|Elija un socio|" th:selected>
+					<option th:each="socio : ${listSocio}" th:value="${socio.idSocio}" 
+					th:text="|${socio.nombreSocio} ${socio.apellidoPaterno} - ${socio.rutSocio}"></option>
 					
 					</select>
 				</div>
+				
 			</div>
 	
 			<button type="submit" class="btn btn-success">Guardar</button>

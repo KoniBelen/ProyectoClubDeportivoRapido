@@ -48,11 +48,19 @@
 							</tr>
 							<tr>
 								<th>Monto(s)</th>
-								<td th:text="${cuotaBuscado.cuota}"></td>
+								<td th:text="${cuotaBuscado.montoCuota}"></td>
 							</tr>
 							<tr>
 								<th>Nombre socio</th>
-								<td th:text="${cuotaBuscado.idSocio.getNombreSocio()}"></td>
+								<td th:text="${cuotaBuscado.socioCuota.getNombreSocio()}"></td>
+							</tr>
+							<tr>
+								<th>Apellido Paterno</th>
+								<td th:text="${cuotaBuscado.socioCuota.getApellidoPaterno()}"></td>
+							</tr>
+							<tr>
+								<th>Rut</th>
+								<td th:text="${cuotaBuscado.socioCuota.getRutSocio()}"></td>
 							</tr>
 							
 							

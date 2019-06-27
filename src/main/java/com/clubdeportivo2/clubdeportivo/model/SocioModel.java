@@ -261,7 +261,7 @@ public class SocioModel {
 				+ ", apellidoMaterno=" + apellidoMaterno + ", apellidoPaterno=" + apellidoPaterno + ", telefonoSocio="
 				+ telefonoSocio + ", direccionSocio=" + direccionSocio + ", fechaNacimientoSocio="
 				+ fechaNacimientoSocio + ", emailSocio=" + emailSocio + ", generoSocio=" + generoSocio
-				+ ", estadoSocio=" + estadoSocio + ", idTutor=" + tutor + ", cuotas=" + cuotas + "]";
+				+ ", estadoSocio=" + estadoSocio + ", idTutor=" + tutor+ "]";
 
 	}
 

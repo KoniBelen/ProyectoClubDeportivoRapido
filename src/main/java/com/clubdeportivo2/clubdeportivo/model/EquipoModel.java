@@ -43,7 +43,13 @@ public class EquipoModel {
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")
 	private CategoriaModel categoria;
-
+	
+	@ManyToMany
+	@JoinTable(name= "equipoRecurso", 
+	joinColumns = {@JoinColumn(name="idEquipo")},
+	inverseJoinColumns = {@JoinColumn(name="idRecurso")}	)
+	private List<RecursoModel> recursos;
+	
 
 	public Integer getIdEquipo() {
 		return idEquipo;
@@ -93,6 +99,26 @@ public class EquipoModel {
 	public void setCategoria(CategoriaModel categoria) {
 		this.categoria = categoria;
 	}
+
+
+	public List<RecursoModel> getRecursos() {
+		return recursos;
+	}
+
+
+	public void setRecursos(List<RecursoModel> recursos) {
+		this.recursos = recursos;
+	}
+
+
+	@Override
+	public String toString() {
+		return "EquipoModel [idEquipo=" + idEquipo + ", nombreEquipo=" + nombreEquipo + ", nombreEntrenador="
+				+ nombreEntrenador + ", nombreEncargado=" + nombreEncargado + ", categoria=" + categoria + ", recursos="
+				+ recursos + "]";
+	}
+	
+	
 	
 	/*
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
