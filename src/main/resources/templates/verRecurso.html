@@ -41,7 +41,6 @@
 							</tr>
 						</thead>
 						<tbody>
-
 							<tr>
 								<th>Nombre Recurso</th>
 								<td th:text="${recursoBuscado.nombreRecurso}"></td>
@@ -59,7 +58,7 @@
 							<th>Equipo</th>
 								<td><span
 									th:each="equipo,i : ${recursoBuscado.equipoRecurso}"
-									th:utext="|${i.count}. ${equipo.nombreEquipo}-${equipo.nombreEntrenador}-${equipo.nombreEncargado} |">
+									th:utext="| [ ${i.count}. ${equipo.nombreEquipo}-${equipo.nombreEntrenador}-${equipo.nombreEncargado} ] |">
 								</span></td>
 							</tr>
 

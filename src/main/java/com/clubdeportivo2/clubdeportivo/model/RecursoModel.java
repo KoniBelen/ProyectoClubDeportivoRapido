@@ -46,10 +46,11 @@ public class RecursoModel {
 	@Column(name="descripcion_recurso")
 	private String descripcionRecurso;
 	
+	@NotNull(message="Campo obligatorio")
 	@ManyToMany
 	@JoinTable(name= "equipoRecurso", 
 	joinColumns = {@JoinColumn(name="idRecurso")},
-	inverseJoinColumns = {@JoinColumn(name="idDeporte")}	)
+	inverseJoinColumns = {@JoinColumn(name="idEquipo")}	)
 	private List<EquipoModel> equipoRecurso;
 
 
@@ -96,8 +97,7 @@ public class RecursoModel {
 	@Override
 	public String toString() {
 		return "RecursoModel [idRecurso=" + idRecurso + ", nombreRecurso=" + nombreRecurso + ", cantidadRecurso="
-				+ cantidadRecurso + ", descripcionRecurso=" + descripcionRecurso + ", equipoRecurso=" + equipoRecurso
-				+ "]";
+				+ cantidadRecurso + ", descripcionRecurso=" + descripcionRecurso + "]";
 	}
 	
 	
