@@ -25,6 +25,15 @@
 	<div th:insert="navbar">...</div>
 
 	<div class="container">
+		<nav aria-label="breadcrumb"><!--MIGAS DE PAN-->
+    <ol class="breadcrumb bg-white pl-0">
+      <li class="breadcrumb-item"><a  href="/">Inicio </a></li>
+      <li class="breadcrumb-item"><a  th:href="@{/socio/}">Socios </a></li>
+      <li class="breadcrumb-item active" aria-current="page"> Ver Socio</li>
+    </ol>
+  </nav><!--FIN MIGAS DE PAN-->
+	</div>
+	<div class="container">
 
 		<div class="row">
 			<div class="col-md-12">
