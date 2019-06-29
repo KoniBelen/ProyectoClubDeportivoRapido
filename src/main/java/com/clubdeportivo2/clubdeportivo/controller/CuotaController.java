@@ -1,5 +1,7 @@
 package com.clubdeportivo2.clubdeportivo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 //import org.springframework.context.annotation.Bean;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,12 +51,17 @@ public class CuotaController {
 		return "saveCuotas";
 	}
 	
+	
 
 	
 	//Funcionalidad ingresar
 	@PostMapping("/save")
-	public String save(CuotasModel cuota, Model model) {
-		//model.addAttribute("listDeporte",cuotaService.getAll());
+	public String save(@Valid @ModelAttribute("cuotas") CuotasModel cuota , BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			model.addAttribute("cuota", cuota);
+			return "saveCuota";
+		}
+
 		cuotaService.save(cuota);
 		return "redirect:/cuota/";
 	}
@@ -65,7 +73,6 @@ public class CuotaController {
 		return "redirect:/cuota/";
 		
 	}
-
 	
 	//Funcionalidad Ver
 	@GetMapping("/get/{id}")
@@ -77,6 +84,7 @@ public class CuotaController {
 		}
 		return "verCuotas";
 	}
+	
 
 
 
