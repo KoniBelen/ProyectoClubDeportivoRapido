@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.SocioService;
 import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
+import com.clubdeportivo2.clubdeportivo.model.SearchForm;
 import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
 import com.clubdeportivo2.clubdeportivo.service.DeporteService;
 
@@ -83,10 +84,13 @@ public class CategoriaController {
 		return "verCategoria";
 	}
 	
-	@RequestMapping("/search/{nombre}")
-	public String search(@PathVariable ("nombre")  String nombre, Model model) {
-		model.addAttribute("filteredList", categoriaService.findByNombreCategoriaLike("%"+nombre+"%"));
-		return "listarCategoriaFiltered";
+	
+	@GetMapping("/search")
+	public String search(@ModelAttribute SearchForm form,Model model) {
+		model.addAttribute("form", form);
+		
+		model.addAttribute("list",categoriaService.findByNombreCategoriaLike(form.getValue()));
+		return "listarCategoria";
 	}
 		
 	

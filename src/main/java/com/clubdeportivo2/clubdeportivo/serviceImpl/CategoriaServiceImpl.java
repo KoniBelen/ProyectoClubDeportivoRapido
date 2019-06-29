@@ -2,6 +2,8 @@ package com.clubdeportivo2.clubdeportivo.serviceImpl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -26,9 +28,14 @@ public class CategoriaServiceImpl extends GenericServiceImp<CategoriaModel, Inte
 
 
 	@Override
-	public List<CategoriaModel> findByNombreCategoriaLike(String nombre) {
-		return categoriaDao.findByNombreCategoriaLike(nombre);
-
+	public List<CategoriaModel> findByNombreCategoriaLike(String valor) {
+		return categoriaDao.findByNombreCategoriaLike("%"+valor+"%");
+	}
+	
+	@Override
+	@Transactional
+	public List<CategoriaModel> findByNombreCategoria(String valor) {
+		return categoriaDao.findByNombreCategoria(valor);
 	}
  
 }
