@@ -69,6 +69,8 @@ public class SocioController {
 
 	@PostMapping("/save")
 	public String save(@Valid @ModelAttribute("socio") SocioModel socio , BindingResult result, Model model) {
+		model.addAttribute("listCategorias",categoriaService.getAll());
+		model.addAttribute("listTutor", tutorService.getAll());
 		if(result.hasErrors()) {
 			model.addAttribute("socio", socio);
 			return "saveSocio";
