@@ -49,7 +49,7 @@ public class CategoriaModel {
 	@Column(name = "edad_max")
 	private int edadMax;
 	
-	@NotEmpty//(message="El genero de la categoria es requerido")
+	@NotEmpty//(message="El genero de la categoría es requerido")
 	@Column(name = "genero_categoria")
 	private String generoCategoria;	
 	
@@ -57,7 +57,7 @@ public class CategoriaModel {
 	@Column(name = "estado_categoria")
 	private boolean estadoCategoria;
 	
-	@NotNull
+	@NotNull (message="El deporte es requerido")
 	@ManyToOne
 	@JoinColumn(name = "id_deporte")
 	private DeporteModel deporteCategoria;
