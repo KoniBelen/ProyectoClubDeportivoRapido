@@ -30,6 +30,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.clubdeportivo2.clubdeportivo.Validator.ValidaRut;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -42,7 +43,7 @@ public class SocioModel {
 	private Integer idSocio; 	
 	
 	@NotEmpty(message="Campo obligatorio")
-	@Size(min=9, max=13, message="Ingrese un rut valido")
+	@ValidaRut(message="Ingrese un Rut válido")
 	@Column(name="rut_socio")
 	private String rutSocio;
 	

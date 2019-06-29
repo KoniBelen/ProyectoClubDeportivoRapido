@@ -45,7 +45,7 @@ public class SocioController {
 //----------------------------------------------------------------------
 //		Crear
 //----------------------------------------------------------------------
-@RequestMapping("/save/{id}")
+@RequestMapping("/saveSocio/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
 		model.addAttribute("listCategorias",categoriaService.getAll());
 		model.addAttribute("listTutor", tutorService.getAll());
@@ -61,11 +61,11 @@ public class SocioController {
 // 		Guardar
 //----------------------------------------------------------------------	
 
-	@PostMapping("/save")
+	@PostMapping("/saveSocio")
 	public String save(@Valid @ModelAttribute("socio") SocioModel socio , BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			model.addAttribute("socio", socio);
-			return "save";
+			return "saveSocio";
 		}
 		socioService.save(socio);
 		return "redirect:/socio/";
