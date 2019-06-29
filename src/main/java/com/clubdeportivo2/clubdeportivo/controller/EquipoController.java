@@ -1,10 +1,14 @@
 package com.clubdeportivo2.clubdeportivo.controller;
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +46,12 @@ public class EquipoController {
 		return "saveEquipo";
 	}
 	@PostMapping("/save")
-	public String save(EquipoModel equipo , Model model) {
+	public String save(@Valid @ModelAttribute("equipo") EquipoModel equipo , BindingResult result, Model model) {
+		model.addAttribute("listCategoria",categoriaService.getAll());
+		if(result.hasErrors()) {
+			model.addAttribute("equipo",equipo);
+			return "saveEquipo";
+		}
 		equipoService.save(equipo);
 		return "redirect:/equipo/";
 	}
