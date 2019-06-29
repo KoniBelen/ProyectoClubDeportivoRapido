@@ -1,5 +1,7 @@
 package com.clubdeportivo2.clubdeportivo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 //import org.springframework.context.annotation.Bean;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,10 +48,21 @@ public class CategoriaController {
 		}
 		return "saveCategoria";
 	}
-	
+	/*
 	@PostMapping("/save")
 	public String save(CategoriaModel categoria, Model model) {
 		model.addAttribute("listDeporte",deporteService.getAll());
+		categoriaService.save(categoria);
+		return "redirect:/categoria/";
+	}*/
+	
+	@PostMapping("/save")
+	public String save(@Valid @ModelAttribute("categoria") CategoriaModel categoria, BindingResult result, Model model) {
+		model.addAttribute("listDeporte",deporteService.getAll());
+		if(result.hasErrors()) {
+			model.addAttribute("categoria", categoria);
+			return "saveCategoria";
+		}
 		categoriaService.save(categoria);
 		return "redirect:/categoria/";
 	}
