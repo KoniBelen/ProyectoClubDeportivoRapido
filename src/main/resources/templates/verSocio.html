@@ -125,7 +125,7 @@
 								</tr>
 								<tr>
 									<th>Fecha Nacimiento</th>
-									<td th:text="${socioBuscado.tutor.fechaNacimientoTutor}"></td>
+									<td th:text="${#dates.format(socioBuscado.tutor.fechaNacimientoTutor,'dd-MM-yyyy')}" ></td>
 								</tr>
 						</table>
 

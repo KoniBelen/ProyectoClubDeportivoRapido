@@ -1,6 +1,7 @@
 package com.clubdeportivo2.clubdeportivo.model;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="tutor")
@@ -50,6 +53,7 @@ public class TutorModel {
 	
 	@NotNull
 	@Column(name= "f_nacimiento")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimientoTutor;
 	
 	@NotNull
