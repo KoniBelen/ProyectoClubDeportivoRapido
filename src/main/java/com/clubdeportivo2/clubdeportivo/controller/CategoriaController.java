@@ -35,7 +35,8 @@ public class CategoriaController {
 	
 	@RequestMapping("/")
 	public String index(Model model) {
-		model.addAttribute("list",categoriaService.getAll()); 
+		model.addAttribute("list",categoriaService.getAll());
+		model.addAttribute("form", new SearchForm());
 		return "listarCategoria";
 	}
 	
