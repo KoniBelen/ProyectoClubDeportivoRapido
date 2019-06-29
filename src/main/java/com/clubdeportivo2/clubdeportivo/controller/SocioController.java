@@ -13,16 +13,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clubdeportivo2.clubdeportivo.commons.GenericService;
 import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
+import com.clubdeportivo2.clubdeportivo.model.SearchForm;
 import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
 import com.clubdeportivo2.clubdeportivo.service.SocioService;
 import com.clubdeportivo2.clubdeportivo.service.TutorService;
+
+import javassist.expr.NewArray;
 
 
 @Controller
@@ -39,6 +43,7 @@ public class SocioController {
 	@RequestMapping("/")
 	public String index(Model model) {
 		model.addAttribute("list",socioService.getAll()); 
+		model.addAttribute("form", new SearchForm());
 		return "listarSocio";
 	}
 	
@@ -96,9 +101,12 @@ public class SocioController {
 		return "verSocio";
 	}
 
-	@GetMapping("/search/{valor}")
-	public String search(@PathVariable("valor") String valor,Model model) {
-		model.addAttribute("filteredList",socioService.findByNombreSocio(valor));
-		return "listarSocioFiltered";
+	@GetMapping("/search")
+	public String search(@ModelAttribute SearchForm form,Model model) {
+		model.addAttribute("form", form);
+		
+		model.addAttribute("list",socioService.findByNombreSocioLike(form.getValue()));
+		return "listarSocio";
 	}
+
 }

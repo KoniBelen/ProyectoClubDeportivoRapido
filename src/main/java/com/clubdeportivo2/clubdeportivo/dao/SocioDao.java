@@ -13,6 +13,5 @@ public interface SocioDao extends CrudRepository<SocioModel, Integer> {
 
 	List<SocioModel> findByNombreSocioLike(String valor);
 	
-	@Query(value = "SELECT s FROM socio s WHERE s.nombre_socio = ?1", nativeQuery=true)
-	List<SocioModel> findByNombreSocio (String nombreSocio);
+	List<SocioModel> findByNombreSocio(String nombreSocio);
 }
