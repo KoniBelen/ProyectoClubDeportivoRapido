@@ -265,18 +265,4 @@ public class SocioModel {
 
 	}
 
-
-	
-
-	
-
-
-
-	
-	
-	
-	
-
-
-	
 }

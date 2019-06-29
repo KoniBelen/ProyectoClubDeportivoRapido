@@ -35,20 +35,32 @@
 			<div class="form-row">
 				<div class="form-group col-md-4">
 					<label for="nombreRecurso">Nombre Recurso</label> <input
-						class="form-control" type="text" th:field="*{nombreRecurso}">
+						class="form-control" type="text" th:field="*{nombreRecurso}"
+						th:errorclass="'form-control alert-danger'"> 
+						<small class="form-text text-danger"
+						th:if="${#fields.hasErrors('nombreRecurso')}"
+						th:errors="*{nombreRecurso}"></small>
 				</div>
 				<div class="form-group col-md-4">
 					<label for="cantidadRecurso">Cantidad del Recurso </label> <input
-						class="form-control" type="number" th:field="*{cantidadRecurso}">
+						class="form-control" type="number" th:field="*{cantidadRecurso}"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('cantidadRecurso')}"
+						th:errors="*{cantidadRecurso}"></small>
 				</div>
 
 				<div class="form-group col-md-4">
 					<label for="descripcionRecurso">Descripcion del Recurso</label> <input
-						class="form-control" type="text" th:field="*{descripcionRecurso}">
+						class="form-control" type="text" th:field="*{descripcionRecurso}"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('descripcionRecurso')}"
+						th:errors="*{descripcionRecurso}"></small>
 				</div>
 			</div>
-	
-	
+
+
 			<button type="submit" class="btn btn-success">Guardar</button>
 		</form>
 	</div>

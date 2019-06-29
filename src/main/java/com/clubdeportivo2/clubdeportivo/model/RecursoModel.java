@@ -9,9 +9,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import java.sql.Date;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,15 +29,20 @@ public class RecursoModel {
 	@Column(name = "id_recurso")
 	private Integer idRecurso;
 
-	@NotNull
+	@NotEmpty(message ="Campo obligatorio")
+	@Size(min=4, max=150, message="Ingrese un recurso entre 4 a 150 caracteres")//150 caracteres
 	@Column(name="nombre_recurso")
 	private String nombreRecurso;
 	
-	@NotNull
+	@NotNull(message="Campo obligatorio")
+	//@Size(min=0, max=99999, message="La cantidad de los recursos no puede ser inferior a 0")
+	@Min(value =0, message="Los recursos deben ser mayor o igual a 0")
+	@Max(value =4294967 , message="Numero ingresado no valido")
 	@Column(name="cantidad_recurso")
 	private int cantidadRecurso;
 	
-	@NotNull
+
+	@Size(max=200, message="Descripcion demasiado larga")
 	@Column(name="descripcion_recurso")
 	private String descripcionRecurso;
 	
@@ -90,21 +99,6 @@ public class RecursoModel {
 				+ cantidadRecurso + ", descripcionRecurso=" + descripcionRecurso + ", equipoRecurso=" + equipoRecurso
 				+ "]";
 	}
-
-
-	
-
-
-	
-
-	
-	
-
-
-	
-
-	
-	
 	
 	
 }

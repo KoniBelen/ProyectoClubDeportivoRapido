@@ -1,5 +1,7 @@
 package com.clubdeportivo2.clubdeportivo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 //import org.springframework.context.annotation.Bean;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,9 +55,13 @@ public class RecursoController {
 	
 	//Funcionalidad ingresar
 	@PostMapping("/save")
-	public String saveRecurso(RecursoModel recurso, Model model) {
-		recursoService.save(recurso);
-		return "redirect:/recurso/";
+	public String saveRecurso(@Valid @ModelAttribute("recurso") RecursoModel recurso, BindingResult result, Model model) {
+		  if(result.hasErrors()) {
+	            model.addAttribute("recurso", recurso);
+	            return "saveRecurso";
+	        }
+	        recursoService.save(recurso);
+	        return "redirect:/recurso/";
 	}
 	
 	//Funcionalidad eliminar
