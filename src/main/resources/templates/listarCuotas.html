@@ -55,7 +55,6 @@
 							
 							<th>Fecha Cuota</th>
 							<th>Monto</th>
-
 							<th>Nombre Socio</th>
 							<th>Apellido Paterno</th>
 							<th>Rut</th>
@@ -64,7 +63,7 @@
 					</thead>
 					<tbody>
 						<tr th:each="cuotas : ${listCuotas}">
-							<td th:text="${cuotas.fechaDePago}"></td>
+							<td th:text="${#dates.format(cuotas.fechaDePago,'dd-MM-yyyy')}" ></td>
 							<td th:text="${cuotas.montoCuota}"></td>
 							<td th:text="${cuotas.socioCuota.getNombreSocio()}"></td>
 							<td th:text="${cuotas.socioCuota.getApellidoPaterno()}"></td>

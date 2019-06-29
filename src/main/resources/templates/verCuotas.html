@@ -44,7 +44,7 @@
 							
 							<tr>
 								<th>Fecha de Pago</th>
-								<td th:text="${cuotaBuscado.fechaDePago}"></td>
+								<td th:text="${#dates.format(cuotaBuscado.fechaDePago,'dd-MM-yyyy')}" ></td>
 							</tr>
 							<tr>
 								<th>Monto(s)</th>
