@@ -114,7 +114,7 @@ public class EquipoModel {
 	@Override
 	public String toString() {
 		return "EquipoModel [idEquipo=" + idEquipo + ", nombreEquipo=" + nombreEquipo + ", nombreEntrenador="
-				+ nombreEntrenador + ", nombreEncargado=" + nombreEncargado + ", categoria=" + categoria + ", recursos="
+				+ nombreEntrenador + ", nombreEncargado=" + nombreEncargado + ", recursos="
 				+ recursos + "]";
 	}
 	

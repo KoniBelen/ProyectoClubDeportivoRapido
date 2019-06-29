@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Ver Equipos </title>
+
+<!-- Bootstrap -->
+
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/listar.css}" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}" />
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+
+
+</head>
+<body>
+
+	<div th:insert="navbar">...</div>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12">
+				<h2 th:if="${equipoBuscado == null || equipoBuscado.idEquipo==0}">No
+					se pudieron obtener los datos del equipo</h2>
+				<div th:if="${equipoBuscado!=null && equipoBuscado.idEquipo !=0}"
+					class="container">
+					<h2>Ver Equipo</h2>
+					<table class="table table-hover table-sm">
+						<thead>
+							<tr>
+								<th>Atributo</th>
+								<th>Valor</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr>
+								<th>Nombre Equipo</th>
+								<td
+									th:text="|${equipoBuscado.nombreEquipo}|"></td>
+							</tr>
+							<tr>
+								<th>Nombre Entrenador</th>
+								<td
+									th:text="|${equipoBuscado.nombreEntrenador}|"></td>
+							</tr>
+							<tr>
+								<th>Nombre Encargado</th>
+								<td
+									th:text="|${equipoBuscado.nombreEncargado}|"></td>
+							</tr>
+							<tr>
+								<th>Categoría</th>
+								<td
+									th:text="|${equipoBuscado.categoria.nombreCategoria} - ${equipoBuscado.categoria.deporteCategoria.nombreDeporte}|"></td>
+							</tr>
+							<tr>
+								<th>Recursos</th>
+								<td><span
+									th:each="recurso,i : ${equipoBuscado.recursos}"
+									th:utext="| [ ${i.count}. ${recurso.nombreRecurso} - ${recurso.descripcionRecurso} ] |">
+								</span></td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:insert="footer"></div>
+</body>
+</html>

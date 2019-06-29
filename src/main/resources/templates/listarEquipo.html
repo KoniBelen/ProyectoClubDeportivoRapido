@@ -65,21 +65,21 @@
 								<td th:text="${equipo.nombreEquipo}"></td>
 								<td th:text="${equipo.nombreEntrenador}"></td>
 								<td th:text="${equipo.nombreEncargado}"></td>
-								<td th:text="${equipo.categoria}"></td>
+								<td th:text="|${equipo.categoria.nombreCategoria} - ${equipo.categoria.deporteCategoria.nombreDeporte}|"></td>
 
 
 								<td><a type="button" class="btn btn-danger"
 									th:href="@{/equipo/delete/{id}(id=${equipo.idEquipo})}"> <i
-										class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
-								</td>
-								<td><a type="button" class="btn btn-warning"
+											class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
+									<a type="button" class="btn btn-warning"
 									th:href="@{/equipo/save/{id}(id=${equipo.idEquipo})}"> <i
 										class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i>
-								</a></td>
-								<td><a type="button" class="btn btn-info"
+									</a>
+									<a type="button" class="btn btn-info"
 									th:href="@{/equipo/get/{id}(id=${equipo.idEquipo})}"> <i
 										class="fas fa-eye d-xl-flex justify-content-xl-center align-items-xl-center"></i>
-								</a></td>
+									</a>
+								</td>
 							</tr>
 
 						</tbody>
