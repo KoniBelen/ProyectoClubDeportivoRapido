@@ -30,6 +30,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.clubdeportivo2.clubdeportivo.Validator.ValidaEdadSocio;
+import com.clubdeportivo2.clubdeportivo.Validator.ValidaMayorEdad;
 import com.clubdeportivo2.clubdeportivo.Validator.ValidaRut;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -72,6 +74,8 @@ public class SocioModel {
 	@Column(name="direccion_socio")
 	private String direccionSocio;
 	
+	@ValidaMayorEdad(message = "El socio requiere de un tutor")
+	@ValidaEdadSocio(message = "El Socio debe ser mayor de tres años")
 	@NotNull(message="Campo obligatorio (*)")
 	@Past(message="La fecha de nacimiento debe ser anterior a la fecha de hoy")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
