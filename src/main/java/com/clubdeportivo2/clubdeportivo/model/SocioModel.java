@@ -74,7 +74,7 @@ public class SocioModel {
 	
 	@NotNull(message="Campo obligatorio")
 	@Past(message="La fecha de nacimiento debe ser anterior a la fecha de hoy")
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name= "f_nacimiento")
 	private Date fechaNacimientoSocio;
 	

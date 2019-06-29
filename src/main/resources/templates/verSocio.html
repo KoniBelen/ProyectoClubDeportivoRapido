@@ -65,7 +65,7 @@
 							</tr>
 							<tr>
 								<th>Fecha Nacimiento</th>
-								<td th:text="${socioBuscado.fechaNacimientoSocio}"></td>
+								<td th:text="${#dates.format(socioBuscado.fechaNacimientoSocio,'dd-MM-yyyy')}" ></td>
 							</tr>
 							<tr>
 								<th>Género</th>
