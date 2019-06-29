@@ -40,12 +40,18 @@
 			<div class="form-row">
 				<div class="form-group col-md-5">
 					<label for="nombreCategoria"> Nombre</label> <input
-						class="form-control col-md-11" type="text" th:field="*{nombreCategoria}">
+						class="form-control col-md-11" type="text" th:field="*{nombreCategoria}" th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombreCategoria')}"
+								th:errors="*{nombreCategoria}"></small>
 				</div>
 				<div class="form-group col-md-7">
 					<label for="descripcionCategoria">Descripción</label> <input
 						class="form-control col-md-11" type="text"
-						th:field="*{descripcionCategoria}">
+						th:field="*{descripcionCategoria}"th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('descripcionCategoria')}"
+								th:errors="*{descripcionCategoria}"></small>
 				</div>
 
 			</div>
@@ -53,18 +59,25 @@
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="generoCategoria">Género</label>  
-						<select class="custom-select" th:field="*{generoCategoria}">
+
+					<select class="custom-select" th:field="*{generoCategoria}"th:errorclass="'form-control alert-danger'">
 						<option th:value="${null}" th:text="|Elegir género|"></option>
 						<option th:value="Femenino" th:text="Femenino"></option>
 						<option th:value="Masculino" th:text="Masculino"></option>
 					
 						
 					</select>
+					<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('generoCategoria')}"
+								th:errors="*{generoCategoria}"></small>
 				</div>
 
 				<div class="form-group col-md-6">
 					<label for="edadMax">Edad Máxima Permitida</label> <input
-						class="form-control" type="number" th:field="*{edadMax}">
+						class="form-control" type="number" th:field="*{edadMax}" th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('edadMax')}"
+								th:errors="*{edadMax}"></small>
 				</div>
 			</div>
 			<div class="form-row">

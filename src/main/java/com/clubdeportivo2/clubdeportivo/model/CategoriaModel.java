@@ -16,7 +16,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="categoria")
@@ -28,19 +34,22 @@ public class CategoriaModel {
 	@Column(name = "id_categoria")
 	private Integer idCategoria;
 	
-	@NotNull
+	@NotEmpty(message= "EL nombre es requerido")
+	@Size(min=3, max=150, message="El nombre de la categoria debe tener al menos 3 caracteres")
 	@Column(name = "nombre_categoria")
 	private String nombreCategoria;
 	
-	@NotNull
+	@NotEmpty//(message="La descripción de la categoria es requerida")
 	@Column(name = "descripcion_categoria")
 	private String descripcionCategoria;
 	
-	@NotNull
+	@NotNull//(message = "El valor de la edad máxima es requerido")
+	@DecimalMax(value = "150", message = "La edad máxima de la categoria es 150")
+	@DecimalMin(value = "4", message = "La edad minima de la categoria es 4")
 	@Column(name = "edad_max")
 	private int edadMax;
 	
-	@NotNull
+	@NotEmpty//(message="El genero de la categoria es requerido")
 	@Column(name = "genero_categoria")
 	private String generoCategoria;	
 	
