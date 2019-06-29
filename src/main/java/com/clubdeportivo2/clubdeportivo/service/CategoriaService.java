@@ -12,6 +12,8 @@ public interface CategoriaService extends GenericService<CategoriaModel, Integer
 
 {
 
-	List<CategoriaModel> findByNombreCategoriaLike(String string);
+	List<CategoriaModel> findByNombreCategoria(String valor);
+
+	List<CategoriaModel> findByNombreCategoriaLike(String valor);
 
 }
