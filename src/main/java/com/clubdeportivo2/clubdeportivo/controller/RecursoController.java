@@ -56,7 +56,8 @@ public class RecursoController {
 	//Funcionalidad ingresar
 	@PostMapping("/save")
 	public String saveRecurso(@Valid @ModelAttribute("recurso") RecursoModel recurso, BindingResult result, Model model) {
-		  if(result.hasErrors()) {
+		model.addAttribute("listEquipo",equipoService.getAll());  
+		if(result.hasErrors()) {
 	            model.addAttribute("recurso", recurso);
 	            return "saveRecurso";
 	        }
