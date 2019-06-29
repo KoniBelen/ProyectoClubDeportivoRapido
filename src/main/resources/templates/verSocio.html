@@ -75,7 +75,7 @@
 								<th>Categorías</th>
 								<td><span
 									th:each="categoria,i : ${socioBuscado.categorias}"
-									th:utext="|${i.count}. ${categoria.nombreCategoria}-${categoria.deporteCategoria.nombreDeporte} |">
+									th:text='| [ ${i.count}. ${categoria.nombreCategoria} - ${categoria.deporteCategoria.nombreDeporte} ] |'>
 								</span></td>
 							</tr>
 

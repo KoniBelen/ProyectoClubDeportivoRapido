@@ -93,11 +93,10 @@ public class SocioModel {
 	private boolean estadoSocio;
 	
 	
-	
 	@ManyToMany
-	@JoinTable(name= "equipoRecurso", 
-	joinColumns = {@JoinColumn(name="idRecurso")},
-	inverseJoinColumns = {@JoinColumn(name="idEquipo")}	)
+	@JoinTable(name= "socioCategoria", 
+	joinColumns = {@JoinColumn(name="idSocio")},
+	inverseJoinColumns = {@JoinColumn(name="idCategoria")})
 	private List<CategoriaModel> categorias;
 
 	@ManyToOne
