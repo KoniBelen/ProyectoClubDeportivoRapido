@@ -54,6 +54,7 @@
 				<div class="form-group col-md-6">
 					<label for="generoCategoria">Género</label>  
 						<select class="custom-select" th:field="*{generoCategoria}">
+						<option th:value="${null}" th:text="|Elegir género|"></option>
 						<option th:value="Femenino" th:text="Femenino"></option>
 						<option th:value="Masculino" th:text="Masculino"></option>
 					
@@ -71,6 +72,7 @@
 					<label for="deporteCategoria">Deporte al que pertenece</label> 
 					<select class="custom-select" th:field="*{deporteCategoria}">
 					<option th:if="${listDeporte.isEmpty()}" th:value=${null} th:text="|Agregue un deporte|" ></option>
+					<option th:unless="${listDeporte.isEmpty()}" th:value="${null}" th:text="|Elegir deporte|"></option>
 					<option th:each="deporte : ${listDeporte}" th:value="${deporte.idDeporte}" th:text="${deporte.nombreDeporte}"></option>
 					</select>
 				</div>
