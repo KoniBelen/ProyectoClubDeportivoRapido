@@ -54,18 +54,16 @@
 				</div>
 			</div>
 			
-			<!-- 
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="equipoCategoria">Agregar a Categoría</label> 
-					<select class="custom-select" multiple="multiple" size="3" th:field="*{categorias}">
-					<option th:value="${null}" th:text="|Sin categoría|" th:selected>
-					<option th:each="categoria : ${listCategorias}" th:value="${categoria.idCategoria}" th:text="|${categoria.nombreCategoria} - ${categoria.deporteCategoria.nombreDeporte}|	"></option>
+					<label for="categoria">Categoría a la que pertenece</label> 
+					<select class="custom-select" th:field="*{categoria}">
+					<option th:if="${listCategoria.isEmpty()}" th:value=${null} th:text="|Agregue una categoría|" ></option>
+					<option th:unless="${listCategoria.isEmpty()}" th:value=${null} th:text="|Elija una categoría|" ></option>
+					<option th:each="categoria : ${listCategoria}" th:value="${categoria.idCategoria}" th:text="|${categoria.nombreCategoria} - ${categoria.deporteCategoria.nombreDeporte}|"></option>
 					</select>
 				</div>
 			</div>
-			
-			 -->
 			<button type="submit" class="btn btn-success">Guardar</button>
 		</form>
 	</div>
