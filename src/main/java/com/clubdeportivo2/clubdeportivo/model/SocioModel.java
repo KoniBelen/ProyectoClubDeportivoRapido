@@ -42,56 +42,55 @@ public class SocioModel {
 	@Column(name="id_socio")
 	private Integer idSocio; 	
 	
-	@NotEmpty(message="Campo obligatorio")
+	@NotEmpty(message="Campo obligatorio (*)")
 	@ValidaRut(message="Ingrese un Rut válido")
 	@Column(name="rut_socio")
 	private String rutSocio;
 	
-	@NotEmpty(message="Campo obligatorio")
-	@Size(min=3,max=150, message="Ingrese un nombre entre 3 y 150 caracteres")
+	@NotEmpty(message="Campo obligatorio (*)")
+	@Size(min=3,max=150, message="Ingrese un nombre de mínimo 3 caracteres")
 	@Column(name="nombre_socio")
 	private String nombreSocio;
 	
-	@NotEmpty(message="Campo obligatorio")
-	@Size(min=3,max=150, message="Ingrese un apellido entre 3 y 150 caracteres")
+	@NotEmpty(message="Campo obligatorio (*)")
+	@Size(min=3,max=150, message="Ingrese un apellido de mínimo 3 caracteres")
 	@Column(name="apellido_paterno")
 	private String apellidoPaterno;
 	
-	@NotEmpty(message="Campo obligatorio")
-	@Size(min=3,max=150, message="Ingrese un apellido entre 3 y 150 caracteres")
+	@NotEmpty(message="Campo obligatorio (*)")
+	@Size(min=3,max=150, message="Ingrese un apellido de mínimo 3 caracteres")
 	@Column(name="apellido_materno")
 	private String apellidoMaterno;
 	
-	@NotNull(message="Campo obligatorio")
+	@NotNull(message="Campo obligatorio (*)")
 	@Range(min=100000000, max=999999999 , message="Ingrese un número de teléfono de 9 digitos")
 	@Column(name="telefono_socio")
 	private long telefonoSocio;
 	
-	@NotEmpty(message="Campo obligatorio")
-	@Size(min=3,max=150, message="Ingrese una dirección entre 3 y 150 caracteres")
+	@NotEmpty(message="Campo obligatorio (*)")
+	@Size(min=3,max=150, message="Ingrese una dirección de mínimo 3 caracteres")
 	@Column(name="direccion_socio")
 	private String direccionSocio;
 	
-	@NotNull(message="Campo obligatorio")
+	@NotNull(message="Campo obligatorio (*)")
 	@Past(message="La fecha de nacimiento debe ser anterior a la fecha de hoy")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name= "f_nacimiento")
 	private Date fechaNacimientoSocio;
 	
-	@NotEmpty(message="Campo obligatorio")
+	@NotEmpty(message="Campo obligatorio (*)")
 	@Email(message="Formato email incorrecto xxxx@xxx.xxx")
 	//@Pattern(regexp="^([a-zA-Z0-9\\-\\.\\_]+)'+'(\\@)([a-zA-Z0-9\\-\\.]+)'+'(\\.)([a-zA-Z]{2,4})$", message="Formato email xxxx@xxx.xxx")
 	@Column(name="email_socio")
 	private String emailSocio;
 	
-	//@NotNull
+	@NotNull(message="Campo obligatorio (*)")
 	@Column(name="genero_socio")
 	private String generoSocio;
 	
 	//@NotNull
 	@Column(name="estado_socio")
 	private boolean estadoSocio;
-	
 	
 	@ManyToMany
 	@JoinTable(name= "socioCategoria", 
