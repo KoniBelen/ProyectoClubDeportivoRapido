@@ -56,10 +56,11 @@ public class CuotaController {
 	
 	//Funcionalidad ingresar
 	@PostMapping("/save")
-	public String save(@Valid @ModelAttribute("cuotas") CuotasModel cuota , BindingResult result, Model model) {
+	public String save(@Valid @ModelAttribute("cuota") CuotasModel cuota , BindingResult result, Model model) {
+		model.addAttribute("listSocio", socioService.getAll());
 		if(result.hasErrors()) {
 			model.addAttribute("cuota", cuota);
-			return "saveCuota";
+			return "saveCuotas";
 		}
 
 		cuotaService.save(cuota);

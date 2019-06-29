@@ -14,7 +14,7 @@ import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Column;
 
 @Entity
@@ -40,10 +40,11 @@ public class CuotasModel {
 	@Column(name="monto_cuota")
 	private int montoCuota;
 	
-	
+	@NotNull(message="Campo obligatorio (*)")
 	@ManyToOne
 	@JoinColumn(name="id_socio")
 	private SocioModel socioCuota;
+	
 	
 	
 
