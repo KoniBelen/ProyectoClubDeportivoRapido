@@ -81,12 +81,6 @@ public class SocioController {
 	} 
 //----------------------------------------------------------------------	
 	
-	/*@GetMapping("/search/{valor}")
-	public String search(@PathVariable("valor") String valor,Model model) {
-		model.addAttribute("filteredList",socioService.findByNombreSocioLike("%"+valor+"%"));
-		return "listarSocioFiltered";
-	}*/
-	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
 		socioService.delete(id);
