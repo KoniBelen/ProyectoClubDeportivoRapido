@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Club Deportivo Rapido</title>
+
+<!-- Bootstrap -->
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/listar.css}" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.1.0/css/bootstrap.min.css}" />
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+
+</head>
+<body>
+<div th:insert="navbar">...</div>		
+	
+
+	<div class="container py-4">
+
+		<div class="card border-primary text-center">
+			<div class="card-header">Inicio de sesion</div>
+			<div class="card-body">
+
+				<form th:action="@{/login}" method="post">
+
+					<div class="form-group col-sm-6">
+						<input type="text" name="username" id="username"
+							class="form-control" placeholder="usuario@mail.com" autofocus required />
+					</div>
+
+					<div class="form-group col-sm-6">
+						<input type="password" name="password" id="password"
+							class="form-control" placeholder="Password" required />
+					</div>
+
+					<div class="form-group col-sm-6">
+						<input type="submit" class="btn btn-lg btn-primary btn-block"
+							value="Log in" />
+					</div>
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+				</form>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+<div th:insert="footer"></div>
+</body>
+</html>
