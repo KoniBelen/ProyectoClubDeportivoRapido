@@ -33,7 +33,8 @@
 			<div class="form-row">
 				<div class="form-group col-md-4">
 					<label for="nombreTutor">Nombres</label> <input
-						class="form-control" type="text" th:field="*{nombreTutor}">
+						class="form-control" type="text" 
+						th:field="*{nombreTutor}">
 				</div>
 				<div class="form-group col-md-4">
 					<label for="apellidoPaternoTutor">Apellido Paterno</label> <input
@@ -48,19 +49,29 @@
 			<div class="form-row">
 				<div class="form-group col-md-3">
 					<label for="rutTutor"> Rut</label> <input class="form-control"
-						type="text" th:field="*{rutTutor}">
+						type="text" th:field="*{rutTutor}" th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+						   th:if="${#fields.hasErrors('rutTutor')}"
+						   th:errors="*{rutTutor}"></small>
 				</div>
 
 
 				<div class="form-group col-md-3">
 					<label for="telefonoTutor">Teléfono</label> <input
-						class="form-control" type="number" th:field="*{telefonoTutor}">
+						class="form-control" type="number" 
+						th:field="*{telefonoTutor}" th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+						   th:if="${#fields.hasErrors('telefonoTutor')}"
+						   th:errors="*{telefonoTutor}"></small>
 				</div>
 
 				<div class="form-group col-md-3">
 					<label for="fechaNacimientoTutor">Fecha Nacimiento</label> <input
 						class="form-control" type="date"
-						th:field="*{fechaNacimientoTutor}">
+						th:field="*{fechaNacimientoTutor}" th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+						   th:if="${#fields.hasErrors('fechaNacimientoTutor')}"
+						   th:errors="*{fechaNacimientoTutor}"></small>
 				</div>
 			</div>
 
@@ -69,12 +80,19 @@
 
 				<div class="form-group col-md-5">
 					<label for="emailTutor">Dirección</label> <input
-						class="form-control" type="text" th:field="*{direccionTutor}">
+						class="form-control" type="text" 
+						th:field="*{direccionTutor}" th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+						   th:if="${#fields.hasErrors('direccionTutor')}"
+						   th:errors="*{direccionTutor}"></small>
 				</div>
 
 				<div class="form-group col-md-5">
 					<label for="emailTutor">Email</label> <input class="form-control"
-						type="email" th:field="*{emailTutor}">
+						type="email" th:field="*{emailTutor}" th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+						   th:if="${#fields.hasErrors('emailTutor')}"
+						   th:errors="*{emailTutor}"></small>
 				</div>
 				
 
