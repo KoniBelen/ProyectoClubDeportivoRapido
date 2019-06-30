@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.clubdeportivo2.clubdeportivo.model.EquipoModel;
+import com.clubdeportivo2.clubdeportivo.model.SearchForm;
 import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
 import com.clubdeportivo2.clubdeportivo.service.EquipoService;
 
@@ -30,14 +31,15 @@ public class EquipoController {
 	
 	@RequestMapping("/")
 	public String index(Model model) {
-		model.addAttribute("list",equipoService.getAll()); 
+		model.addAttribute("listEquipo",equipoService.getAll());
+		model.addAttribute("form", new SearchForm());
 		return "listarEquipo";
 	}
 	
 	@GetMapping("/save/{id}")
 	public String showSave(@PathVariable ("id") Integer id , Model model) {
 		model.addAttribute("listCategoria",categoriaService.getAll());
-		model.addAttribute("listEquipos",equipoService.getAll());
+		model.addAttribute("listEquipo",equipoService.getAll());
 		if(id!=null && id!=0) {
 			model.addAttribute("equipo", equipoService.get(id));
 		}else {
@@ -56,13 +58,13 @@ public class EquipoController {
 		return "redirect:/equipo/";
 	}
 	
-	/*
-	@GetMapping("/search/{valor}")
-	public String search(@PathVariable("valor") String valor,Model model) {
-		model.addAttribute("filteredList",equipoService.findByNombreEquipoLike("%"+valor+"%"));
-		return "listarEquipoFiltered";
+	@GetMapping("/search")
+	public String search(@ModelAttribute SearchForm form,Model model) {
+		model.addAttribute("form", form);
+		
+		model.addAttribute("listEquipo",equipoService.findByNombreEquipoLike(form.getValue()));
+		return "listarEquipo";
 	}
-	*/
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, Model model) {
