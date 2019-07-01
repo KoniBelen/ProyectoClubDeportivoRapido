@@ -25,7 +25,8 @@
 
 
 	<div class="container">
-		<h2>Ficha ingreso nueva cuota</h2>
+		<h2 th:if="${cuota.getIdCuota()==null}">Ficha ingreso nueva cuota</h2>
+		<h2 th:if="${cuota.getIdCuota()!=null}">Ficha modificación cuota</h2>
 		<form action="#" th:action="@{/cuota/save}" class="form-group"
 			th:object=${cuota} method="post">
 
