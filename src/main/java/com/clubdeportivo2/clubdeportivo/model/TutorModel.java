@@ -41,15 +41,15 @@ public class TutorModel {
 	@Column(name="rut_tutor")
 	private String rutTutor;
 	
-	@NotEmpty
+	@NotEmpty(message="Campo obligatorio (*)")
 	@Column(name="nombre_tutor")
 	private String nombreTutor;
 	
-	@NotEmpty
+	@NotEmpty(message="Campo obligatorio (*)")
 	@Column(name="apellido_materno")
 	private String apellidoMaternoTutor;
 	
-	@NotEmpty
+	@NotEmpty(message="Campo obligatorio (*)")
 	@Column(name="apellido_paterno")
 	private String apellidoPaternoTutor;
 	
