@@ -34,16 +34,27 @@
 				<div class="form-group col-md-4">
 					<label for="nombreTutor">Nombres</label> <input
 						class="form-control" type="text" 
-						th:field="*{nombreTutor}">
+						th:field="*{nombreTutor}"th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+						   th:if="${#fields.hasErrors('nombreTutor')}"
+						   th:errors="*{nombreTutor}"></small>
 				</div>
 				<div class="form-group col-md-4">
 					<label for="apellidoPaternoTutor">Apellido Paterno</label> <input
-						class="form-control" type="text" th:field="*{apellidoPaternoTutor}">
+						class="form-control" type="text" 
+						th:field="*{apellidoPaternoTutor}"th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+						   th:if="${#fields.hasErrors('apellidoPaternoTutor')}"
+						   th:errors="*{apellidoPaternoTutor}"></small>
 				</div>
 
 				<div class="form-group col-md-4">
 					<label for="apellidoMaternoTutor">Apellido Materno</label> <input
-						class="form-control" type="text" th:field="*{apellidoMaternoTutor}">
+						class="form-control" type="text" 
+						th:field="*{apellidoMaternoTutor}"th:errorclass="'form-control alert-danger'">
+						<small class="form-text text-danger"
+						   th:if="${#fields.hasErrors('apellidoMaternoTutor')}"
+						   th:errors="*{apellidoMaternoTutor}"></small>
 				</div>
 			</div>
 			<div class="form-row">
