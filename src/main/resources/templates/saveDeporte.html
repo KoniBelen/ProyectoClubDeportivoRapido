@@ -23,10 +23,22 @@
 
 
 	<div th:insert="navbar">...</div>
+	
+	<div class="container">
+		<nav aria-label="breadcrumb"><!--MIGAS DE PAN-->
+    <ol class="breadcrumb bg-white pl-0">
+      <li class="breadcrumb-item"><a  href="/">Inicio </a></li>
+      <li class="breadcrumb-item"><a  th:href="@{/deporte/}">Deportes </a></li>
+      <li class="breadcrumb-item active" aria-current="page" th:if="${deporte.getIdDeporte()==null}">Ficha Ingreso</li>
+       <li class="breadcrumb-item active" aria-current="page" th:if="${deporte.getIdDeporte()!=null}">Ficha Modificación</li>
+    </ol>
+  </nav><!--FIN MIGAS DE PAN-->
+	</div>
 
 
 	<div class="container">
-		<h2>Ficha ingreso nuevo deporte</h2>
+		<h2 th:if="${deporte.getIdDeporte()==null}">Ficha ingreso nuevo deporte</h2>
+		<h2 th:if="${deporte.getIdDeporte()!=null}">Ficha modificación deporte</h2>
 		<form action="#" th:action="@{/deporte/save}" class="form-group"
 			th:object=${deporte} method="post">
 

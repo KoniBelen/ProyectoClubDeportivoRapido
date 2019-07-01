@@ -22,6 +22,17 @@
 
 
 	<div th:insert="navbar">...</div>
+	
+	<div class="container">
+		<nav aria-label="breadcrumb"><!--MIGAS DE PAN-->
+    <ol class="breadcrumb bg-white pl-0">
+      <li class="breadcrumb-item"><a  href="/">Inicio </a></li>
+      <li class="breadcrumb-item"><a  th:href="@{/recurso/}">Recursos </a></li>
+      <li class="breadcrumb-item active" aria-current="page" th:if="${recurso.getIdRecurso()==null}">Ficha Ingreso</li>
+       <li class="breadcrumb-item active" aria-current="page" th:if="${recurso.getIdRecurso()!=null}">Ficha Modificación</li>
+    </ol>
+  </nav><!--FIN MIGAS DE PAN-->
+	</div>
 
 
 	<div class="container">
