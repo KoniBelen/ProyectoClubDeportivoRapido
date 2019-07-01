@@ -23,6 +23,16 @@
 
 	<div th:insert="navbar">...</div>
 
+<div class="container">
+		<nav aria-label="breadcrumb"><!--MIGAS DE PAN-->
+    <ol class="breadcrumb bg-white pl-0">
+      <li class="breadcrumb-item"><a  href="/">Inicio </a></li>
+      <li class="breadcrumb-item"><a  th:href="@{/cuota/}">Cuotas </a></li>
+      <li class="breadcrumb-item active" aria-current="page" th:if="${cuota.getIdCuota()==null}" >Ficha Ingreso</li>
+      <li class="breadcrumb-item active" aria-current="page" th:if="${cuota.getIdCuota()!=null}">Ficha Modificación</li>
+    </ol>
+  </nav><!--FIN MIGAS DE PAN-->
+	</div>
 
 	<div class="container">
 		<h2 th:if="${cuota.getIdCuota()==null}">Ficha ingreso nueva cuota</h2>
