@@ -14,9 +14,18 @@ import javax.persistence.Id;
 //import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.clubdeportivo2.clubdeportivo.Validator.ValidaEdadSocio;
+import com.clubdeportivo2.clubdeportivo.Validator.ValidaMayorEdad;
+import com.clubdeportivo2.clubdeportivo.Validator.ValidaRut;
 
 @Entity
 @Table(name="tutor")
@@ -27,36 +36,42 @@ public class TutorModel {
 	@Column(name="id_tutor")
 	private Integer idTutor;
 	
-	@NotNull
+	@NotEmpty(message="Campo obligatorio (*)")
+	@ValidaRut(message="Ingrese un Rut válido")
 	@Column(name="rut_tutor")
 	private String rutTutor;
 	
-	@NotNull
+	@NotEmpty(message="Campo obligatorio (*)")
 	@Column(name="nombre_tutor")
 	private String nombreTutor;
 	
-	@NotNull
+	@NotEmpty(message="Campo obligatorio (*)")
 	@Column(name="apellido_materno")
 	private String apellidoMaternoTutor;
 	
-	@NotNull
+	@NotEmpty(message="Campo obligatorio (*)")
 	@Column(name="apellido_paterno")
 	private String apellidoPaternoTutor;
 	
-	@NotNull
+	@NotNull(message="Campo obligatorio (*)")
+	@Range(min=100000000, max=999999999 , message="Ingrese un número de teléfono de 9 digitos")
 	@Column(name="telefono_tutor")
 	private Long telefonoTutor;
 	
-	@NotNull
+	@NotEmpty(message="Campo obligatorio (*)")
+	@Size(min=3,max=150, message="Ingrese una dirección de mínimo 3 caracteres")
 	@Column(name="direccion_tutor")
 	private String direccionTutor;
 	
-	@NotNull
+	@NotNull(message="Campo obligatorio (*)")
+	@ValidaMayorEdad(message = "El tutor debe ser mayor de edad")
+	@Past(message="La fecha de nacimiento debe ser anterior a la fecha de hoy")
 	@Column(name= "f_nacimiento")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaNacimientoTutor;
 	
-	@NotNull
+	@NotEmpty(message="Campo obligatorio (*)")
+	@Email(message="Formato email incorrecto xxxx@xxx.xxx")
 	@Column(name="email_tutor")
 	private String emailTutor;
 	
