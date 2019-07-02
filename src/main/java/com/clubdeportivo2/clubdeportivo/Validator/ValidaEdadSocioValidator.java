@@ -14,6 +14,7 @@ public class ValidaEdadSocioValidator implements ConstraintValidator<ValidaEdadS
 
 	@Override
 	public boolean isValid(Date fechaNacimientoSocio,ConstraintValidatorContext context) {
+		if(fechaNacimientoSocio==null) return false;
 		Calendar fechaNac = Calendar.getInstance();
 		fechaNac.setTime(fechaNacimientoSocio);
 		if(calcularEdad(fechaNac)<3)    return false;

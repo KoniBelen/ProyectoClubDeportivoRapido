@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
 import com.clubdeportivo2.clubdeportivo.model.DeporteModel;
+import com.clubdeportivo2.clubdeportivo.model.SearchForm;
 import com.clubdeportivo2.clubdeportivo.service.DeporteService;
 
 @Controller
@@ -25,6 +26,7 @@ public class DeporteController {
 	@RequestMapping("/")
 	public String index(Model model) {
 		model.addAttribute("listDeporte", deporteService.getAll());
+		model.addAttribute("form", new SearchForm());
 		return "listarDeporte";
 	}
 
@@ -55,11 +57,12 @@ public class DeporteController {
 		return "redirect:/deporte/";
 	}
 
-	@GetMapping("/search/{valor}")
-	public String search(@PathVariable("valor") String valor,Model model) {
-		model.addAttribute("filteredList",deporteService.findByNombreDeporteLike(valor));
+	@GetMapping("/search")
+	public String search(@ModelAttribute SearchForm form,Model model) {
+		model.addAttribute("form", form);
 		
-		return "listarDeporteFiltered";
+		model.addAttribute("listDeporte",deporteService.findByNombreDeporteLike(form.getValue()));
+		return "listarDeporte";
 	}
 	
 	@GetMapping("/get/{id}")

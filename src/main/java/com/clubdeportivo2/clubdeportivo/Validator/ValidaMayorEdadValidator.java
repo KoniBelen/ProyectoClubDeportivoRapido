@@ -12,9 +12,10 @@ import javax.validation.ConstraintValidatorContext;
 public class ValidaMayorEdadValidator implements ConstraintValidator<ValidaMayorEdad, Date>{
 
 	@Override
-	public boolean isValid(Date fechaNacimientoSocio,ConstraintValidatorContext context) {
+	public boolean isValid(Date fechaNacimiento,ConstraintValidatorContext context) {
+		if(fechaNacimiento==null) return false;
 		Calendar fechaNac = Calendar.getInstance();
-		fechaNac.setTime(fechaNacimientoSocio);
+		fechaNac.setTime(fechaNacimiento);
 		if(calcularEdad(fechaNac)<18)    return false;
 		return true;
 	}
