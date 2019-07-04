@@ -53,7 +53,7 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
+		<dependency> 
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
@@ -74,11 +74,11 @@
 			<artifactId>jquery</artifactId>
 			<version>3.3.1-1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.webjars.npm</groupId>
-			<artifactId>popper.js</artifactId>
-			<version>1.13.0</version>
-		</dependency>
+	<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>popper.js</artifactId>
+    <version>1.15.0</version>
+</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
