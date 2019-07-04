@@ -21,77 +21,112 @@
 <body>
 
 	<div th:include="navbar">&nbsp;</div>
-	
+
 	<div class="container">
-		<nav aria-label="breadcrumb"><!--MIGAS DE PAN-->
-    <ol class="breadcrumb bg-white pl-0">
-      <li class="breadcrumb-item"><a  href="/">Inicio </a></li>
-      <li class="breadcrumb-item active" aria-current="page">Deportes</li>
-    </ol>
-  </nav><!--FIN MIGAS DE PAN-->
+		<nav aria-label="breadcrumb">
+			<!--MIGAS DE PAN-->
+			<ol class="breadcrumb bg-white pl-0">
+				<li class="breadcrumb-item"><a href="/">Inicio </a></li>
+				<li class="breadcrumb-item active" aria-current="page">Deportes</li>
+			</ol>
+		</nav>
+		<!--FIN MIGAS DE PAN-->
 	</div>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
-				
-			</div>
-			
+			<div class="col-md-4"></div>
+
 			<div class="col-md-4 d-flex justify-content-end align-self-start">
-				<form class="form-group" method="get" th:object="${form}" th:action="@{/deporte/search}">
-					<label>Buscar:</label> 
-					<input class="search-field" type="search" th:field="*{value}"> 
-					<button class="btn" type="submit" value="search"><i class="fas fa-search"></i></button>
-					
+				<form class="form-group" method="get" th:object="${form}"
+					th:action="@{/deporte/search}">
+					<label>Buscar:</label> <input class="search-field" type="search"
+						th:field="*{value}">
+					<button class="btn" type="submit" value="search">
+						<i class="fas fa-search"></i>
+					</button>
+
 				</form>
 			</div>
-			<div class="col-md-4 d-flex justify-content-center align-items-center">
-				<a 	class="btn d-flex align-items-center align-self-center btnAgregar"
-					id="btnAgregar"
-					role="button" href="save/0">Ingresar
-					Deporte&nbsp; <i class="fas fa-user-plus"></i></a>
+			<div
+				class="col-md-4 d-flex justify-content-center align-items-center">
+				<a
+					class="btn d-flex align-items-center align-self-center btnAgregar"
+					id="btnAgregar" role="button" href="save/0">Ingresar
+					Deporte&nbsp; <i class="fas fa-user-plus"></i>
+				</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-			<h2 th:if="${listDeporte.isEmpty()}">No hay deportes, agregue alguno</h2>
-			<div th:if="${!listDeporte.isEmpty()}">
-				<h2>Listado de deportes</h2>
-				<table id="example" class="table table-bordered table-hover">
-					<thead>
-						<tr>
-							
-							<th>Nombre</th>
-							<th>Acción</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="deporte : ${listDeporte}">
-							<td th:text="${deporte.nombreDeporte}"></td>
-							
-							<td><a type="button" class="btn btn-danger" th:href="@{/deporte/delete/{id}(id=${deporte.idDeporte})}">
-									<i
-										class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i>
-								</a>
-								<a type="button" class="btn btn-warning" th:href="@{/deporte/save/{id}(id=${deporte.idDeporte})}">
-									<i
-										class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i>
-								</a>
-								<a type="button" class="btn btn-info"th:href="@{/deporte/get/{id}(id=${deporte.idDeporte})}">
-									<i
-										class="fas fa-eye d-xl-flex justify-content-xl-center align-items-xl-center"></i>
-								</a>
+				<h2 th:if="${listDeporte.isEmpty()}">No hay deportes, agregue
+					alguno</h2>
+				<div th:if="${!listDeporte.isEmpty()}">
+					<h2>Listado de deportes</h2>
+					<table id="example" class="table table-bordered table-hover">
+						<thead>
+							<tr>
+
+								<th>Nombre</th>
+								<th>Acción</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="deporte : ${listDeporte}">
+								<td th:text="${deporte.nombreDeporte}"></td>
+
+								<td>
+									<a type="button" class="btn btn-danger"
+									data-toggle="modal" data-target="#exampleModalCenter"
+									th:attr="data-target='#modal-warning'+${deporte.idDeporte}">
+										<i class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a> 
+										
+									<a type="button" class="btn btn-warning"
+									th:href="@{/deporte/save/{id}(id=${deporte.idDeporte})}"> <i
+										class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
+
+									<a type="button" class="btn btn-info"
+									th:href="@{/deporte/get/{id}(id=${deporte.idDeporte})}"> <i
+										class="fas fa-eye d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
 								</td>
-						</tr>
-						
-					</tbody>
-				</table>
+							</tr>
+
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
 	
+	<div th:each="deporte : ${listDeporte}">
+		<!-- Modal -->
+		<div class="modal fade" th:id="modal-warning+${deporte.idDeporte}"
+			tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body"
+						th:text="|¿Estas seguro que deseas eliminar este deporte ${deporte.nombreDeporte} ?|">
 
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<a type="button"
+							th:href="@{/deporte/delete/{id}(id=${deporte.idDeporte})}"
+							class="btn btn-primary">Eliminar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div th:insert="footer"></div>
 
