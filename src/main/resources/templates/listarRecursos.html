@@ -64,6 +64,7 @@
 								<th>Recurso</th>
 								<th>Cantidad</th>
 								<th>Descripcion</th>
+								<th>Equipos</th>
 								<th>Acción</th>
 							</tr>
 						</thead>
@@ -72,7 +73,10 @@
 								<td th:text="${recurso.nombreRecurso}"></td>
 								<td th:text="${recurso.cantidadRecurso}"></td>
 								<td th:text="${recurso.descripcionRecurso}"></td>
-						
+								<td><span
+									th:each="equipo,i : ${recurso.equipoRecurso}"
+									th:utext="| [ ${i.count}. ${equipo.NombreEquipo}] |">
+								</span></td>
 								<td>
 								<a type="button" class="btn btn-danger"
 									th:href="@{/recurso/delete/{id}(id=${recurso.idRecurso})}"> <i
