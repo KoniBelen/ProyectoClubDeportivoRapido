@@ -42,14 +42,17 @@ public class TutorModel {
 	private String rutTutor;
 	
 	@NotEmpty(message="Campo obligatorio (*)")
+	@Size(min=3,max=150, message="Ingrese un nombre de mínimo 3 caracteres")
 	@Column(name="nombre_tutor")
 	private String nombreTutor;
 	
 	@NotEmpty(message="Campo obligatorio (*)")
+	@Size(min=3,max=150, message="Ingrese un nombre de mínimo 3 caracteres")
 	@Column(name="apellido_materno")
 	private String apellidoMaternoTutor;
 	
 	@NotEmpty(message="Campo obligatorio (*)")
+	@Size(min=3,max=150, message="Ingrese un nombre de mínimo 3 caracteres")
 	@Column(name="apellido_paterno")
 	private String apellidoPaternoTutor;
 	
