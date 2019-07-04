@@ -70,11 +70,12 @@
 						th:errors="*{descripcionRecurso}"></small>
 				</div>
 				<div class="form-group col-md-3">
-					<label for="equipoRecurso">Equipos asociado al Recurso</label>
+					<label for="equipoRecurso">Equipos asociados al Recurso</label>
 					 
-					<select class="custom-select" th:field="*{equipoRecurso}" th:errorclass="'form-control alert-danger'">
+					<select class="custom-select" th:field="*{equipoRecurso}" multiple="multiple" size="3" th:errorclass="'form-control alert-danger'">
 					<option th:if="${listEquipo.isEmpty()}" th:value=${null} th:text="|Agregue un equipo|" ></option>
-					<option th:unless="${listEquipo.isEmpty()}" th:value="${null}" th:text="|Elegir equipo|"></option>
+					<option th:unless="${listEquipo.isEmpty()}" th:value="${null}" th:text="|Sin equipo|"></option>
+					
 					<option th:each="equipo : ${listEquipo}" th:value="${equipo.idEquipo}" th:text="|${equipo.nombreEquipo} - ${equipo.nombreEncargado}|"></option>
 					</select>
 						 <small

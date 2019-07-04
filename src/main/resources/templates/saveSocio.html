@@ -135,8 +135,7 @@
 							th:field="*{estadoSocio}">
 					</div>
 				
-				<!-- FALTA AGREGAR LA CONDICION PARA QUE EL BOTÓN APAREZCA CUANDO SEA MENOR DE EDAD por ahora aparece cuando edita-->
-				<div th:if="${socio.getIdSocio()!=null}" class="col-md-4  d-flex justify-content-center align-items-right">
+				<div th:if="${#fields.hasErrors('fechaNacimientoSocio') && socio.fechaNacimiento!=null}" class="col-md-4  d-flex justify-content-center align-items-right">
 					
 					<div class="form-group col-md-9">
 						<label>Agregar tutor</label> <select class="custom-select" th:field="*{tutor}">
@@ -149,7 +148,7 @@
 					
 					<div class="col-md-3  d-flex justify-content-center align-items-right">
 						<a class="btn btnAgregar align-self-center" id="btnAgregar"
-							role="button" th:href="@{/tutor/save/{id}(id=${socio.idSocio})}">&nbsp;
+							role="button" th:href="@{/tutor/save/{id}(id=${socio})}">&nbsp;
 							<i class="fas fa-user-plus"></i>
 						</a>
 					</div>
