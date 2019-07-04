@@ -26,13 +26,13 @@ public class RecursoServiceImpl extends GenericServiceImp<RecursoModel, Integer>
 
 	@Override
 	public List<RecursoModel> findByNombreRecurso(String valor) {
-		return recursoDao.findByNombreRecursoLike("%"+valor+"$");
+		return recursoDao.findByNombreRecursoLike(valor);
 	}
 
 	@Override
 	public List<RecursoModel> findByNombreRecursoLike(String valor) {
 		// TODO Auto-generated method stub
-		return recursoDao.findByNombreRecursoLike(valor);	}
+		return recursoDao.findByNombreRecursoLike("%"+valor+"%");	}
 
 
 

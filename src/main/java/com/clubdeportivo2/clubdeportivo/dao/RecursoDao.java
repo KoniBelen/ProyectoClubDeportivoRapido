@@ -14,5 +14,5 @@ public interface RecursoDao extends CrudRepository<RecursoModel, Integer> {
 
 	List<RecursoModel> findByNombreRecursoLike(String valor);
 	
-	List<RecursoModel> findByNombreRecurso(String nombreSocio);
+	List<RecursoModel> findByNombreRecurso(String nombreRecurso);
 }
