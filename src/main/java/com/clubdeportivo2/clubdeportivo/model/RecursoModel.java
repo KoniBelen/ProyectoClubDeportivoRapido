@@ -46,7 +46,7 @@ public class RecursoModel {
 	@Column(name="descripcion_recurso")
 	private String descripcionRecurso;
 	
-	@NotNull(message="Campo obligatorio")
+	
 	@ManyToMany
 	@JoinTable(name= "equipoRecurso", 
 	joinColumns = {@JoinColumn(name="idRecurso")},
