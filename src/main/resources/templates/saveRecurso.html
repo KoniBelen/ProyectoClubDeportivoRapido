@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Socios</title>
+<title>Recurso</title>
 
 <!-- Bootstrap -->
 
@@ -22,6 +22,17 @@
 
 
 	<div th:insert="navbar">...</div>
+	
+	<div class="container">
+		<nav aria-label="breadcrumb"><!--MIGAS DE PAN-->
+    <ol class="breadcrumb bg-white pl-0">
+      <li class="breadcrumb-item"><a  href="/">Inicio </a></li>
+      <li class="breadcrumb-item"><a  th:href="@{/recurso/}">Recursos </a></li>
+      <li class="breadcrumb-item active" aria-current="page" th:if="${recurso.getIdRecurso()==null}">Ficha Ingreso</li>
+       <li class="breadcrumb-item active" aria-current="page" th:if="${recurso.getIdRecurso()!=null}">Ficha Modificación</li>
+    </ol>
+  </nav><!--FIN MIGAS DE PAN-->
+	</div>
 
 
 	<div class="container">
@@ -33,7 +44,7 @@
 			<input type="hidden" th:field="*{idRecurso}">
 
 			<div class="form-row">
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-3">
 					<label for="nombreRecurso">Nombre Recurso</label> <input
 						class="form-control" type="text" th:field="*{nombreRecurso}"
 						th:errorclass="'form-control alert-danger'"> 
@@ -41,7 +52,7 @@
 						th:if="${#fields.hasErrors('nombreRecurso')}"
 						th:errors="*{nombreRecurso}"></small>
 				</div>
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-2">
 					<label for="cantidadRecurso">Cantidad del Recurso </label> <input
 						class="form-control" type="number" th:field="*{cantidadRecurso}"
 						th:errorclass="'form-control alert-danger'"> <small
@@ -57,6 +68,19 @@
 						class="form-text text-danger"
 						th:if="${#fields.hasErrors('descripcionRecurso')}"
 						th:errors="*{descripcionRecurso}"></small>
+				</div>
+				<div class="form-group col-md-3">
+					<label for="equipoRecurso">Equipos asociado al Recurso</label>
+					 
+					<select class="custom-select" th:field="*{equipoRecurso}" th:errorclass="'form-control alert-danger'">
+					<option th:if="${listEquipo.isEmpty()}" th:value=${null} th:text="|Agregue un equipo|" ></option>
+					<option th:unless="${listEquipo.isEmpty()}" th:value="${null}" th:text="|Elegir equipo|"></option>
+					<option th:each="equipo : ${listEquipo}" th:value="${equipo.idEquipo}" th:text="|${equipo.nombreEquipo} - ${equipo.nombreEncargado}|"></option>
+					</select>
+						 <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('equipoRecurso')}"
+						th:errors="*{equipoRecurso}"></small>
 				</div>
 			</div>
 

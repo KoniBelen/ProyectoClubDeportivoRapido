@@ -1,7 +1,8 @@
 package com.clubdeportivo2.clubdeportivo.serviceImpl;
 
 import java.util.List;
-import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -24,9 +25,14 @@ public class DeporteServiceImpl extends GenericServiceImp<DeporteModel, Integer>
 	}
 
 	@Override
-	public List<DeporteModel> findByNombreDeporteLike(String nombre) {
-		
-		return deporteDao.findByNombreDeporte(nombre);
+	public List<DeporteModel> findByNombreDeporteLike(String valor) {
+		return deporteDao.findByNombreDeporteLike("%"+valor+"%");
+	}
+	
+	@Override
+	@Transactional
+	public List<DeporteModel> findByNombreDeporte(String valor) {
+		return deporteDao.findByNombreDeporte(valor);
 	}
 
 

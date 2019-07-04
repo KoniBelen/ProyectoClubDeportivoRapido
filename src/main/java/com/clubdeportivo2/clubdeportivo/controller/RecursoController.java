@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.clubdeportivo2.clubdeportivo.model.EquipoModel;
 import com.clubdeportivo2.clubdeportivo.service.EquipoService;
 import com.clubdeportivo2.clubdeportivo.model.RecursoModel;
+import com.clubdeportivo2.clubdeportivo.model.SearchForm;
 import com.clubdeportivo2.clubdeportivo.service.RecursoService;
 
 
@@ -37,6 +38,7 @@ public class RecursoController {
 	@RequestMapping("/")
 	public String index(Model model) {
 		model.addAttribute("listRecursos",recursoService.getAll()); 
+		model.addAttribute("form", new SearchForm());
 		return "listarRecursos";
 	}
 	
@@ -56,7 +58,8 @@ public class RecursoController {
 	//Funcionalidad ingresar
 	@PostMapping("/save")
 	public String saveRecurso(@Valid @ModelAttribute("recurso") RecursoModel recurso, BindingResult result, Model model) {
-		  if(result.hasErrors()) {
+		model.addAttribute("listEquipo",equipoService.getAll());  
+		if(result.hasErrors()) {
 	            model.addAttribute("recurso", recurso);
 	            return "saveRecurso";
 	        }
@@ -84,6 +87,14 @@ public class RecursoController {
 	}
 
 
+	//Funcionalidad Buscar
+	@GetMapping("/searchrecurso")
+	public String search(@ModelAttribute SearchForm form,Model model) {
+		model.addAttribute("form", form);
+		
+		model.addAttribute("listRecursos", recursoService.findByNombreRecursoLike(form.getValue()));
+		return "listarRecursos";
+	}
 
 
 }

@@ -35,7 +35,7 @@ public class SocioServiceImpl extends GenericServiceImp<SocioModel, Integer> imp
 
 	@Override
 	public List<SocioModel> findByNombreSocioLike(String valor) {
-		return socioDao.findByNombreSocioLike(valor);
+		return socioDao.findByNombreSocioLike("%"+valor+"%");
 	}
 	
 	@Override

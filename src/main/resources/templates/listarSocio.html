@@ -22,18 +22,27 @@
 
 	<div th:include="navbar">&nbsp;</div>
 
+<div class="container">
+		<nav aria-label="breadcrumb"><!--MIGAS DE PAN-->
+    <ol class="breadcrumb bg-white pl-0">
+      <li class="breadcrumb-item"><a  href="/">Inicio </a></li>
+      <li class="breadcrumb-item active" aria-current="page">Socios</li>
+    </ol>
+  </nav><!--FIN MIGAS DE PAN-->
+	</div>
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4"></div>
 
 			<div class="col-md-4 d-flex justify-content-end align-self-start">
-				<form class="form-group">
-					Buscar: <input class="search-field" type="search"> 
-					<a th:href="@{/socio/search/{valor}(valor=${valor})}" type="button" >	  
-						<i class="fas fa-search"></i>
-					</a>
+				<form class="form-group" method="get" th:object="${form}" th:action="@{/socio/search}">
+					<label>Buscar:</label> 
+					<input class="search-field" type="search" th:field="*{value}"> 
+					<button class="btn" type="submit" value="search"><i class="fas fa-search"></i></button>				
 				</form>
 			</div>
+			
 			<div
 				class="col-md-4 d-flex justify-content-center align-items-center">
 				<a

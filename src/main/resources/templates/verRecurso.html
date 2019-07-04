@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Ver categoría</title>
+<title>Ver recursos</title>
 
 <!-- Bootstrap -->
 
@@ -23,6 +23,16 @@
 <body>
 
 	<div th:insert="navbar">...</div>
+	
+	<div class="container">
+		<nav aria-label="breadcrumb"><!--MIGAS DE PAN-->
+    <ol class="breadcrumb bg-white pl-0">
+      <li class="breadcrumb-item"><a  href="/">Inicio </a></li>
+      <li class="breadcrumb-item"><a  th:href="@{/recurso/}">Recursos </a></li>
+      <li class="breadcrumb-item active" aria-current="page"> Ver Recurso</li>
+    </ol>
+  </nav><!--FIN MIGAS DE PAN-->
+	</div>
 
 	<div class="container">
 
@@ -41,7 +51,6 @@
 							</tr>
 						</thead>
 						<tbody>
-
 							<tr>
 								<th>Nombre Recurso</th>
 								<td th:text="${recursoBuscado.nombreRecurso}"></td>
@@ -59,7 +68,7 @@
 							<th>Equipo</th>
 								<td><span
 									th:each="equipo,i : ${recursoBuscado.equipoRecurso}"
-									th:utext="|${i.count}. ${equipo.nombreEquipo}-${equipo.nombreEntrenador}-${equipo.nombreEncargado} |">
+									th:utext="| [ ${i.count}. ${equipo.nombreEquipo}-${equipo.nombreEntrenador}-${equipo.nombreEncargado} ] |">
 								</span></td>
 							</tr>
 

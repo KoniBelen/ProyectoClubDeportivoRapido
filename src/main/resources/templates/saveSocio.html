@@ -22,7 +22,17 @@
 
 
 	<div th:insert="navbar">...</div>
-
+	<div class="container">
+		<nav aria-label="breadcrumb"><!--MIGAS DE PAN-->
+    <ol class="breadcrumb bg-white pl-0">
+      <li class="breadcrumb-item"><a  href="/">Inicio </a></li>
+      <li class="breadcrumb-item"><a  th:href="@{/socio/}">Socios </a></li>
+      <li class="breadcrumb-item active" aria-current="page" th:if="${socio.getIdSocio()==null}">Ficha Ingreso</li>
+       <li class="breadcrumb-item active" aria-current="page" th:if="${socio.getIdSocio()!=null}">Ficha Modificación</li>
+    </ol>
+  </nav><!--FIN MIGAS DE PAN-->
+	</div>
+	
 
 	<div class="container">
 		<h2 th:if="${socio.getIdSocio()==null}">Ficha ingreso nuevo socio</h2>
@@ -69,13 +79,16 @@
 				</div>
 
 				<div class="form-group col-md-3">
-					<label for="generoSocio">Género</label> <select
-						class="custom-select form-control" th:field="*{generoSocio}">
-						<option value="null">Elija una opción</option>
-						<option value="Femenino">Femenino</option>
-						<option value="Masculino">Masculino</option>
-						<option value="Otro">Otro</option>
+					<label for="generoSocio">Género</label>
+					 <select class="custom-select form-control" th:field="*{generoSocio}" th:errorclass="'form-control alert-danger'">
+						<option value="${null}" th:text="|Elija una opción|"></option>
+						<option value="Femenino" th:text="Femenino"></option>
+						<option value="Masculino" th:text="Masculino"></option>
+						<option value="Otro" th:text="Otro"></option>
 					</select>
+					<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('generoSocio')}"
+								th:errors="*{generoSocio}"></small>
 				</div>
 
 				<div class="form-group col-md-3">
