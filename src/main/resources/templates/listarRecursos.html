@@ -69,7 +69,8 @@
 
 								<th>Recurso</th>
 								<th>Cantidad</th>
-								<th>Descripcion</th>
+								<th>Descripción</th>
+								<th>Equipos</th>
 								<th>Acción</th>
 							</tr>
 						</thead>
@@ -79,12 +80,21 @@
 								<td th:text="${recurso.cantidadRecurso}"></td>
 								<td th:text="${recurso.descripcionRecurso}"></td>
 
+
 								<td>
 								<a type="button" class="btn btn-danger"
 									data-toggle="modal" data-target="#exampleModalCenter"
 									th:attr="data-target='#modal-warning'+${recurso.idRecurso}">
 										<i class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a> 
 								
+
+								<td><span
+									th:each="equipo,i : ${recurso.equipoRecurso}"
+									th:utext="| [ ${i.count}. ${equipo.NombreEquipo}] |">
+								</span></td>
+								<td>
+								
+
 								<a type="button" class="btn btn-warning"
 									th:href="@{/recurso/save/{id}(id=${recurso.idRecurso})}"> <i
 										class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
