@@ -79,30 +79,23 @@
 								<td th:text="${recurso.nombreRecurso}"></td>
 								<td th:text="${recurso.cantidadRecurso}"></td>
 								<td th:text="${recurso.descripcionRecurso}"></td>
-
-
-								<td>
-								
-								
+							
 
 								<td><span
 									th:each="equipo,i : ${recurso.equipoRecurso}"
 									th:utext="| [ ${i.count}. ${equipo.NombreEquipo}] |">
 								</span></td>
 								<td>
-								<a type="button" class="btn btn-danger"
-									data-toggle="modal" data-target="#exampleModalCenter"
-									th:attr="data-target='#modal-warning'+${recurso.idRecurso}">
+									<a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"
+										th:attr="data-target='#modal-warning'+${recurso.idRecurso}">
 										<i class="far fa-trash-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a> 
-
-								<a type="button" class="btn btn-warning"
-									th:href="@{/recurso/save/{id}(id=${recurso.idRecurso})}"> <i
-										class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
-										 
-								<a type="button" class="btn btn-info"
-									th:href="@{/recurso/get/{id}(id=${recurso.idRecurso})}"> <i
-										class="fas fa-eye d-xl-flex justify-content-xl-center align-items-xl-center"></i>
-								</a></td>
+	
+									 <a type="button" class="btn btn-warning" th:href="@{/recurso/save/{id}(id=${recurso.idRecurso})}"> 
+									 <i	class="fas fa-pencil-alt d-xl-flex justify-content-xl-center align-items-xl-center"></i></a> 
+									
+									<a type="button" class="btn btn-info" th:href="@{/recurso/get/{id}(id=${recurso.idRecurso})}"> 
+									<i class="fas fa-eye d-xl-flex justify-content-xl-center align-items-xl-center"></i></a>
+								</td>
 							</tr>
 
 						</tbody>
@@ -112,7 +105,7 @@
 		</div>
 	</div>
 
-	<div th:each="recurso : ${listRecursos}">
+<div th:each="recurso : ${listRecursos}">
 		<!-- Modal -->
 		<div class="modal fade" th:id="modal-warning+${recurso.idRecurso}"
 			tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -127,7 +120,7 @@
 						</button>
 					</div>
 					<div class="modal-body"
-						th:text="|¿Estas seguro que deseas eliminar el recurso ${recurso.nombreRecurso} ?|">
+						th:text="|¿Estas seguro que deseas eliminar el Recurso ${recurso.nombreRecurso} ?|">
 
 					</div>
 					<div class="modal-footer">
