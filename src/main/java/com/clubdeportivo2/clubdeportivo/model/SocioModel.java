@@ -74,7 +74,7 @@ public class SocioModel {
 	@Column(name="direccion_socio")
 	private String direccionSocio;
 	
-	@ValidaMayorEdad(message = "El socio requiere de un tutor")
+	//@ValidaMayorEdad(message = "El socio requiere de un tutor")
 	@ValidaEdadSocio(message = "El Socio debe ser mayor de tres años")
 	@NotNull(message="Campo obligatorio (*)")
 	@Past(message="La fecha de nacimiento debe ser anterior a la fecha de hoy")
