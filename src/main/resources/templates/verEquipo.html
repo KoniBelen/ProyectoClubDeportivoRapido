@@ -72,12 +72,31 @@
 								<td
 									th:text="|${equipoBuscado.categoria.nombreCategoria} - ${equipoBuscado.categoria.deporteCategoria.nombreDeporte}|"></td>
 							</tr>
+						
+
+						</tbody>
+					</table>
+					
+					<h3 th:text="|Ver recursos del Equipo ' ${equipoBuscado.nombreEquipo}'|"></h3>
+
+					<table class="table table-hover table-sm">
+						<thead>
 							<tr>
-								<th>Recursos</th>
-								<td><span
-									th:each="recurso,i : ${equipoBuscado.recursos}"
-									th:utext="| [ ${i.count}. ${recurso.nombreRecurso} - ${recurso.descripcionRecurso} ] |">
-								</span></td>
+								<th>#</th>
+								<th>Recurso</th>
+								<th>Cantidad</th>
+								<th>Descripcion</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="recurso,i : ${equipoBuscado.recursos}">
+								<td th:text="${i.count}"></td>
+								<td th:text="${recurso.nombreRecurso}"></td>
+								<td th:text="${recurso.cantidadRecurso}"></td>
+								<td th:text="${recurso.descripcionRecurso}"></td>
+						
+								
 							</tr>
 
 						</tbody>

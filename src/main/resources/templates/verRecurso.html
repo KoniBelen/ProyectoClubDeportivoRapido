@@ -43,7 +43,7 @@
 				<div th:if="${recursoBuscado!=null && recursoBuscado.idRecurso !=0}"
 					class="container">
 					<h2>Ver Recurso</h2>
-					<table class="table table-hover table-sm">
+					<table class="table table-hover table-sm ">
 						<thead>
 							<tr>
 								<th>Atributo</th>
@@ -68,7 +68,7 @@
 							<th>Equipo</th>
 								<td><span
 									th:each="equipo,i : ${recursoBuscado.equipoRecurso}"
-									th:utext="| [ ${i.count}. ${equipo.nombreEquipo}-${equipo.nombreEntrenador}-${equipo.nombreEncargado} ] |">
+									th:utext="| [ ${i.count}. ${equipo.nombreEquipo}-${equipo.nombreEncargado} ] |">
 								</span></td>
 							</tr>
 
