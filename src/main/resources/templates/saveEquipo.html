@@ -80,7 +80,7 @@
 					<select class="custom-select" th:field="*{categoria}" th:errorclass="'form-control alert-danger'">
 					<option th:if="${listCategoria.isEmpty()}" th:value=${null} th:text="|Agregue una categoría|" ></option>
 					<option th:unless="${listCategoria.isEmpty()}" th:value=${null} th:text="|Elija una categoría|" ></option>
-					<option th:each="categoria : ${listCategoria}" th:value="${categoria.idCategoria}" th:text="|${categoria.nombreCategoria} - ${categoria.deporteCategoria.nombreDeporte}|"></option>
+					<option th:each="categoria : ${listCategoria}" th:value="${categoria.idCategoria}" th:text="|${categoria.nombreCategoria} - ${categoria.generoCategoria} - ${categoria.deporteCategoria.nombreDeporte}|"></option>
 					</select>
 						<small class="form-text text-danger"
 								th:if="${#fields.hasErrors('categoria')}"
