@@ -78,7 +78,7 @@ public class TutorModel {
 	@Column(name="email_tutor")
 	private String emailTutor;
 	
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "tutor", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "tutor")
 	private List<SocioModel> socio;
 
 	public Integer getIdTutor() {
