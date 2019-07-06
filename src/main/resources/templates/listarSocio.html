@@ -116,14 +116,14 @@
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalCenterTitle">Atención</h5>
+						<h5 class="modal-title" id="exampleModalCenterTitle">Eliminar socio</h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body"
-						th:text="|¿Estas seguro que deseas eliminar este socio ${socio.nombreSocio} ?|">
+						th:text="|¿Estas seguro que deseas eliminar el socio ${socio.nombreSocio} ?|">
 
 					</div>
 					<div class="modal-footer">
@@ -131,7 +131,7 @@
 							data-dismiss="modal">Cancelar</button>
 						<a type="button"
 							th:href="@{/socio/delete/{id}(id=${socio.idSocio})}"
-							class="btn btn-primary">Eliminar</a>
+							class="btn btn-danger">Eliminar</a>
 					</div>
 				</div>
 			</div>
