@@ -135,7 +135,7 @@
 							th:field="*{estadoSocio}">
 					</div>
 				
-				<div th:if="${#fields.hasErrors('fechaNacimientoSocio') && socio.fechaNacimiento!=null}" class="col-md-4  d-flex justify-content-center align-items-right">
+				<div th:if="${#fields.hasErrors('fechaNacimientoSocio')}" class="col-md-4  d-flex justify-content-center align-items-right">
 					
 					<div class="form-group col-md-9">
 						<label>Agregar tutor</label> <select class="custom-select" th:field="*{tutor}">
@@ -167,7 +167,7 @@
 						<option th:value="${null}" th:text="|Sin categoría|" th:selected>
 						<option th:each="categoria : ${listCategorias}"
 							th:value="${categoria.idCategoria}"
-							th:text="|${categoria.nombreCategoria} - ${categoria.deporteCategoria.nombreDeporte}|	"></option>
+							th:text="|${categoria.nombreCategoria} - ${categoria.generoCategoria} - ${categoria.deporteCategoria.nombreDeporte}|	"></option>
 					</select>
 				</div>
 			</div>

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.clubdeportivo2.clubdeportivo.commons.GenericService;
 import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
-import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 
 
 

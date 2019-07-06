@@ -116,7 +116,7 @@
 						</button>
 					</div>
 					<div class="modal-body"
-						th:text="|¿Estas seguro que deseas eliminar la cuota del socio ${cuotas.socioCuota.nombreSocio} ?|">
+						th:text="|¿Estás seguro que deseas eliminar la cuota del socio ${cuotas.socioCuota.nombreSocio} ${cuotas.socioCuota.apellidoPaterno}, de la fecha ${#dates.format(cuotas.fechaDePago,'dd-MM-yyyy')}?|">
 
 					</div>
 					<div class="modal-footer">

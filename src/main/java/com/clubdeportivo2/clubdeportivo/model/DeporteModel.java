@@ -30,7 +30,7 @@ public class DeporteModel {
 	private boolean estadoDeporte;
 	
 
-	@OneToMany(mappedBy = "deporteCategoria")
+	@OneToMany(mappedBy = "deporteCategoria", cascade = CascadeType.ALL)
 	private List<CategoriaModel> categorias;
 	
 	public DeporteModel() {

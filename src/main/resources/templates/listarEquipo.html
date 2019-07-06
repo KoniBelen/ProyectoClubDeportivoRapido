@@ -73,7 +73,7 @@
 								<td th:text="${equipo.nombreEquipo}"></td>
 								<td th:text="${equipo.nombreEntrenador}"></td>
 								<td th:text="${equipo.nombreEncargado}"></td>
-								<td th:text="|${equipo.categoria.nombreCategoria} - ${equipo.categoria.deporteCategoria.nombreDeporte}|"></td>
+								<td th:text="|${equipo.categoria.nombreCategoria} - ${equipo.categoria.generoCategoria} - ${equipo.categoria.deporteCategoria.nombreDeporte}|"></td>
 
 
 								<td><a type="button" class="btn btn-danger"
@@ -113,7 +113,7 @@
 						</button>
 					</div>
 					<div class="modal-body"
-						th:text="|¿Estas seguro que deseas eliminar el equipo ${equipo.nombreEquipo} ?|">
+						th:text="|¿Estás seguro que deseas eliminar el equipo ${equipo.nombreEquipo} ?|">
 
 					</div>
 					<div class="modal-footer">
