@@ -68,7 +68,7 @@ public class CategoriaModel {
 
 	
 	
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "idEquipo")
+	@OneToMany( mappedBy = "idEquipo", cascade = CascadeType.ALL)
 	private List<EquipoModel> equiposCategoria;
 
 

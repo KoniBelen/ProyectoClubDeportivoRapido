@@ -96,7 +96,7 @@ public class SocioModel {
 	@Column(name="estado_socio")
 	private boolean estadoSocio;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name= "socioCategoria", 
 	joinColumns = {@JoinColumn(name="idSocio")},
 	inverseJoinColumns = {@JoinColumn(name="idCategoria")})
@@ -108,7 +108,7 @@ public class SocioModel {
 	
 	//los *to many no deben ir con fetch Type no se por que 
 	
-	@OneToMany(cascade= CascadeType.MERGE, mappedBy = "socioCuota")
+	@OneToMany(mappedBy = "socioCuota", cascade = CascadeType.ALL)
 	//@JoinColumn(name="id_cuotas")
 	private List<CuotasModel> cuotas;
 
