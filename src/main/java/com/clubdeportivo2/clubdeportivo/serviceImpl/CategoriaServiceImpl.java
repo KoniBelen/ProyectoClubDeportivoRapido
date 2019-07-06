@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.clubdeportivo2.clubdeportivo.commons.GenericServiceImp;
 import com.clubdeportivo2.clubdeportivo.dao.CategoriaDao;
 import com.clubdeportivo2.clubdeportivo.model.CategoriaModel;
-import com.clubdeportivo2.clubdeportivo.model.SocioModel;
 import com.clubdeportivo2.clubdeportivo.service.CategoriaService;
 
 @Service
