@@ -33,4 +33,7 @@ label {
 	color: rgb(245, 55, 51);
 }
 
+.fa-trash-alt,.fa-user-plus,.fa-eye, .fa-pencil-alt{
+	color: #fff;
+}
 

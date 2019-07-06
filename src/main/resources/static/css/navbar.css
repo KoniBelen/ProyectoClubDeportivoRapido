@@ -29,5 +29,11 @@ a.nav-link:hover {
 	color:white;
 }
 
+ol>li>a{
+	color: rgb(245, 55, 51)
+}
+ol>li>a:hover{
+	color: #f24d43
+}
 
 

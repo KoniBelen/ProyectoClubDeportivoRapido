@@ -135,7 +135,7 @@
 							th:field="*{estadoSocio}">
 					</div>
 				
-				<div th:if="${#fields.hasErrors('fechaNacimientoSocio')}" class="col-md-4  d-flex justify-content-center align-items-right">
+				<div th:if="${socio!=null && socio.idSocio!=null}" class="col-md-4  d-flex justify-content-center align-items-right">
 					
 					<div class="form-group col-md-9">
 						<label>Agregar tutor</label> <select class="custom-select" th:field="*{tutor}">
