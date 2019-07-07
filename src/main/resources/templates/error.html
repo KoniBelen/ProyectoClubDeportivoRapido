@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>CD Rápido</title>
+
+<link rel="stylesheet" type="text/css" href="/css/home.css" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+<script type="text/javascript"
+	src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+
+</head>
+
+<body>
+	<div th:insert="navbar">...</div>
+
+	<div class="container">
+	<div class="row text-center">
+		<div class="col-md-4">
+			<img th:src="@{/assets/img/pelota_triste.jpg}">
+		</div>
+		
+		<div class="col-md-6 ">
+			<h1><span  class="align-middle">¡Ups!</span></h1>
+			<h3 ><span class="align-middle">Ha ocurrido un error ponte en contacto con el equipo de desarrollo</span> </h3>
+			
+		</div></div>
+	</div>
+	
+
+
+	<div th:insert="footer"></div>
+
+</body>
+
+</html>
