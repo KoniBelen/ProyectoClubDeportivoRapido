@@ -28,7 +28,7 @@ public class CuotasModel {
 
 
 	
-	@NotNull(message = "Campo olbligatorio (*)")
+	@NotNull(message="Campo obligatorio (*)")
 	@Past(message = "La fecha de pago debe ser anterior a la fecha actual")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="f_de_pago")

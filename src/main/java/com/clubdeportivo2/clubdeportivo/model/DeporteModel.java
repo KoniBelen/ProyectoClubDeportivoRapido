@@ -4,6 +4,7 @@ package com.clubdeportivo2.clubdeportivo.model;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,7 +21,7 @@ public class DeporteModel {
 	@Column(name = "id_deporte")
 	private Integer idDeporte;
 	
-	@NotEmpty
+	@NotBlank(message="Campo obligatorio (*)")
 	@Size(min=3, max=150, message="El nombre del deporte debe tener entre 3 a 150 caracteres")
 	@Column(name= "nombre_deporte")
 	private String nombreDeporte;

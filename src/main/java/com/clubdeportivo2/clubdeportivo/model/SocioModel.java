@@ -21,6 +21,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -44,22 +45,22 @@ public class SocioModel {
 	@Column(name="id_socio")
 	private Integer idSocio; 	
 	
-	@NotEmpty(message="Campo obligatorio (*)")
+	@NotBlank(message="Campo obligatorio (*)")
 	@ValidaRut(message="Ingrese un Rut válido")
 	@Column(name="rut_socio")
 	private String rutSocio;
 	
-	@NotEmpty(message="Campo obligatorio (*)")
+	@NotBlank(message="Campo obligatorio (*)")
 	@Size(min=3,max=150, message="Ingrese un nombre de mínimo 3 caracteres")
 	@Column(name="nombre_socio")
 	private String nombreSocio;
 	
-	@NotEmpty(message="Campo obligatorio (*)")
+	@NotBlank(message="Campo obligatorio (*)")
 	@Size(min=3,max=150, message="Ingrese un apellido de mínimo 3 caracteres")
 	@Column(name="apellido_paterno")
 	private String apellidoPaterno;
 	
-	@NotEmpty(message="Campo obligatorio (*)")
+	@NotBlank(message="Campo obligatorio (*)")
 	@Size(min=3,max=150, message="Ingrese un apellido de mínimo 3 caracteres")
 	@Column(name="apellido_materno")
 	private String apellidoMaterno;
@@ -69,7 +70,7 @@ public class SocioModel {
 	@Column(name="telefono_socio")
 	private long telefonoSocio;
 	
-	@NotEmpty(message="Campo obligatorio (*)")
+	@NotBlank(message="Campo obligatorio (*)")
 	@Size(min=3,max=150, message="Ingrese una dirección de mínimo 3 caracteres")
 	@Column(name="direccion_socio")
 	private String direccionSocio;

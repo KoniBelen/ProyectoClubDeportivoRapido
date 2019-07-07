@@ -20,6 +20,7 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -34,22 +35,22 @@ public class CategoriaModel {
 	@Column(name = "id_categoria")
 	private Integer idCategoria;
 	
-	@NotEmpty(message= "EL nombre es requerido")
+	@NotBlank(message= "Campo obligatorio (*)")
 	@Size(min=3, max=150, message="El nombre de la categoria debe tener al menos 3 caracteres")
 	@Column(name = "nombre_categoria")
 	private String nombreCategoria;
 	
-	@NotEmpty//(message="La descripción de la categoria es requerida")
+	@NotBlank(message="Campo obligatorio (*)")
 	@Column(name = "descripcion_categoria")
 	private String descripcionCategoria;
 	
-	@NotNull//(message = "El valor de la edad máxima es requerido")
+	@NotNull(message = "Campo obligatorio (*)")
 	@DecimalMax(value = "150", message = "La edad máxima de la categoria es 150")
 	@DecimalMin(value = "4", message = "La edad minima de la categoria es 4")
 	@Column(name = "edad_max")
 	private int edadMax;
 	
-	@NotEmpty//(message="El genero de la categoría es requerido")
+	@NotBlank(message="Campo obligatorio (*)")
 	@Column(name = "genero_categoria")
 	private String generoCategoria;	
 	
@@ -57,7 +58,7 @@ public class CategoriaModel {
 	@Column(name = "estado_categoria")
 	private boolean estadoCategoria;
 	
-	@NotNull (message="El deporte es requerido")
+	@NotNull (message="Campo obligatorio (*)")
 	@ManyToOne
 	@JoinColumn(name = "id_deporte")
 	private DeporteModel deporteCategoria;

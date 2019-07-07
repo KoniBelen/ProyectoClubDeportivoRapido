@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,17 +30,18 @@ public class EquipoModel {
 	@Column(name = "id_equipo")
 	private Integer idEquipo;
 	
-	@NotEmpty(message="Campo obligatorio (*)")
+
+	@NotBlank(message="Campo obligatorio (*)")
 	@Size(min=3,max=150, message="Ingrese un nombre de mínimo 3 caracteres")
 	@Column(name = "nombre_equipo")
 	private String nombreEquipo;
 	
-	@NotEmpty(message="Campo obligatorio (*)")
+	@NotBlank(message="Campo obligatorio (*)")
 	@Size(min=3,max=150, message="Ingrese un nombre de mínimo 3 caracteres")
 	@Column(name = "nombre_entrenador")
 	private String nombreEntrenador;
 	
-	@NotEmpty(message="Campo obligatorio (*)")
+	@NotBlank(message="Campo obligatorio (*)")
 	@Size(min=3,max=150, message="Ingrese un nombre de mínimo 3 caracteres")
 	@Column(name = "nombre_encargado")
 	private String nombreEncargado;
