@@ -14,17 +14,17 @@ public class ClubDeportivoApplication {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	
 	@RequestMapping("/")
     public String welcome() {
         return "home";
     }
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClubDeportivoApplication.class, args);
 	}
 
-/*	@Override
+	/*@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 	
@@ -35,5 +35,6 @@ public class ClubDeportivoApplication {
 			String bcryptPassword = passwordEncoder.encode(password);
 			System.out.println(bcryptPassword);
 		}
-	}*/
+	}
+	*/
 }

@@ -1,6 +1,8 @@
 /* Creamos algunos usuarios con sus roles */
 INSERT INTO `users` (username, password, enabled) VALUES ('rodrigo','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG',1);
 INSERT INTO `users` (username, password, enabled) VALUES ('admin','$2a$10$DOMDxjYyfZ/e7RcBfUpzqeaCs8pLgcizuiQWXPkU35nOhZlFcE9MS',1);
+INSERT INTO `users` (username, password, enabled) VALUES ('rodrigo@cdr.com','$2a$10$E50aF6oWOTXLaNxAA1SE6.sevRjA2kWeD5KBm.hp1VzzpHp5WSDdu',1);iO6BC580j2
+INSERT INTO `users` (username, password, enabled) VALUES ('administrador@cdr.com','$2a$10$AilFY62kAraa8JGs74.xx.38dgSa3C909C7Q8UonnNLRQKDG3nSMK',1);CmrBl9lcTh
 
 INSERT INTO `authorities` (user_id, authority) VALUES (1,'ROLE_USER');
 INSERT INTO `authorities` (user_id, authority) VALUES (2,'ROLE_ADMIN');
